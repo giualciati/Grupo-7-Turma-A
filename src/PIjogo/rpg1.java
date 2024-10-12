@@ -1,8 +1,10 @@
-package ahdcum;
+package PIjogo;
 
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
@@ -11,25 +13,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Rpg {
+public class rpg1 {
 
- JFrame janela;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacreditos;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundobstart, fundobcomojogar, fundobcreditos, fundobsair;//painéis
- JLabel tituloinicial;//textos
+ JPanel fundotituloinicial, fundobstart, fundobcomojogar, fundobcreditos, fundobsair, fundojstart, fundojcomojogar, fundojcreditos;//painéis
+ JLabel tituloinicial, tstart, tcomojogar, tcreditos;//textos
  JButton bstart, bcomojogar, bcreditos, bsair;//botões
  Font fontetitulo = new Font("Times New Roman", font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", font.PLAIN, 30);//fonte
 
 public static void main(String[] args) {
-    new Rpg();
-}
+    new rpg1();
+ }
 
-public Rpg(){
+public rpg1(){
    janela = new JFrame(); // cria a janela
    janela.setTitle("A Herança do Caos: Último Maerion");// dá um título
    janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Para fechar devidamente a janela
    janela.setSize(1000,700);// define o tamanho
+   janela.setResizable(false);
    janela.getContentPane().setBackground(Color.black); // cor de fundo
    janela.setLayout(null);
    janela.setLocationRelativeTo(null); // centralizar
@@ -59,6 +62,14 @@ public Rpg(){
    bstart.setBorderPainted(false);
    bstart.setContentAreaFilled(false);
 
+    // Adicionando ActionListener para abrir a nova janela ao clicar no botão "COMO JOGAR"
+    bstart.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            abstart(); // Chama o método que abre a nova janela
+            janela.setVisible(false);//fecha a janela inicial
+        }
+    });
+
     bstart.addMouseListener(new MouseListener() {
         public void mouseEntered(MouseEvent e) {
             bstart.setForeground(Color.yellow);//Muda a cor do botão ao passar o mouse em cima
@@ -68,10 +79,7 @@ public Rpg(){
             bstart.setForeground(Color.white);//Volta à cor original ao tirar o mouse
         }
 
-        public void mouseClicked(MouseEvent e) {
-            bstart.setForeground(Color.green); //Muda a cor ao clicar
-        }
-
+       public void mouseClicked(MouseEvent e) {}
        public void mousePressed(MouseEvent e) {}//Metodos não utilizados, mas que precisam estar aqui
        public void mouseReleased(MouseEvent e) {}
 
@@ -90,6 +98,14 @@ public Rpg(){
     bcomojogar.setFocusPainted(false); //Para tirar as bordas do botão
     bcomojogar.setBorderPainted(false);
     bcomojogar.setContentAreaFilled(false);
+    
+     // Adicionando ActionListener para abrir a nova janela ao clicar no botão "COMO JOGAR"
+        bcomojogar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                abcomojogar(); // Chama o método que abre a nova janela
+                janela.setVisible(false);//fecha a janela inicial
+            }
+        });
 
      bcomojogar.addMouseListener(new MouseListener() {
         public void mouseEntered(MouseEvent e) {
@@ -100,11 +116,8 @@ public Rpg(){
             bcomojogar.setForeground(Color.white);//Volta à cor original ao tirar o mouse
         }
 
-        public void mouseClicked(MouseEvent e) {
-            bcomojogar.setForeground(Color.green); //Muda a cor ao clicar
-        }
-
-       public void mousePressed(MouseEvent e) {}//Metodos não utilizados, mas que precisam estar aqui
+       public void mouseClicked(MouseEvent e) {}//Metodos não utilizados, mas que precisam estar aqui
+       public void mousePressed(MouseEvent e) {}
        public void mouseReleased(MouseEvent e) {}
 
     });
@@ -123,6 +136,14 @@ public Rpg(){
      bcreditos.setBorderPainted(false);
      bcreditos.setContentAreaFilled(false);
 
+     bcreditos.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            abcreditos(); // Chama o método que abre a nova janela
+            janela.setVisible(false);//fecha a janela inicial
+        }
+    });
+     
+
      bcreditos.addMouseListener(new MouseListener(){
          public void mouseEntered(MouseEvent e) {
              bcreditos.setForeground(Color.yellow);
@@ -130,13 +151,11 @@ public Rpg(){
          public void mouseExited(MouseEvent e) {
              bcreditos.setForeground(Color.white);
          }
-         public void mouseClicked(MouseEvent e) {
-             bcreditos.setForeground(Color.green);
-         }
-
-         public void mousePressed(MouseEvent e) {}//Metodos não utilizados, mas que precisam estar aqui
+         public void mouseClicked(MouseEvent e) {}//Metodos não utilizados, mas que precisam estar aqui
+         public void mousePressed(MouseEvent e) {}
          public void mouseReleased(MouseEvent e) {}
      });
+
 
      //Botão sair
      fundobsair = new JPanel();
@@ -161,7 +180,7 @@ public Rpg(){
              bsair.setForeground(Color.white);
          }
          public void mouseClicked(MouseEvent e) {
-             bsair.setForeground(Color.green);
+             System.exit(0); //fecha o programa
          }
 
          public void mousePressed(MouseEvent e) {}
@@ -178,8 +197,77 @@ public Rpg(){
    con.add(fundobcomojogar);
    con.add(fundobcreditos);
    con.add(fundobsair);
+    }
 
+    public void abstart(){
+        janelastart = new JFrame();
+        janelastart.setSize(1000, 700);
+        janelastart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelastart.setResizable(false);
+        janelastart.getContentPane().setBackground(Color.black);
+        janelastart.setLocationRelativeTo(null);
+        janelastart.setLayout(null);
+        con = janelastart.getContentPane();
+
+        fundojstart = new JPanel();
+        fundojstart.setBounds(50, 50, 900, 600);
+        fundojstart.setBackground(Color.black);
+
+        tstart = new JLabel("Jogo começa...");
+        tstart.setForeground(Color.white);
+        tstart.setFont(fontecorpo);
+        fundojstart.add(tstart);
+        janelastart.setVisible(true);
+        con.add(fundojstart);
+    }
+
+
+    public void abcomojogar() { // Método que abre a nova janela com informações sobre "Como Jogar"
+        // Criando uma nova janela
+        janelacomojogar = new JFrame("Como Jogar");
+        janelacomojogar.setSize(1000, 700);
+        janelacomojogar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelacomojogar.setResizable(false);
+        janelacomojogar.getContentPane().setBackground(Color.black);
+        janelacomojogar.setLocationRelativeTo(null);
+        janelacomojogar.setLayout(null);
+        con = janelacomojogar.getContentPane();
+
+        fundojcomojogar = new JPanel();
+        fundojcomojogar.setBounds(50, 50, 900, 600);
+        fundojcomojogar.setBackground(Color.black);
+        
+        tcomojogar = new JLabel("<html>Esse é um jogo baseado em perguntas de múltipla escolha <br> no qual haverá uma pergunta relacionada a java...<html>");
+        tcomojogar.setForeground(Color.white);
+        tcomojogar.setFont(fontecorpo);
+        fundojcomojogar.add(tcomojogar);
+        janelacomojogar.setVisible(true);
+        con.add(fundojcomojogar);
 
 }
+
+    public void abcreditos(){
+        janelacreditos = new JFrame();
+        janelacreditos.setSize(1000, 700);
+        janelacreditos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelacreditos.setResizable(false);
+        janelacreditos.getContentPane().setBackground(Color.black);
+        janelacreditos.setLocationRelativeTo(null);
+        janelacreditos.setLayout(null);
+        con = janelacreditos.getContentPane();
+
+        fundojcreditos = new JPanel();
+        fundojcreditos.setBounds(50, 50, 900, 600);
+        fundojcreditos.setBackground(Color.black);
+
+        tcreditos = new JLabel("Esse jogo foi desenvolvido por ...");
+        tcreditos.setForeground(Color.white);
+        tcreditos.setFont(fontecorpo);
+        fundojcreditos.add(tcreditos);
+        janelacreditos.setVisible(true);
+        con.add(fundojcreditos);
+
+
+    }
 
 }
