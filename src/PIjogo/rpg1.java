@@ -19,9 +19,9 @@ public class rpg1 {
  Container con;//conteúdo
  JPanel fundotituloinicial, fundobstart, fundobcomojogar, fundobcreditos, fundobsair, fundojstart, fundojcomojogar, fundojcreditos;//painéis
  JLabel tituloinicial, tstart, tcomojogar, tcreditos;//textos
- JButton bstart, bcomojogar, bcreditos, bsair;//botões
- Font fontetitulo = new Font("Times New Roman", font.PLAIN, 40);//fonte
- Font fontecorpo = new Font ("Times New Roman", font.PLAIN, 30);//fonte
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar;//botões
+ Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
+ Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
 
 public static void main(String[] args) {
     new rpg1();
@@ -199,6 +199,26 @@ public rpg1(){
    con.add(fundobsair);
     }
 
+    public JButton botaovoltar(JFrame janelaatual) {
+        bvoltar = new JButton("VOLTAR");
+        bvoltar.setFont(fontecorpo);
+        bvoltar.setBackground(Color.black);
+        bvoltar.setForeground(Color.white);
+        bvoltar.setFocusPainted(false);
+        bvoltar.setBorderPainted(false);
+        bvoltar.setContentAreaFilled(false);
+        
+        bvoltar.addActionListener(new ActionListener(){
+          public void actionPerformed(ActionEvent e) {
+              janela.setVisible(true);
+              janelaatual.dispose();
+          }
+        });
+     return bvoltar;
+        
+    }
+
+
     public void abstart(){
         janelastart = new JFrame();
         janelastart.setSize(1000, 700);
@@ -241,6 +261,8 @@ public rpg1(){
         tcomojogar.setForeground(Color.white);
         tcomojogar.setFont(fontecorpo);
         fundojcomojogar.add(tcomojogar);
+        JButton bvoltar = botaovoltar(janelacomojogar);
+        fundojcomojogar.add(bvoltar);
         janelacomojogar.setVisible(true);
         con.add(fundojcomojogar);
 
@@ -264,6 +286,8 @@ public rpg1(){
         tcreditos.setForeground(Color.white);
         tcreditos.setFont(fontecorpo);
         fundojcreditos.add(tcreditos);
+        JButton bvoltar = botaovoltar(janelacreditos);
+        fundojcreditos.add(bvoltar);
         janelacreditos.setVisible(true);
         con.add(fundojcreditos);
 
