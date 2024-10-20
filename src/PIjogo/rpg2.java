@@ -61,7 +61,7 @@ public class rpg2 extends JFrame {
         if (opcao == 'B') {
             acertou = true;
             resultadoArea.setText("Parabéns, Kote! Você acertou!\n");
-            // proximaPerguntaParte2();
+            proximaPerguntaParte2();
         } else if (tentativa < 5) {
             resultadoArea.setText("Resposta incorreta! Você perdeu uma vida ;<.\n");
         } else {
@@ -69,6 +69,42 @@ public class rpg2 extends JFrame {
             desativarBotoes();
         }
     }
+    private void proximaPerguntaParte2() {
+        historiaLabel.setText("<html>Narrador: Assim que kote chega ao passado, ele vai direto para a biblioteca principal de Noxxterra, uma imensa estrutura de paredes de pedra e livros antigos. O ambiente é iluminado pelo luar da lua, e um ar misterioso envolve o lugar. No centro da biblioteca, ele encontra um feiticeiro, uma figura imponente coberta por uma capa de tecido mágico que brilha levemente" +
+                "<br> Feiticeiro: 'Bem-vindo, kote. O tempo aqui não é linear, o Diário de Arquimendes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado. Somente aqueles que dominam os loops do tempo poderão abri-lo." +
+                "<br> Desafio: Este baú está protegido por um feitiço de repetição. O código está escrito nas runas. Decifre-o: o valor de x começa em 10 e diminui continuamente. Qual será o valor final de x ao sair do ciclo?" +
+                "<br>Para abrir o baú, decifre o seguinte código: int x = 10; do { x = x - 2; } while (x > 3);</html>");
+        
+        tentativa = 0;
+        acertou = false;
+        resultadoArea.setText("");  
+        botaoA.setText("A - 2");
+        botaoB.setText("B - 4");
+        botaoC.setText("C - 3");
+        botaoD.setText("D - 5");
+
+        botaoA.addActionListener(e -> verificarRespostaParte2('A'));
+        botaoB.addActionListener(e -> verificarRespostaParte2('B'));
+        botaoC.addActionListener(e -> verificarRespostaParte2('C'));
+        botaoD.addActionListener(e -> verificarRespostaParte2('D'));
+    }
+
+    
+    private void verificarRespostaParte2(char opcao) {
+        tentativa++;
+        if (opcao == 'A') {
+            acertou = true;
+            resultadoArea.setText("Parabéns, Kote! Você conseguiu abrir o baú.\n");
+          //  proximaPerguntaParte3();
+        } else if (tentativa < 5) {
+            resultadoArea.setText("Resposta incorreta! Você perdeu uma vida ;<.\n");
+        } else {
+            resultadoArea.setText("Você esgotou suas tentativas. O baú permanece fechado.\n");
+            desativarBotoes();
+        }
+    }
+
+   
 
     
     private void desativarBotoes() {
