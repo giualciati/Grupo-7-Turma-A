@@ -265,14 +265,6 @@ public rpg1(){
         fundodesafio1 = new JPanel();
         fundodesafio1.setBounds(50, 50, 900, 600);
         fundodesafio1.setBackground(Color.black);
-        InputMap mj2 = fundodesafio1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap mj3 = fundodesafio1.getActionMap();
-        mj2.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
-        mj3.put("enterPressed", new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-                abrirproximajanela();
-            }
-        });
 
         tdesafio1 = new JLabel("<html>Após o encontro com o feiticeiro, Kote vai até a biblioteca do palácio, mas o livro que ele precisa<br> encontra-se em uma área restrita que contém os seguintes requisitos:<br><br>" + //
             "<i> if (!(energia < 5 || foco <= 5) && (habilidadeEspecial || sabedoria > 10)) {</i><br>" + 
