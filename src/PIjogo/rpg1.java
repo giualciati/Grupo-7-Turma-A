@@ -303,7 +303,7 @@ public rpg1(){
         alternativabdesafio1.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "Correto! A biblioteca permanece fechada.");
-            abstart();
+            abstart(); //exemplo, vamos colocar outra janela aqui
             janeladesafio1.dispose();
             
     }
