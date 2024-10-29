@@ -10,11 +10,11 @@ import java.util.List;
 
 public class rpg1 {
 
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janelaseudesafio9, janelaseudesafio10;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5;//painéis
- JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5;//textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5 ;//botões
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundoArrayseudesafio9, fundoalternativasseudesafioArray9, fundoArrayseudesafio10, fundoalternativasseudesafioArray10;//painéis
+ JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tseudesafioArray9, tseudesafioArray10; //textos
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaAseudesafio9, alternativaBseudesafio9, alternativaCseudesafio9, alternativaDseudesafio9,alternativaAseudesafio10, alternativaBseudesafio10, alternativaCseudesafio10, alternativaDseudesafio10;//botões
  JTextArea textocj, textocj2;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
