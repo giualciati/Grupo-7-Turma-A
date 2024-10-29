@@ -704,11 +704,94 @@ public rpg1(){
     janeladesafio5.setVisible(true);
 }
 
-        
+        // desafio 9
+
+public void abseudesafio9() {
+    janelaseudesafio9 = new JFrame("Desafio 9"); 
+    janelaseudesafio9.setSize(1000, 700);
+    janelaseudesafio9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaseudesafio9.setResizable(false);
+    janelaseudesafio9.getContentPane().setBackground(Color.black);
+    janelaseudesafio9.setLocationRelativeTo(null);
+    janelaseudesafio9.setLayout(null);
+    con = janelaseudesafio9.getContentPane();
+
+    fundoArrayseudesafio9 = new JPanel();
+    fundoArrayseudesafio9.setBounds(50, 50, 900, 600);
+    fundoArrayseudesafio9.setBackground(Color.black);
+    fundoArrayseudesafio9.setLayout(new BorderLayout()); 
+
+    tseudesafioArray9 = new JLabel("Os Guardiões do Tempo exigem que você prove seu valor resolvendo um enigma. Eles perguntam: “Qual método é usado para ordenar um ArrayList?");
+    tseudesafioArray9.setForeground(Color.white);
+    tseudesafioArray9.setFont(fontedesafios);
+    fundoArrayseudesafio9.add(tseudesafioArray, BorderLayout.NORTH); 
+    fundoalternativasseudesafioArray9 = new JPanel();
+    fundoalternativasseudesafioArray9.setBounds(100, 380, 800, 100);
+    fundoalternativasseudesafioArray9.setBackground(Color.black);
+    fundoalternativasseudesafioArray9.setLayout(new GridLayout(2, 2, 10, 10)); 
+
+    alternativaAseudesafio9 = new JButton("A) sort()");
+    alternativaAseudesafio9.setFont(fontedesafios);
+    alternativaAseudesafio9.setFocusPainted(false);
+    alternativaAseudesafio9.setBackground(Color.black);
+    alternativaAseudesafio9.setForeground(Color.white);
+    alternativaAseudesafio9.setContentAreaFilled(false);
+    alternativaAseudesafio9.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
+        }
+    });
+
+    alternativaBseudesafio9 = new JButton("B) order()");
+    alternativaBseudesafio9.setFont(fontedesafios);
+    alternativaBseudesafio9.setFocusPainted(false);
+    alternativaBseudesafio9.setBackground(Color.black);
+    alternativaBseudesafio9.setForeground(Color.white);
+    alternativaBseudesafio9.setContentAreaFilled(false);
+    alternativaBseudesafio9.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaCseudesafio9 = new JButton("C) Array()");
+    alternativaCseudesafio9.setFont(fontedesafios);
+    alternativaCseudesafio9.setFocusPainted(false);
+    alternativaCseudesafio9.setBackground(Color.black);
+    alternativaCseudesafio9.setForeground(Color.white);
+    alternativaCseudesafio9.setContentAreaFilled(false);
+    alternativaCseudesafio9.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaDseudesafio9 = new JButton("D) add()");
+    alternativaDseudesafio9.setFont(fontedesafios);
+    alternativaDseudesafio9.setFocusPainted(false);
+    alternativaDseudesafio9.setBackground(Color.black);
+    alternativaDseudesafio9.setForeground(Color.white);
+    alternativaDseudesafio9.setContentAreaFilled(false);
+    alternativaDseudesafio9.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+  
+    fundoalternativasseudesafioArray9.add(alternativaAseudesafio9);
+    fundoalternativasseudesafioArray9.add(alternativaBseudesafio9);
+    fundoalternativasseudesafioArray9.add(alternativaCseudesafio9);
+    fundoalternativasseudesafioArray9.add(alternativaDseudesafio9);
+
+    con.add(fundoArrayseudesafio9);
+    con.add(fundoalternativasseudesafioArray9);
+    
+    janelaseudesafio9.setVisible(true);
+}
 
 
-    public void abcomojogar() { // Método que abre a nova janela 
-        // Criando uma nova janela
+    public void abcomojogar() { 
         janelacomojogar = new JFrame("Como Jogar");
         janelacomojogar.setSize(1000, 700);
         janelacomojogar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
