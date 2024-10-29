@@ -789,6 +789,95 @@ public void abseudesafio9() {
     
     janelaseudesafio9.setVisible(true);
 }
+   // desafio 10
+
+   public void abseudesafio10() {
+    janelaseudesafio10 = new JFrame("Desafio 10");
+    janelaseudesafio10.setSize(1000, 700);
+    janelaseudesafio10.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaseudesafio10.setResizable(false);
+    janelaseudesafio10.getContentPane().setBackground(Color.black);
+    janelaseudesafio10.setLocationRelativeTo(null);
+    janelaseudesafio10.setLayout(null);
+    con = janelaseudesafio10.getContentPane();
+
+    fundoArrayseudesafio10 = new JPanel();
+    fundoArrayseudesafio10setBounds(50, 50, 900, 600);
+    fundoArrayseudesafio10.setBackground(Color.black);
+    fundoArrayseudesafio10.setLayout(new BorderLayout()); 
+
+    tseudesafioArray10 = new JLabel("<html> Quando você precisa armazenar uma lista de elementos que pode mudar de tamanho ao longo do tempo,<br><br>" +
+                        "qual classe do Java é mais adequada para essa tarefa, considerando que você deseja acessar os elementos por índice?  E, <br>" +
+                        "durante uma negociação entre duas facções rivais, ambas exigem uma prova de lealdade antes de se unir contra os Ceifadores de Sombras. <br>" +
+                        "Você tem que escolher uma missão para cada facção. Qual você escolhe?</html>");
+    tseudesafioArray10.setForeground(Color.white);
+    tseudesafioArray10.setFont(fontedesafios);
+    fundoArrayseudesafio10.add(tseudesafioArray, BorderLayout.NORTH);
+
+    fundoalternativasseudesafioArray10 = new JPanel();
+    fundoalternativasseudesafioArray10.setBounds(100, 380, 800, 100);
+    fundoalternativasseudesafioArray10.setBackground(Color.black);
+    fundoalternativasseudesafioArray10.setLayout(new GridLayout(2, 2, 10, 10));
+    con.add(fundoalternativasseudesafioArray10);
+
+    alternativaAseudesafio10 = new JButton("A) ArrayList — Recuperar um artefato sagrado para a Facção A.");
+    alternativaAseudesafio10.setFont(fontedesafios);
+    alternativaAseudesafio10.setFocusPainted(false);
+    alternativaAseudesafio10.setBackground(Color.black);
+    alternativaAseudesafio10.setForeground(Color.white);
+    alternativaAseudesafio10.setContentAreaFilled(false);
+    alternativaAseudesafio10.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
+        }
+    });
+
+    alternativaBseudesafio10 = new JButton("B) Array — Eliminar um traidor na Facção B.");
+    alternativaBseudesafio10.setFont(fontedesafios);
+    alternativaBseudesafio10.setFocusPainted(false);
+    alternativaBseudesafio10.setBackground(Color.black);
+    alternativaBseudesafio10.setForeground(Color.white);
+    alternativaBseudesafio10.setContentAreaFilled(false);
+    alternativaBseudesafio10.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaCseudesafio10 = new JButton("C)ArrayList — Eliminar um traidor na Facção B.");
+    alternativaCseudesafio10.setFont(fontedesafios);
+    alternativaCseudesafio10.setFocusPainted(false);
+    alternativaCseudesafio10.setBackground(Color.black);
+    alternativaCseudesafio10.setForeground(Color.white);
+    alternativaCseudesafio10.setContentAreaFilled(false);
+    alternativaCseudesafio10.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaDseudesafio10 = new JButton("D) Array — Recuperar um artefato sagrado para a Facção A.");
+    alternativaDseudesafio10.setFont(fontedesafios);
+    alternativaDseudesafio10.setFocusPainted(false);
+    alternativaDseudesafio10.setBackground(Color.black);
+    alternativaDseudesafio10.setForeground(Color.white);
+    alternativaDseudesafio10.setContentAreaFilled(false);
+    alternativaDseudesafio10.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    fundoalternativasseudesafioArray10.add(alternativaAseudesafio10);
+    fundoalternativasseudesafioArray10.add(alternativaBseudesafio10);
+    fundoalternativasseudesafioArray10.add(alternativaCseudesafio10);
+    fundoalternativasseudesafioArray10.add(alternativaDseudesafio10);
+
+    con.add(fundoArrayseudesafio10);
+    con.add(fundoalternativasseudesafioArray10);
+    
+    janelaseudesafio10.setVisible(true);
+}
 
 
     public void abcomojogar() { 
@@ -805,7 +894,6 @@ public void abseudesafio9() {
         fundojcomojogar.setLayout(new BoxLayout(fundojcomojogar, BoxLayout.Y_AXIS));
         fundojcomojogar.setBorder(new EmptyBorder(20, 20, 20, 20));
     
-        // Texto explicativo em JTextArea
         String texto = """
         Este é um jogo RPG de texto, projetado para expandir seu conhecimento na linguagem de programação Java! Aqui, você não apenas se divertirá com uma narrativa envolvente, mas também enfrentará uma série de desafios que testarão suas habilidades de programação.
     
