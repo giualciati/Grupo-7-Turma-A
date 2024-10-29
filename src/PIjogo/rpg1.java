@@ -1,38 +1,20 @@
 package PIjogo;
 
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.BoxLayout;
-import javax.swing.InputMap;
-import javax.swing.JTextArea;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class rpg1 {
 
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2;//painéis
- JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2;//textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2;//botões
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5;//painéis
+ JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5;//textos
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5 ;//botões
  JTextArea textocj, textocj2;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
@@ -309,7 +291,7 @@ public rpg1(){
         alternativabdesafio1.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "Correto! A biblioteca permanece fechada.");
-            abdesafio2(); //exemplo, vamos colocar outra janela aqui
+            abdesafio2(); 
             janeladesafio1.dispose();
             
     }
@@ -349,8 +331,8 @@ public rpg1(){
     }
 
     public void abrirdesafio2() {
-        abdesafio2(); // Abre a janela do desafio 1
-        janeladesafio1.dispose(); // Fecha a janela atual
+        abdesafio2(); // Abre a janela do desafio 2
+        janeladesafio1.dispose(); // Fecha a janela do desafio 1
     }
 
     public void abdesafio2() {
@@ -383,7 +365,6 @@ public rpg1(){
         con.add(fundoalternativasd2);
 
         alternativaad2 = new JButton("A) Kote consegue abrir a prateleira");
-        alternativaad2.setBounds(100, 400, 300, 50);
         alternativaad2.setFont(fontedesafios);
         alternativaad2.setFocusPainted(false);
         alternativaad2.setBackground(Color.black);
@@ -392,7 +373,7 @@ public rpg1(){
         alternativaad2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Resposta correta!");
-                abstart();
+                abdesafio3();
                 janeladesafio2.dispose();
             }
         });
@@ -410,9 +391,9 @@ public rpg1(){
             }
         });
 
-        alternativacd2 = new JButton("C) Kote consegue abrir a prateleira mas não acha o livro");
+        alternativacd2 = new JButton("<html>C) Kote consegue abrir a<br> prateleira mas não acha o livro</html>");
         alternativacd2.setBounds(100, 500, 400, 50);
-        alternativacd2.setFont(fontedesafios.deriveFont(15f));
+        alternativacd2.setFont(fontedesafios);
         alternativacd2.setFocusPainted(false);
         alternativacd2.setBackground(Color.black);
         alternativacd2.setForeground(Color.white);
@@ -423,9 +404,9 @@ public rpg1(){
             }
         });
 
-        alternativadd2 = new JButton("D) Kote é transportado para o portal do tempo");
+        alternativadd2 = new JButton("<html>D) Kote é transportado<br> para o portal do tempo</html>");
         alternativadd2.setBounds(500, 500, 400, 50);
-        alternativadd2.setFont(fontedesafios.deriveFont(15f));
+        alternativadd2.setFont(fontedesafios);
         alternativadd2.setFocusPainted(false);
         alternativadd2.setBackground(Color.black);
         alternativadd2.setForeground(Color.white);
@@ -444,6 +425,286 @@ public rpg1(){
         con.add(fundodesafio2);
         janeladesafio2.setVisible(true);
     }
+
+    public void abdesafio3(){
+        janeladesafio3 = new JFrame();
+        janeladesafio3.setSize(1000, 700);
+        janeladesafio3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janeladesafio3.setResizable(false);
+        janeladesafio3.getContentPane().setBackground(Color.black);
+        janeladesafio3.setLocationRelativeTo(null);
+        janeladesafio3.setLayout(null);
+        con = janeladesafio3.getContentPane();
+
+        fundodesafio3 = new JPanel();
+        fundodesafio3.setBounds(50, 50, 900, 600);
+        fundodesafio3.setBackground(Color.black);
+
+        tdesafio3 = new JLabel("<html>Em uma noite sombria, Kote recebe um chamado de emergência.<br><br>" + 
+                        "O reino de Noxterra, um reino noturno onde a lua ilumina segredos e conhecimentos antigos,<br>" + 
+                        "abriga o Diário de Arquimedes, uma escrita ancestral que contém segredos poderosos sobre a<br>" + 
+                        "manipulação do tempo, porém,  a tranquilidade do reino foi perturbada por uma nova ameaça<br>" + 
+                        "o  diário de Arquimedes foi roubado pela a facção do rei o purgatório.Se eles não forem<br> impedidos o equilíbrio do mundo será destruído.<br><br>" + 
+                        "Agora, kote embarca em uma jornada através do tempo voltando ao passado para recuperar o<br> diário de Arquimedes antes do purgatório.<br><br>" +
+                        "PERGUNTA: WHILE é uma estrutura de repetição que executa  um conjunto de comandos múltiplas vezes?</html>");
+        tdesafio3.setForeground(Color.white);
+        tdesafio3.setFont(fontedesafios);
+        tdesafio3.setVerticalAlignment(SwingConstants.TOP);
+        
+
+        fundoalternativasd3 = new JPanel();
+        fundoalternativasd3.setBounds(100, 380, 800, 140);
+        fundoalternativasd3.setBackground(Color.black);
+        fundoalternativasd3.setLayout(new GridLayout(2, 2, 10, 10));
+        con.add(fundoalternativasd3);
+
+        alternativaad3 = new JButton("<html>A) Não, while não é uma estrutura de<br> repetição e sim uma classe do java.</html>");
+        alternativaad3.setFont(fontedesafios);
+        alternativaad3.setFocusPainted(false);
+        alternativaad3.setBackground(Color.black);
+        alternativaad3.setForeground(Color.white);
+        alternativaad3.setContentAreaFilled(false);
+        alternativaad3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            }
+        });
+        alternativabd3 = new JButton("<html>B) Não, while não é uma estrutura<br> de repetição e sim uma condicional.</html>");
+        alternativabd3.setBounds(400, 400, 500, 50);
+        alternativabd3.setFont(fontedesafios);
+        alternativabd3.setFocusPainted(false);
+        alternativabd3.setBackground(Color.black);
+        alternativabd3.setForeground(Color.white);
+        alternativabd3.setContentAreaFilled(false);
+        alternativabd3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            }
+        });
+        alternativacd3 = new JButton("<html>C) Sim, o while é uma estrutura de repetição<br> e executa quando já é determinado o número de repetições.</html>");
+        alternativacd3.setBounds(100, 500, 400, 50);
+        alternativacd3.setFont(fontedesafios);
+        alternativacd3.setFocusPainted(false);
+        alternativacd3.setBackground(Color.black);
+        alternativacd3.setForeground(Color.white);
+        alternativacd3.setContentAreaFilled(false);
+        alternativacd3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            }
+        });
+        alternativadd3 = new JButton("<html>D) Sim, while é uma estrutura de repetição<br> e executa quando a condição for verdadeira</html>");
+        alternativadd3.setBounds(500, 500, 400, 50);
+        alternativadd3.setFont(fontedesafios);
+        alternativadd3.setFocusPainted(false);
+        alternativadd3.setBackground(Color.black);
+        alternativadd3.setForeground(Color.white);
+        alternativadd3.setContentAreaFilled(false);
+        alternativadd3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Resposta Correta!");
+                abdesafio4();
+                janeladesafio3.dispose();
+            }
+        });
+        fundodesafio3.add(tdesafio3);
+        fundoalternativasd3.add(alternativaad3);
+        fundoalternativasd3.add(alternativabd3);
+        fundoalternativasd3.add(alternativacd3);
+        fundoalternativasd3.add(alternativadd3);
+        con.add(fundodesafio3);
+        janeladesafio3.setVisible(true);
+    }
+    public void abdesafio4(){
+        janeladesafio4 = new JFrame();
+        janeladesafio4.setSize(1000, 700);
+        janeladesafio4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janeladesafio4.setResizable(false);
+        janeladesafio4.getContentPane().setBackground(Color.black);
+        janeladesafio4.setLocationRelativeTo(null);
+        janeladesafio4.setLayout(null);
+        con = janeladesafio4.getContentPane();
+
+        fundodesafio4 = new JPanel();
+        fundodesafio4.setBounds(50, 50, 900, 600);
+        fundodesafio4.setBackground(Color.black);
+        fundodesafio4.setLayout(new BorderLayout());
+
+        tdesafio4 = new JLabel("<html>Assim que kote chega ao passado, ele vai direto para a biblioteca principal de Noxxterra, uma imensa estrutura de paredes de pedra e livros antigos<br>" + 
+                        "O ambiente é iluminado pelo luar da lua, e um ar misterioso envolve o lugar.<br>" + 
+                        "No centro da biblioteca, ele encontra um feiticeiro, uma figura imponente coberta por uma capa de tecido mágico que brilha levemente.<br>" + 
+                        "Bem-vindo, Kote, O tempo aqui não é linear, o Diário de Arquimendes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado.<br>" + 
+                        "Somente aqueles que dominam os loops do tempo,  poderão abri-lo.<br>" + 
+                        "Você encontrará o código abaixo gravado na lateral do baú.<br>" + 
+                        "Este baú está protegido por um feitiço de repetição. O código está escrito nas runas. Decifre-o: o valor de x começa em 10 e diminui continuamente,<br><br>" + 
+                        "<i> qual será o valor final de x ao sair do ciclo?</i><br>" + 
+                        "<i> int x = 10; </i><br> " +
+                        "do { <br>" + 
+                        "x =  x - 2;<br>" +
+                        "} while (x > 3);</html>");
+        tdesafio4.setForeground(Color.white);
+        tdesafio4.setFont(fontedesafios);
+        tdesafio4.setVerticalAlignment(SwingConstants.TOP);
+        tdesafio4.setHorizontalAlignment(SwingConstants.LEFT);
+        fundodesafio4.add(tdesafio4, BorderLayout.NORTH);
+
+
+        fundoalternativasd4 = new JPanel();
+        fundoalternativasd4.setBounds(100,480, 800, 140);
+        fundoalternativasd4.setBackground(Color.black);
+        fundoalternativasd4.setLayout(new GridLayout(2, 2, 10, 10));
+        con.add(fundoalternativasd4);
+
+        alternativaad4 = new JButton("A) 2");
+        alternativaad4.setFont(fontedesafios);
+        alternativaad4.setFocusPainted(false);
+        alternativaad4.setBackground(Color.black);
+        alternativaad4.setForeground(Color.white);
+        alternativaad4.setContentAreaFilled(false);
+        alternativaad4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                JOptionPane.showMessageDialog(null, "Resposta Correta!");
+                abdesafio5();
+                janeladesafio4.dispose();
+            }
+        });
+        alternativabd4 = new JButton("B) 4");
+        alternativabd4.setBounds(400, 400, 500, 50);
+        alternativabd4.setFont(fontedesafios);
+        alternativabd4.setFocusPainted(false);
+        alternativabd4.setBackground(Color.black);
+        alternativabd4.setForeground(Color.white);
+        alternativabd4.setContentAreaFilled(false);
+        alternativabd4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            }
+        });
+        alternativacd4 = new JButton("C) 3");
+        alternativacd4.setBounds(100, 500, 400, 50);
+        alternativacd4.setFont(fontedesafios);
+        alternativacd4.setFocusPainted(false);
+        alternativacd4.setBackground(Color.black);
+        alternativacd4.setForeground(Color.white);
+        alternativacd4.setContentAreaFilled(false);
+        alternativacd4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            }
+        });
+        alternativadd4 = new JButton("D) 4");
+        alternativadd4.setBounds(500, 500, 400, 50);
+        alternativadd4.setFont(fontedesafios);
+        alternativadd4.setFocusPainted(false);
+        alternativadd4.setBackground(Color.black);
+        alternativadd4.setForeground(Color.white);
+        alternativadd4.setContentAreaFilled(false);
+        alternativadd4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            }
+        });
+        fundodesafio4.add(tdesafio4);
+        fundoalternativasd4.add(alternativaad4);
+        fundoalternativasd4.add(alternativabd4);
+        fundoalternativasd4.add(alternativacd4);
+        fundoalternativasd4.add(alternativadd4);
+        con.add(fundodesafio4);
+        janeladesafio4.setVisible(true);
+    }
+
+    public void abdesafio5() {
+    janeladesafio5 = new JFrame();
+    janeladesafio5.setSize(1000, 700);
+    janeladesafio5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janeladesafio5.setResizable(false);
+    janeladesafio5.getContentPane().setBackground(Color.black);
+    janeladesafio5.setLocationRelativeTo(null);
+    janeladesafio5.setLayout(null);
+    con = janeladesafio5.getContentPane();
+
+    fundodesafio5 = new JPanel();
+    fundodesafio5.setBounds(50, 50, 900, 600);
+    fundodesafio5.setBackground(Color.black);
+    fundodesafio5.setLayout(new BorderLayout());
+
+    tdesafio5 = new JLabel("<html>Com o Diário de Arquimendes finalmente em mãos, Kote sente o poder e o conhecimento antigo fluindo através dele.<br>" + 
+                    "páginas brilham com runas misteriosas que começam a se reorganizar em um idioma compreensível<br>" + 
+                    "Mas o tempo é curto, e ele sabe que precisa voltar ao futuro antes que o portal se feche para sempre.<br>" + 
+                    "Ele se posiciona no centro da sala, cercado pela energia mágica que emana do diário, e se prepara para realizar o feitiço de retorno temporal.<br>" + 
+                    "KOTE: respira fundo, fecha os olhos, e começa a invocar seu poder mágico. Ele sabe que tem que se concentrar profundamente, pois o sucesso da viagem depende da precisão de sua conjuração.<br>" + 
+                    "KOTE: Um... dois.. três<br>" + 
+                    "PERGUNTA: Qual das seguintes afirmações define corretamente quando se utiliza um laço FOR?</html>");
+    tdesafio5.setForeground(Color.white);
+    tdesafio5.setFont(fontedesafios);
+    tdesafio5.setVerticalAlignment(SwingConstants.TOP);
+    tdesafio5.setHorizontalAlignment(SwingConstants.LEFT);
+    fundodesafio5.add(tdesafio5, BorderLayout.NORTH);
+
+    fundoalternativasd5 = new JPanel();
+    fundoalternativasd5.setBounds(100, 380, 800, 160);
+    fundoalternativasd5.setBackground(Color.black);
+    fundoalternativasd5.setLayout(new GridLayout(2, 2, 10, 10));
+    con.add(fundoalternativasd5); // Adicionei a posição no BorderLayout
+
+    alternativaad5 = new JButton("<html>A) É utilizado quando não se sabe exatamente quantas vezes o código será repetido.</html>");
+    alternativaad5.setFont(fontedesafios);
+    alternativaad5.setFocusPainted(false);
+    alternativaad5.setBackground(Color.black);
+    alternativaad5.setForeground(Color.white);
+    alternativaad5.setContentAreaFilled(false);
+    alternativaad5.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+        }
+    });
+
+    alternativabd5 = new JButton("<html>B) É utilizado quando se sabe o<br> número de repetições.</html>");
+    alternativabd5.setFont(fontedesafios);
+    alternativabd5.setFocusPainted(false);
+    alternativabd5.setBackground(Color.black);
+    alternativabd5.setForeground(Color.white);
+    alternativabd5.setContentAreaFilled(false);
+    alternativabd5.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Resposta correta!");
+        }
+    });
+
+    alternativacd5 = new JButton("<html>C) É utilizado quando uma condição<br> é true/verdadeira.</html>");
+    alternativacd5.setFont(fontedesafios);
+    alternativacd5.setFocusPainted(false);
+    alternativacd5.setBackground(Color.black);
+    alternativacd5.setForeground(Color.white);
+    alternativacd5.setContentAreaFilled(false);
+    alternativacd5.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+        }
+    });
+
+    alternativadd5 = new JButton("<html>D) É utilizado quando uma condição é true/verdadeira mas a essa condição é<br> verificada apenas no final da repetição.</html>");
+    alternativadd5.setFont(fontedesafios);
+    alternativadd5.setFocusPainted(false);
+    alternativadd5.setBackground(Color.black);
+    alternativadd5.setForeground(Color.white);
+    alternativadd5.setContentAreaFilled(false);
+    alternativadd5.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+        }
+    });
+
+    fundoalternativasd5.add(alternativaad5);
+    fundoalternativasd5.add(alternativabd5);
+    fundoalternativasd5.add(alternativacd5);
+    fundoalternativasd5.add(alternativadd5);
+    
+    con.add(fundodesafio5);
+    janeladesafio5.setVisible(true);
+}
+
+        
 
 
     public void abcomojogar() { // Método que abre a nova janela 
@@ -573,7 +834,7 @@ public rpg1(){
         fundojcreditos.setBounds(50, 50, 900, 600);
         fundojcreditos.setBackground(Color.black);
 
-        tcreditos = new JLabel("Esse jogo foi desenvolvido por ...");
+        tcreditos = new JLabel();
         tcreditos.setForeground(Color.white);
         tcreditos.setFont(fontecorpo);
         fundojcreditos.add(tcreditos);
