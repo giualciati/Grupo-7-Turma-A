@@ -13,7 +13,7 @@ public class rpg1 {
  JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5;//janela
  Container con;//conteúdo
  JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5;//painéis
- JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5;//textos
+ JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, sistemaVida;//textos
  JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5 ;//botões
  JTextArea textocj, textocj2;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
@@ -21,6 +21,7 @@ public class rpg1 {
  Font fontedesafios = new Font("Times New ROman", Font.PLAIN, 20);
  Font fontecorpo2 = new Font ("Times New Roman", Font.PLAIN, 18);
 
+  int vida = 5;
 public static void main(String[] args) {
     new rpg1();
  }
@@ -234,11 +235,18 @@ public rpg1(){
         janelastart.setVisible(true);
         con.add(fundojstart);
         
-    }
+}
     
     public void abrirdesafio1() {
     abdesafio1(); // Abre a janela do desafio 1
     janelastart.dispose(); // Fecha a janela atual
+}
+    private JLabel criarSistemaVida() {
+        JLabel sistemaVida = new JLabel("Vida: " + vida);
+        sistemaVida.setForeground(Color.white);
+        sistemaVida.setFont(fontedesafios);
+        sistemaVida.setBounds(10, 10, 200, 30); // Ajuste conforme necessário
+        return sistemaVida;
 }
     public void abdesafio1(){
         janeladesafio1 = new JFrame("Desafio 1");
@@ -269,6 +277,9 @@ public rpg1(){
         fundoalternativasd1.setLayout( new GridLayout(2,2,10,10));
         con.add(fundoalternativasd1);
 
+        sistemaVida = criarSistemaVida();
+        con.add(sistemaVida);
+
         alternativaadesafio1 = new JButton("A) A biblioteca é acessada.");
         alternativaadesafio1.setFont(fontedesafios);
         alternativaadesafio1.setFocusPainted(false);
@@ -277,7 +288,7 @@ public rpg1(){
         alternativaadesafio1.setContentAreaFilled(false);
         alternativaadesafio1.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            verificarResposta(false);
         }
 
     });
@@ -287,11 +298,10 @@ public rpg1(){
         alternativabdesafio1.setBackground(Color.black);
         alternativabdesafio1.setForeground(Color.white);
         alternativabdesafio1.setContentAreaFilled(false);
-        
         alternativabdesafio1.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Correto! A biblioteca permanece fechada.");
-            abdesafio2(); 
+            verificarResposta(true);
+            abdesafio2();
             janeladesafio1.dispose();
             
     }
@@ -305,9 +315,9 @@ public rpg1(){
         alternativacdesafio1.setContentAreaFilled(false);
         alternativacdesafio1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
     }
- });
+       });
         alternativaddesafio1 = new JButton("D) Kote é banido da biblioteca.");
         alternativaddesafio1.setFont(fontedesafios);
         alternativaddesafio1.setFocusPainted(false);
@@ -316,10 +326,10 @@ public rpg1(){
         alternativaddesafio1.setContentAreaFilled(false);
         alternativaddesafio1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog( null, "Resposta incorreta! Tente novamente!");
-    }
+                verificarResposta(false);
+     }
     
- });
+     });
         
         fundodesafio1.add(tdesafio1);
         fundoalternativasd1.add(alternativaadesafio1);
@@ -329,7 +339,7 @@ public rpg1(){
         con.add(fundodesafio1);
         janeladesafio1.setVisible(true);  
     }
-
+    
     public void abrirdesafio2() {
         abdesafio2(); // Abre a janela do desafio 2
         janeladesafio1.dispose(); // Fecha a janela do desafio 1
@@ -348,6 +358,9 @@ public rpg1(){
         fundodesafio2 = new JPanel();
         fundodesafio2.setBounds(50, 50, 900, 600);
         fundodesafio2.setBackground(Color.black);
+
+        sistemaVida = criarSistemaVida();
+        con.add(sistemaVida);
 
         tdesafio2 = new JLabel("<html>Sebastian abre a biblioteca para Kote, mas ele precisa descobrir em qual prateleira está o livro<br>" + 
                         "<i>if ((conhecimento > 7 && energia > 5) || (habilidadeEspecial && sabedoria >= 12)) {</i><br>" + 
@@ -372,7 +385,7 @@ public rpg1(){
         alternativaad2.setContentAreaFilled(false);
         alternativaad2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta correta!");
+                verificarResposta(true);
                 abdesafio3();
                 janeladesafio2.dispose();
             }
@@ -387,7 +400,7 @@ public rpg1(){
         alternativabd2.setContentAreaFilled(false);
         alternativabd2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
 
@@ -400,7 +413,7 @@ public rpg1(){
         alternativacd2.setContentAreaFilled(false);
         alternativacd2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+               verificarResposta(false);
             }
         });
 
@@ -413,7 +426,7 @@ public rpg1(){
         alternativadd2.setContentAreaFilled(false);
         alternativadd2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
 
@@ -427,7 +440,7 @@ public rpg1(){
     }
 
     public void abdesafio3(){
-        janeladesafio3 = new JFrame();
+        janeladesafio3 = new JFrame("Desafio 3");
         janeladesafio3.setSize(1000, 700);
         janeladesafio3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janeladesafio3.setResizable(false);
@@ -439,6 +452,9 @@ public rpg1(){
         fundodesafio3 = new JPanel();
         fundodesafio3.setBounds(50, 50, 900, 600);
         fundodesafio3.setBackground(Color.black);
+
+        sistemaVida = criarSistemaVida();
+        con.add(sistemaVida);
 
         tdesafio3 = new JLabel("<html>Em uma noite sombria, Kote recebe um chamado de emergência.<br><br>" + 
                         "O reino de Noxterra, um reino noturno onde a lua ilumina segredos e conhecimentos antigos,<br>" + 
@@ -466,7 +482,7 @@ public rpg1(){
         alternativaad3.setContentAreaFilled(false);
         alternativaad3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
         alternativabd3 = new JButton("<html>B) Não, while não é uma estrutura<br> de repetição e sim uma condicional.</html>");
@@ -478,7 +494,7 @@ public rpg1(){
         alternativabd3.setContentAreaFilled(false);
         alternativabd3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
         alternativacd3 = new JButton("<html>C) Sim, o while é uma estrutura de repetição<br> e executa quando já é determinado o número de repetições.</html>");
@@ -490,7 +506,7 @@ public rpg1(){
         alternativacd3.setContentAreaFilled(false);
         alternativacd3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
         alternativadd3 = new JButton("<html>D) Sim, while é uma estrutura de repetição<br> e executa quando a condição for verdadeira</html>");
@@ -502,7 +518,7 @@ public rpg1(){
         alternativadd3.setContentAreaFilled(false);
         alternativadd3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta Correta!");
+                verificarResposta(true);
                 abdesafio4();
                 janeladesafio3.dispose();
             }
@@ -514,9 +530,11 @@ public rpg1(){
         fundoalternativasd3.add(alternativadd3);
         con.add(fundodesafio3);
         janeladesafio3.setVisible(true);
+
     }
+    
     public void abdesafio4(){
-        janeladesafio4 = new JFrame();
+        janeladesafio4 = new JFrame("Desafio 4");
         janeladesafio4.setSize(1000, 700);
         janeladesafio4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janeladesafio4.setResizable(false);
@@ -529,6 +547,9 @@ public rpg1(){
         fundodesafio4.setBounds(50, 50, 900, 600);
         fundodesafio4.setBackground(Color.black);
         fundodesafio4.setLayout(new BorderLayout());
+
+        sistemaVida = criarSistemaVida();
+        con.add(sistemaVida);
 
         tdesafio4 = new JLabel("<html>Assim que kote chega ao passado, ele vai direto para a biblioteca principal de Noxxterra, uma imensa estrutura de paredes de pedra e livros antigos<br>" + 
                         "O ambiente é iluminado pelo luar da lua, e um ar misterioso envolve o lugar.<br>" + 
@@ -563,7 +584,7 @@ public rpg1(){
         alternativaad4.setContentAreaFilled(false);
         alternativaad4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                JOptionPane.showMessageDialog(null, "Resposta Correta!");
+                verificarResposta(true);
                 abdesafio5();
                 janeladesafio4.dispose();
             }
@@ -577,7 +598,7 @@ public rpg1(){
         alternativabd4.setContentAreaFilled(false);
         alternativabd4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
         alternativacd4 = new JButton("C) 3");
@@ -589,7 +610,7 @@ public rpg1(){
         alternativacd4.setContentAreaFilled(false);
         alternativacd4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
         alternativadd4 = new JButton("D) 4");
@@ -601,7 +622,7 @@ public rpg1(){
         alternativadd4.setContentAreaFilled(false);
         alternativadd4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+                verificarResposta(false);
             }
         });
         fundodesafio4.add(tdesafio4);
@@ -614,7 +635,7 @@ public rpg1(){
     }
 
     public void abdesafio5() {
-    janeladesafio5 = new JFrame();
+    janeladesafio5 = new JFrame("Desafio 5");
     janeladesafio5.setSize(1000, 700);
     janeladesafio5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     janeladesafio5.setResizable(false);
@@ -628,12 +649,15 @@ public rpg1(){
     fundodesafio5.setBackground(Color.black);
     fundodesafio5.setLayout(new BorderLayout());
 
+    sistemaVida = criarSistemaVida();
+    con.add(sistemaVida);
+
     tdesafio5 = new JLabel("<html>Com o Diário de Arquimendes finalmente em mãos, Kote sente o poder e o conhecimento antigo fluindo através dele.<br>" + 
                     "páginas brilham com runas misteriosas que começam a se reorganizar em um idioma compreensível<br>" + 
                     "Mas o tempo é curto, e ele sabe que precisa voltar ao futuro antes que o portal se feche para sempre.<br>" + 
-                    "Ele se posiciona no centro da sala, cercado pela energia mágica que emana do diário, e se prepara para realizar o feitiço de retorno temporal.<br>" + 
+                    "Ele se posiciona no centro da sala, cercado pela energia mágica que emana do diário, e se prepara para realizar o feitiço de retorno temporal.<br><br>" + 
                     "KOTE: respira fundo, fecha os olhos, e começa a invocar seu poder mágico. Ele sabe que tem que se concentrar profundamente, pois o sucesso da viagem depende da precisão de sua conjuração.<br>" + 
-                    "KOTE: Um... dois.. três<br>" + 
+                    "KOTE: Um... dois.. três<br><br>" + 
                     "PERGUNTA: Qual das seguintes afirmações define corretamente quando se utiliza um laço FOR?</html>");
     tdesafio5.setForeground(Color.white);
     tdesafio5.setFont(fontedesafios);
@@ -655,7 +679,7 @@ public rpg1(){
     alternativaad5.setContentAreaFilled(false);
     alternativaad5.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            verificarResposta(false);
         }
     });
 
@@ -667,7 +691,7 @@ public rpg1(){
     alternativabd5.setContentAreaFilled(false);
     alternativabd5.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Resposta correta!");
+            verificarResposta(true);
         }
     });
 
@@ -679,7 +703,7 @@ public rpg1(){
     alternativacd5.setContentAreaFilled(false);
     alternativacd5.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            verificarResposta(false);
         }
     });
 
@@ -691,7 +715,7 @@ public rpg1(){
     alternativadd5.setContentAreaFilled(false);
     alternativadd5.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+            verificarResposta(false);
         }
     });
 
@@ -702,6 +726,21 @@ public rpg1(){
     
     con.add(fundodesafio5);
     janeladesafio5.setVisible(true);
+}
+private void verificarResposta(boolean respostaCorreta) {
+    if (respostaCorreta) {
+        JOptionPane.showMessageDialog(null, "Resposta correta!");
+    } else {
+        vida--; // Subtrai 1 da vida
+        sistemaVida.setText("Vida: " + vida); // Atualiza o JLabel
+
+        if (vida <= 0) {
+            JOptionPane.showMessageDialog(null, "Você morreu!");
+            abstart();//reinicia o jogo
+        } else {
+            JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
+        }
+    }
 }
 
         
