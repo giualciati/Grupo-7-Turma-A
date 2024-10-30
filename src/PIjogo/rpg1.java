@@ -10,11 +10,11 @@ import java.util.List;
 
 public class rpg1 {
 
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janelaseudesafio9, janelaseudesafio10;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janelaseudesafio9, janelaseudesafio10;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundoseudesafio6, fundoalternativasseudesafio6, fundoArrayseudesafio9, fundoalternativasseudesafioArray9, fundoArrayseudesafio10, fundoalternativasseudesafioArray10;//painéis
- JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tseudesafio6, tseudesafioArray9, tseudesafioArray10; //textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaaseudesafio6, alternativabseudesafio6, alternativacseudesafio6, alternativadseudesafio6, alternativaAseudesafio9, alternativaBseudesafio9, alternativaCseudesafio9, alternativaDseudesafio9,alternativaAseudesafio10, alternativaBseudesafio10, alternativaCseudesafio10, alternativaDseudesafio10;//botões
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundoseudesafio6, fundoalternativasseudesafio6, fundoseudesafio7, fundoalternativasseudesafio7, fundoArrayseudesafio9, fundoalternativasseudesafioArray9, fundoArrayseudesafio10, fundoalternativasseudesafioArray10;//painéis
+ JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tseudesafio6, tseudesafio7, tseudesafioArray9, tseudesafioArray10; //textos
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaaseudesafio6, alternativabseudesafio6, alternativacseudesafio6, alternativadseudesafio6,alternativaaseudesafio7, alternativabseudesafio7, alternativacseudesafio7, alternativadseudesafio7, alternativaAseudesafio9, alternativaBseudesafio9, alternativaCseudesafio9, alternativaDseudesafio9,alternativaAseudesafio10, alternativaBseudesafio10, alternativaCseudesafio10, alternativaDseudesafio10;//botões
  JTextArea textocj, textocj2;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
@@ -734,7 +734,7 @@ public void abseudesafio6() {
     fundoalternativasseudesafio6.setBackground(Color.black);
     fundoalternativasseudesafio6.setLayout(new GridLayout(2, 2, 10, 10)); 
 
-    alternativaAseudesafio6 = new JButton("A) sort()");
+    alternativaAseudesafio6 = new JButton("A) if()");
     alternativaAseudesafio6.setFont(fontedesafios);
     alternativaAseudesafio6.setFocusPainted(false);
     alternativaAseudesafio6.setBackground(Color.black);
@@ -746,7 +746,7 @@ public void abseudesafio6() {
         }
     });
 
-    alternativaBseudesafio6 = new JButton("B) order()");
+    alternativaBseudesafio6 = new JButton("B) for()");
     alternativaBseudesafio6.setFont(fontedesafios);
     alternativaBseudesafio6.setFocusPainted(false);
     alternativaBseudesafio6.setBackground(Color.black);
@@ -758,7 +758,7 @@ public void abseudesafio6() {
         }
     });
 
-    alternativaCseudesafio6 = new JButton("C) Array()");
+    alternativaCseudesafio6 = new JButton("C) do-while()");
     alternativaCseudesafio6.setFont(fontedesafios);
     alternativaCseudesafio6.setFocusPainted(false);
     alternativaCseudesafio6.setBackground(Color.black);
@@ -770,7 +770,7 @@ public void abseudesafio6() {
         }
     });
 
-    alternativaDseudesafio6 = new JButton("D) add()");
+    alternativaDseudesafio6 = new JButton("D) while()");
     alternativaDseudesafio6.setFont(fontedesafios);
     alternativaDseudesafio6.setFocusPainted(false);
     alternativaDseudesafio6.setBackground(Color.black);
@@ -793,7 +793,92 @@ public void abseudesafio6() {
     
     janelaseudesafio9.setVisible(true);
 }
+// desafio 7
+public void abseudesafio6() {
+    janelaseudesafio7 = new JFrame("Desafio 7"); 
+    janelaseudesafio7.setSize(1000, 700);
+    janelaseudesafio7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaseudesafio7.setResizable(false);
+    janelaseudesafio7.getContentPane().setBackground(Color.black);
+    janelaseudesafio7.setLocationRelativeTo(null);
+    janelaseudesafio7.setLayout(null);
+    con = janelaseudesafio7.getContentPane();
 
+    fundoseudesafio7 = new JPanel();
+    fundoseudesafio7.setBounds(50, 50, 900, 600);
+    fundoseudesafio7.setBackground(Color.black);
+    fundoseudesafio7.setLayout(new BorderLayout()); 
+
+    tseudesafio6 = new JLabel("<html>Os Guardiões do Tempo surgem e desafiam o guerreiro:    
+    };");
+
+    tseudesafio7.setForeground(Color.white);
+    tseudesafio7.setFont(fontedesafios);
+    fundoArrayseudesafio7.add(tseudesafioArray, BorderLayout.NORTH); 
+    fundoalternativasseudesafio7 = new JPanel();
+    fundoalternativasseudesafio7.setBounds(100, 380, 800, 100);
+    fundoalternativasseudesafio7.setBackground(Color.black);
+    fundoalternativasseudesafio7.setLayout(new GridLayout(2, 2, 10, 10)); 
+
+    alternativaAseudesafio7 = new JButton("A) else");
+    alternativaAseudesafio7.setFont(fontedesafios);
+    alternativaAseudesafio7.setFocusPainted(false);
+    alternativaAseudesafio7.setBackground(Color.black);
+    alternativaAseudesafio7.setForeground(Color.white);
+    alternativaAseudesafio7.setContentAreaFilled(false);
+    alternativaAseudesafio7.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
+        }
+    });
+
+    alternativaBseudesafio7 = new JButton("B) switch");
+    alternativaBseudesafio7.setFont(fontedesafios);
+    alternativaBseudesafio7.setFocusPainted(false);
+    alternativaBseudesafio7.setBackground(Color.black);
+    alternativaBseudesafio7.setForeground(Color.white);
+    alternativaBseudesafio7.setContentAreaFilled(false);
+    alternativaBseudesafio7.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaCseudesafio7 = new JButton("C) for ");
+    alternativaCseudesafio7.setFont(fontedesafios);
+    alternativaCseudesafio7.setFocusPainted(false);
+    alternativaCseudesafio7.setBackground(Color.black);
+    alternativaCseudesafio7.setForeground(Color.white);
+    alternativaCseudesafio7.setContentAreaFilled(false);
+    alternativaCseudesafio7.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaDseudesafio7 = new JButton("D) break");
+    alternativaDseudesafio7.setFont(fontedesafios);
+    alternativaDseudesafio7.setFocusPainted(false);
+    alternativaDseudesafio7.setBackground(Color.black);
+    alternativaDseudesafio7.setForeground(Color.white);
+    alternativaDseudesafio7.setContentAreaFilled(false);
+    alternativaDseudesafio7.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+  
+    fundoalternativasseudesafio7.add(alternativaAseudesafio7);
+    fundoalternativasseudesafio7.add(alternativaBseudesafio7);
+    fundoalternativasseudesafio7.add(alternativaCseudesafio7);
+    fundoalternativasseudesafio7.add(alternativaDseudesafio7);
+
+    con.add(fundoseudesafio7);
+    con.add(fundoalternativasseudesafio7);
+    
+    janelaseudesafio9.setVisible(true);
+}
         // desafio 9
 
 public void abseudesafio9() {
