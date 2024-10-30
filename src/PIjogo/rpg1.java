@@ -10,11 +10,11 @@ import java.util.List;
 
 public class rpg1 {
 
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janelaseudesafio9, janelaseudesafio10;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janelaseudesafio9, janelaseudesafio10;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundoArrayseudesafio9, fundoalternativasseudesafioArray9, fundoArrayseudesafio10, fundoalternativasseudesafioArray10;//painéis
- JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tseudesafioArray9, tseudesafioArray10; //textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaAseudesafio9, alternativaBseudesafio9, alternativaCseudesafio9, alternativaDseudesafio9,alternativaAseudesafio10, alternativaBseudesafio10, alternativaCseudesafio10, alternativaDseudesafio10;//botões
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundoseudesafio6, fundoalternativasseudesafio6, fundoArrayseudesafio9, fundoalternativasseudesafioArray9, fundoArrayseudesafio10, fundoalternativasseudesafioArray10;//painéis
+ JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tseudesafio6, tseudesafioArray9, tseudesafioArray10; //textos
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaaseudesafio6, alternativabseudesafio6, alternativacseudesafio6, alternativadseudesafio6, alternativaAseudesafio9, alternativaBseudesafio9, alternativaCseudesafio9, alternativaDseudesafio9,alternativaAseudesafio10, alternativaBseudesafio10, alternativaCseudesafio10, alternativaDseudesafio10;//botões
  JTextArea textocj, textocj2;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
@@ -702,6 +702,96 @@ public rpg1(){
     
     con.add(fundodesafio5);
     janeladesafio5.setVisible(true);
+}
+//desafio 6
+
+public void abseudesafio6() {
+    janelaseudesafio6 = new JFrame("Desafio 6"); 
+    janelaseudesafio6.setSize(1000, 700);
+    janelaseudesafio6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaseudesafio6.setResizable(false);
+    janelaseudesafio6.getContentPane().setBackground(Color.black);
+    janelaseudesafio6.setLocationRelativeTo(null);
+    janelaseudesafio6.setLayout(null);
+    con = janelaseudesafio6.getContentPane();
+
+    fundoseudesafio6 = new JPanel();
+    fundoseudesafio6.setBounds(50, 50, 900, 600);
+    fundoseudesafio6.setBackground(Color.black);
+    fundoseudesafio6.setLayout(new BorderLayout()); 
+
+    tseudesafio6 = new JLabel("<html>Os Guardiões do Tempo aparecem diante do guerreiro e dizem:<br>" +
+        "“Para provar sua coragem e sabedoria, responda: Qual estrutura de controle é usada para decidir<br>" +  
+        "se um bloco de código deve ser executado com base em uma condição específica? <br>" +
+        "Os Guardiões do Tempo surgem e desafiam o guerreiro: <br>" +
+        "“Responda corretamente: Qual estrutura de controle é utilizada para executar um bloco de código apenas quando uma condição não é verdadeira?</html>”
+    };");
+    tseudesafio6.setForeground(Color.white);
+    tseudesafio6.setFont(fontedesafios);
+    fundoArrayseudesafio6.add(tseudesafioArray, BorderLayout.NORTH); 
+    fundoalternativasseudesafio6 = new JPanel();
+    fundoalternativasseudesafio6.setBounds(100, 380, 800, 100);
+    fundoalternativasseudesafio6.setBackground(Color.black);
+    fundoalternativasseudesafio6.setLayout(new GridLayout(2, 2, 10, 10)); 
+
+    alternativaAseudesafio6 = new JButton("A) sort()");
+    alternativaAseudesafio6.setFont(fontedesafios);
+    alternativaAseudesafio6.setFocusPainted(false);
+    alternativaAseudesafio6.setBackground(Color.black);
+    alternativaAseudesafio6.setForeground(Color.white);
+    alternativaAseudesafio6.setContentAreaFilled(false);
+    alternativaAseudesafio6.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
+        }
+    });
+
+    alternativaBseudesafio6 = new JButton("B) order()");
+    alternativaBseudesafio6.setFont(fontedesafios);
+    alternativaBseudesafio6.setFocusPainted(false);
+    alternativaBseudesafio6.setBackground(Color.black);
+    alternativaBseudesafio6.setForeground(Color.white);
+    alternativaBseudesafio6.setContentAreaFilled(false);
+    alternativaBseudesafio6.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaCseudesafio6 = new JButton("C) Array()");
+    alternativaCseudesafio6.setFont(fontedesafios);
+    alternativaCseudesafio6.setFocusPainted(false);
+    alternativaCseudesafio6.setBackground(Color.black);
+    alternativaCseudesafio6.setForeground(Color.white);
+    alternativaCseudesafio6.setContentAreaFilled(false);
+    alternativaCseudesafio6.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+    alternativaDseudesafio6 = new JButton("D) add()");
+    alternativaDseudesafio6.setFont(fontedesafios);
+    alternativaDseudesafio6.setFocusPainted(false);
+    alternativaDseudesafio6.setBackground(Color.black);
+    alternativaDseudesafio6.setForeground(Color.white);
+    alternativaDseudesafio6.setContentAreaFilled(false);
+    alternativaDseudesafio6.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+        }
+    });
+
+  
+    fundoalternativasseudesafio6.add(alternativaAseudesafio6);
+    fundoalternativasseudesafio6.add(alternativaBseudesafio6);
+    fundoalternativasseudesafio6.add(alternativaCseudesafio6);
+    fundoalternativasseudesafio6.add(alternativaDseudesafio6);
+
+    con.add(fundoseudesafio6);
+    con.add(fundoalternativasseudesafio6);
+    
+    janelaseudesafio9.setVisible(true);
 }
 
         // desafio 9
