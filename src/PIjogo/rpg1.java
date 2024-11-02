@@ -7,17 +7,17 @@ import java.awt.event.*;
 
 public class rpg1 {
 
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10,  janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10;//painéis
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9;//painéis
  JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad6, alternativabd6, alternativacd6, alternativadd6, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10;//botões
- JTextArea textocj, textocj2;
+ JButton bstart, botaocontinuar, bcomojogar, bcreditos, bsair, bvoltar,bvoltarD, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad6, alternativabd6, alternativacd6, alternativadd6, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10;//botões
+ JTextArea textocj, textocj2, textoDi2, textoDi1, textoDi3, textoDi4, textoDi5, textoDi6, textoDi7, textoDi8, textoDi9;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
  Font fontedesafios = new Font("Times New ROman", Font.PLAIN, 20);
  Font fontecorpo2 = new Font ("Times New Roman", Font.PLAIN, 18);
-
+ //Font fontecorpo3 = new Font("Times New Roman", Font.PLAIN, 50);
   int vida = 5;
 public static void main(String[] args) {
     new rpg1();
@@ -221,7 +221,7 @@ public rpg1(){
         mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
         mj1.put("enterPressed", new AbstractAction() {
     public void actionPerformed(ActionEvent e) {
-        abrirdesafio1();
+        abDialogo1();
     }
 });
 
@@ -234,8 +234,8 @@ public rpg1(){
         
 }
     
-    public void abrirdesafio1() {
-    abdesafio1(); // Abre a janela do desafio 1
+    public void abDialogo1() {
+    Dialogo1(); // Abre a janela do desafio 1
     janelastart.dispose(); // Fecha a janela atual
 }
     private JLabel criarSistemaVida() {
@@ -244,6 +244,66 @@ public rpg1(){
         sistemaVida.setFont(fontedesafios);
         sistemaVida.setBounds(10, 10, 200, 30); // Ajuste conforme necessário
         return sistemaVida;
+}
+    
+    public void Dialogo1() { 
+  
+    janelaDialogo1 = new JFrame("");
+    janelaDialogo1.setSize(1000, 700);
+    janelaDialogo1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo1.setResizable(false);
+    janelaDialogo1.getContentPane().setBackground(Color.black);
+    janelaDialogo1.setLocationRelativeTo(null);
+    janelaDialogo1.setLayout(new BorderLayout());
+
+    fundojDialogo1 = new JPanel();
+    fundojDialogo1.setBackground(Color.black);
+    fundojDialogo1.setLayout(new BoxLayout(fundojDialogo1, BoxLayout.Y_AXIS));
+    fundojDialogo1.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+  String texto = """ 
+      Feiticeiro: Bem - vindo à biblioteca kote, o que você deseja encontrar aqui?
+      
+      Kote: Estou procurando um livro que contenha feitiços antigos. Dizem que ele guarda segredos poderosos.
+      
+      Feiticeiro: Muito bem, siga para a seção mais profunda da biblioteca. Mas cuidado, alguns feitiços podem ter consequências inesperadas.
+      
+      Narrador: Kote acena com a cabeça e avança, sentindo a atmosfera mágica ao seu redor enquanto se aproxima da sessão proibida.""";
+
+
+  textoDi1 = new JTextArea(texto);
+  textoDi1.setWrapStyleWord(true);
+  textoDi1.setLineWrap(true);
+  textoDi1.setOpaque(false);
+  textoDi1.setEditable(false);
+  textoDi1.setForeground(Color.white);
+  textoDi1.setFont(fontecorpo);
+
+ 
+  fundojDialogo1.add(textoDi1);
+
+  InputMap mj4 = fundojstart.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap mj5 = fundojstart.getActionMap();
+        mj4.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+        mj5.put("enterPressed", new AbstractAction() {
+    public void actionPerformed(ActionEvent e) {
+        abDialogo1();
+        }
+    });
+  
+  janelaDialogo1.getContentPane().add(fundojDialogo1);
+  janelaDialogo1.setVisible(true);
+
+  
+  InputMap mj = fundojDialogo1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+  ActionMap mj1 = fundojDialogo1.getActionMap();
+
+  mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+  mj1.put("enterPressed", new AbstractAction() {
+      public void actionPerformed(ActionEvent e) {
+          abdesafio1(); 
+      }
+  });
 }
     public void abdesafio1(){
         janeladesafio1 = new JFrame("Desafio 1");
@@ -298,7 +358,7 @@ public rpg1(){
         alternativabdesafio1.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
             verificarResposta(true);
-            abdesafio2();
+            Dialogo2();
             janeladesafio1.dispose();
             
     }
@@ -337,10 +397,67 @@ public rpg1(){
         janeladesafio1.setVisible(true);  
     }
     
-    public void abrirdesafio2() {
-        abdesafio2(); // Abre a janela do desafio 2
-        janeladesafio1.dispose(); // Fecha a janela do desafio 1
-    }
+    
+public void Dialogo2() { 
+  
+    janelaDialogo2 = new JFrame("");
+    janelaDialogo2.setSize(1000, 700);
+    janelaDialogo2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo2.setResizable(false);
+    janelaDialogo2.getContentPane().setBackground(Color.black);
+    janelaDialogo2.setLocationRelativeTo(null);
+    janelaDialogo2.setLayout(new BorderLayout());
+
+
+    fundojDialogo2 = new JPanel();
+    fundojDialogo2.setBackground(Color.black);
+    fundojDialogo2.setLayout(new BoxLayout(fundojDialogo2, BoxLayout.Y_AXIS));
+    fundojDialogo2.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+
+  String texto = """ 
+      Rei Sebastian: O que você está fazendo por aqui kote?
+      Kote: Quero entrar na biblioteca, preciso consultar o livro
+      Rei: Venha comigo
+      Narrador: Rei sebastian leve kote a até a porta da biblioteca.""";
+
+
+
+
+  textoDi2 = new JTextArea(texto);
+  textoDi2.setWrapStyleWord(true);
+  textoDi2.setLineWrap(true);
+  textoDi2.setOpaque(false);
+  textoDi2.setEditable(false);
+  textoDi2.setForeground(Color.white);
+  textoDi2.setFont(fontecorpo2);
+
+ 
+  fundojDialogo2.add(textoDi2);
+  
+  InputMap mj6 = fundojstart.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap mj7 = fundojstart.getActionMap();
+        mj6.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+        mj7.put("enterPressed", new AbstractAction() {
+    public void actionPerformed(ActionEvent e) {
+        Dialogo2();
+        }
+    });
+  
+  
+  janelaDialogo2.getContentPane().add(fundojDialogo2);
+  janelaDialogo2.setVisible(true);
+
+  InputMap mj = fundojDialogo2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+  ActionMap mj1 = fundojDialogo2.getActionMap();
+
+  mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+  mj1.put("enterPressed", new AbstractAction() {
+      public void actionPerformed(ActionEvent e) {
+          abdesafio2(); 
+      }
+  });
+}
 
     public void abdesafio2() {
         janeladesafio2 = new JFrame("Desafio part2 biblioteca");
@@ -435,6 +552,60 @@ public rpg1(){
         con.add(fundodesafio2);
         janeladesafio2.setVisible(true);
     }
+    public void Dialogo3() { 
+    janelaDialogo3 = new JFrame("");
+    janelaDialogo3.setSize(1000, 700);
+    janelaDialogo3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo3.setResizable(false);
+    janelaDialogo3.getContentPane().setBackground(Color.black);
+    janelaDialogo3.setLocationRelativeTo(null);
+    janelaDialogo3.setLayout(new BorderLayout());
+
+    fundojDialogo3 = new JPanel();
+    fundojDialogo3.setBackground(Color.black);
+    fundojDialogo3.setLayout(new BoxLayout(fundojDialogo3, BoxLayout.Y_AXIS));
+    fundojDialogo3.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+    String texto = """ 
+        Rei Sebastian: O que você está fazendo por aqui, Kote?
+        Kote: Quero entrar na biblioteca, preciso consultar o livro.
+        Rei: Venha comigo.
+        Narrador: Rei Sebastian leva Kote até a porta da biblioteca.
+    """;
+
+    textoDi3 = new JTextArea(texto);
+    textoDi3.setWrapStyleWord(true);
+    textoDi3.setLineWrap(true);
+    textoDi3.setOpaque(false);
+    textoDi3.setEditable(false);
+    textoDi3.setForeground(Color.white);
+    textoDi3.setFont(fontecorpo2);
+
+    fundojDialogo3.add(textoDi3);
+
+     InputMap mj8 = fundojstart.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+     ActionMap mj9 = fundojstart.getActionMap();
+     mj8.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+     mj9.put("enterPressed", new AbstractAction() {
+    public void actionPerformed(ActionEvent e) {
+        Dialogo3(); 
+         }
+    });
+
+    janelaDialogo3.getContentPane().add(fundojDialogo3);
+    janelaDialogo3.setVisible(true);
+
+    InputMap mj = fundojDialogo3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    ActionMap mj1 = fundojDialogo3.getActionMap();
+
+    mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+    mj1.put("enterPressed", new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+            abdesafio2(); 
+        }
+    });
+}
+
 
     public void abdesafio3(){
         janeladesafio3 = new JFrame("Desafio 3");
@@ -656,6 +827,7 @@ public rpg1(){
                     "KOTE: respira fundo, fecha os olhos, e começa a invocar seu poder mágico. Ele sabe que tem que se concentrar profundamente, pois o sucesso da viagem depende da precisão de sua conjuração.<br>" + 
                     "KOTE: Um... dois.. três<br><br>" + 
                     "PERGUNTA: Qual das seguintes afirmações define corretamente quando se utiliza um laço FOR?</html>");
+    
     tdesafio5.setForeground(Color.white);
     tdesafio5.setFont(fontedesafios);
     tdesafio5.setVerticalAlignment(SwingConstants.TOP);
