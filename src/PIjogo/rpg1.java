@@ -7,11 +7,12 @@ import java.awt.event.*;
 
 public class rpg1 {
 
+ //criação das variáveis
  JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10;//janela
  Container con;//conteúdo
  JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10;//painéis
  JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad6, alternativabd6, alternativacd6, alternativadd6, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10;//botões
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10;//botões
  JTextArea textocj, textocj2;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
@@ -19,11 +20,8 @@ public class rpg1 {
  Font fontecorpo2 = new Font ("Times New Roman", Font.PLAIN, 18);
 
   int vida = 5;
-public static void main(String[] args) {
-    new rpg1();
- }
 
-public rpg1(){
+public void abprimeirajanela(){
    janela = new JFrame(); // cria a janela
    janela.setTitle("A Herança do Caos: Último Maerion");// dá um título
    janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Para fechar devidamente a janela
@@ -220,7 +218,7 @@ public rpg1(){
         ActionMap mj1 = fundojstart.getActionMap();
         mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
         mj1.put("enterPressed", new AbstractAction() {
-    public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {
         abrirdesafio1();
     }
 });
@@ -722,11 +720,10 @@ public rpg1(){
     fundoalternativasd5.add(alternativabd5);
     fundoalternativasd5.add(alternativacd5);
     fundoalternativasd5.add(alternativadd5);
-    
     con.add(fundodesafio5);
     janeladesafio5.setVisible(true);
 }
-public void abdesafio6() {
+public void abdesafio6(){
     janeladesafio6 = new JFrame("Desafio 6"); 
     janeladesafio6.setSize(1000, 700);
     janeladesafio6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -746,32 +743,32 @@ public void abdesafio6() {
 
     tdesafio6 = new JLabel("<html>Os Guardiões do Tempo aparecem diante do guerreiro e dizem:<br><br>" +
         "Para provar sua coragem e sabedoria, responda: Qual estrutura de controle é usada para decidir<br>" +  
-        "se um bloco de código deve ser executado com base em uma condição específica? <br>" +
-        "Os Guardiões do Tempo surgem e desafiam o guerreiro: <br>" +
-        "Responda corretamente: Qual estrutura de controle é utilizada para executar um bloco de código apenas quando uma condição não é verdadeira?</html>");
+        "se um bloco de código deve ser executado com base em uma condição específica?</html>");
     tdesafio6.setForeground(Color.white);
     tdesafio6.setFont(fontedesafios);
+    tdesafio6.setVerticalAlignment(SwingConstants.TOP);
+    tdesafio6.setHorizontalAlignment(SwingConstants.LEFT);  // Corrigido para tdesafio6
     fundodesafio6.add(tdesafio6, BorderLayout.NORTH); 
 
     fundoalternativasd6 = new JPanel();
     fundoalternativasd6.setBounds(100, 380, 800, 100);
     fundoalternativasd6.setBackground(Color.black);
     fundoalternativasd6.setLayout(new GridLayout(2, 2, 10, 10)); 
+    con.add(fundoalternativasd6);
 
-    alternativadd6 = new JButton("A) sort()");
-    alternativadd6.setFont(fontedesafios);
-    alternativadd6.setFocusPainted(false);
-    alternativadd6.setBackground(Color.black);
-    alternativadd6.setForeground(Color.white);
-    alternativadd6.setContentAreaFilled(false);
-    alternativadd6.addActionListener(new ActionListener() {
+    JButton alternativaad6 = new JButton("A) For");
+    alternativaad6.setFont(fontedesafios);
+    alternativaad6.setFocusPainted(false);
+    alternativaad6.setBackground(Color.black);
+    alternativaad6.setForeground(Color.white);
+    alternativaad6.setContentAreaFilled(false);
+    alternativaad6.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            verificarResposta(true);
-            abdesafio7();
-            janeladesafio6.dispose();
+            verificarResposta(false);
         }
     });
-    alternativabd6 = new JButton("B) order()");
+
+    JButton alternativabd6 = new JButton("B) If");
     alternativabd6.setFont(fontedesafios);
     alternativabd6.setFocusPainted(false);
     alternativabd6.setBackground(Color.black);
@@ -782,7 +779,8 @@ public void abdesafio6() {
             verificarResposta(false);
         }
     });
-    alternativacd6 = new JButton("C) Array()");
+
+    JButton alternativacd6 = new JButton("C) Else");
     alternativacd6.setFont(fontedesafios);
     alternativacd6.setFocusPainted(false);
     alternativacd6.setBackground(Color.black);
@@ -790,10 +788,13 @@ public void abdesafio6() {
     alternativacd6.setContentAreaFilled(false);
     alternativacd6.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
+            verificarResposta(true);
+            abdesafio7();
+            janeladesafio6.dispose();
         }
     });
-    alternativadd6 = new JButton("D) add()");
+
+    JButton alternativadd6 = new JButton("D) Do-while");
     alternativadd6.setFont(fontedesafios);
     alternativadd6.setFocusPainted(false);
     alternativadd6.setBackground(Color.black);
@@ -804,99 +805,98 @@ public void abdesafio6() {
             verificarResposta(false);
         }
     });
-  
+
     fundoalternativasd6.add(alternativaad6);
     fundoalternativasd6.add(alternativabd6);
     fundoalternativasd6.add(alternativacd6);
     fundoalternativasd6.add(alternativadd6);
     con.add(fundodesafio6);
-    con.add(fundoalternativasd6);
-    
     janeladesafio6.setVisible(true);
 }
 
     public void abdesafio7() {
-            janeladesafio7 = new JFrame("Desafio 7"); 
-            janeladesafio7.setSize(1000, 700);
-            janeladesafio7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            janeladesafio7.setResizable(false);
-            janeladesafio7.getContentPane().setBackground(Color.black);
-            janeladesafio7.setLocationRelativeTo(null);
-            janeladesafio7.setLayout(null);
-            con = janeladesafio7.getContentPane();
+        janeladesafio7 = new JFrame("Desafio 7"); 
+        janeladesafio7.setSize(1000, 700);
+        janeladesafio7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janeladesafio7.setResizable(false);
+        janeladesafio7.getContentPane().setBackground(Color.black);
+        janeladesafio7.setLocationRelativeTo(null);
+        janeladesafio7.setLayout(null);
+        con = janeladesafio7.getContentPane();
 
-            fundodesafio7 = new JPanel();
-            fundodesafio7.setBounds(50, 50, 900, 600);
-            fundodesafio7.setBackground(Color.black);
-            fundodesafio7.setLayout(new BorderLayout());
+        fundodesafio7 = new JPanel();
+        fundodesafio7.setBounds(50, 50, 900, 600);
+        fundodesafio7.setBackground(Color.black);
+        fundodesafio7.setLayout(new BorderLayout());
 
-            sistemaVida = criarSistemaVida();
-            con.add(sistemaVida);
+        sistemaVida = criarSistemaVida();
+        con.add(sistemaVida);
 
-            tdesafio7 = new JLabel("<html>Os Guardiões do Tempo surgem e desafiam o guerreiro: };");
-            tdesafio7.setForeground(Color.white);
-            tdesafio7.setFont(fontedesafios);
-            fundodesafio7.add(tdesafio7, BorderLayout.NORTH); 
+        tdesafio7 = new JLabel("<html>Os Guardiões do Tempo surgem e desafiam o guerreiro: };");
+        tdesafio7.setForeground(Color.white);
+        tdesafio7.setFont(fontedesafios);
+        fundodesafio7.add(tdesafio7, BorderLayout.NORTH); 
 
-            fundoalternativasd7 = new JPanel();
-            fundoalternativasd7.setBounds(100, 380, 800, 100);
-            fundoalternativasd7.setBackground(Color.black);
-            fundoalternativasd7.setLayout(new GridLayout(2, 2, 10, 10)); 
+        fundoalternativasd7 = new JPanel();
+        fundoalternativasd7.setBounds(100, 380, 800, 100);
+        fundoalternativasd7.setBackground(Color.black);
+        fundoalternativasd7.setLayout(new GridLayout(2, 2, 10, 10)); 
 
-            alternativaad7 = new JButton("A) else");
-            alternativaad7.setFont(fontedesafios);
-            alternativaad7.setFocusPainted(false);
-            alternativaad7.setBackground(Color.black);
-            alternativaad7.setForeground(Color.white);
-            alternativaad7.setContentAreaFilled(false);
-            alternativaad7.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
-                }
-            });
-        
-            alternativabd7 = new JButton("B) switch");
-            alternativabd7.setFont(fontedesafios);
-            alternativabd7.setFocusPainted(false);
-            alternativabd7.setBackground(Color.black);
-            alternativabd7.setForeground(Color.white);
-            alternativabd7.setContentAreaFilled(false);
-            alternativabd7.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
-                }
-            });
-            alternativacd7 = new JButton("C) for ");
-            alternativacd7.setFont(fontedesafios);
-            alternativacd7.setFocusPainted(false);
-            alternativacd7.setBackground(Color.black);
-            alternativacd7.setForeground(Color.white);
-            alternativacd7.setContentAreaFilled(false);
-            alternativacd7.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
-                }
-            });
-            alternativadd7 = new JButton("D) break");
-            alternativadd7.setFont(fontedesafios);
-            alternativadd7.setFocusPainted(false);
-            alternativadd7.setBackground(Color.black);
-            alternativadd7.setForeground(Color.white);
-            alternativadd7.setContentAreaFilled(false);
-            alternativadd7.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
-                }
-            });
+        alternativaad7 = new JButton("A) else");
+        alternativaad7.setFont(fontedesafios);
+        alternativaad7.setFocusPainted(false);
+        alternativaad7.setBackground(Color.black);
+        alternativaad7.setForeground(Color.white);
+        alternativaad7.setContentAreaFilled(false);
+        alternativaad7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                verificarResposta(true);
+                abseudesafio8();
+                janeladesafio7.dispose();
+            }
+         });
+        alternativabd7 = new JButton("B) switch");
+        alternativabd7.setFont(fontedesafios);
+        alternativabd7.setFocusPainted(false);
+        alternativabd7.setBackground(Color.black);
+        alternativabd7.setForeground(Color.white);
+        alternativabd7.setContentAreaFilled(false);
+        alternativabd7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               verificarResposta(false);
+            }
+        });
+        alternativacd7 = new JButton("C) for ");
+        alternativacd7.setFont(fontedesafios);
+        alternativacd7.setFocusPainted(false);
+        alternativacd7.setBackground(Color.black);
+        alternativacd7.setForeground(Color.white);
+        alternativacd7.setContentAreaFilled(false);
+        alternativacd7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                verificarResposta(false);
+            }
+        });
+        alternativadd7 = new JButton("D) break");
+        alternativadd7.setFont(fontedesafios);
+        alternativadd7.setFocusPainted(false);
+        alternativadd7.setBackground(Color.black);
+        alternativadd7.setForeground(Color.white);
+        alternativadd7.setContentAreaFilled(false);
+        alternativadd7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                verificarResposta(false);
+            }
+        });
           
-            fundoalternativasd7.add(alternativaad7);
-            fundoalternativasd7.add(alternativabd7);
-            fundoalternativasd7.add(alternativacd7);
-            fundoalternativasd7.add(alternativadd7);
-            con.add(fundodesafio7);
-            con.add(fundoalternativasd7);
+        fundoalternativasd7.add(alternativaad7);
+        fundoalternativasd7.add(alternativabd7);
+        fundoalternativasd7.add(alternativacd7);
+        fundoalternativasd7.add(alternativadd7);
+        con.add(fundodesafio7);
+        con.add(fundoalternativasd7);
             
-            janeladesafio7.setVisible(true);
+        janeladesafio7.setVisible(true);
 }
   public void abseudesafio8() {
     janeladesafio8 = new JFrame("Desafio 7"); 
@@ -944,7 +944,7 @@ public void abdesafio6() {
     alternativaad8.setContentAreaFilled(false);
     alternativaad8.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+           verificarResposta(false);
         }
     });
     alternativabd8 = new JButton("B) defender");
@@ -955,7 +955,9 @@ public void abdesafio6() {
     alternativabd8.setContentAreaFilled(false);
     alternativabd8.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
+            verificarResposta(true);
+            abseudesafio9();
+            janeladesafio8.dispose();
         }
     });
 
@@ -967,7 +969,7 @@ public void abdesafio6() {
     alternativacd8.setContentAreaFilled(false);
     alternativacd8.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+            verificarResposta(false);
         }
     });
     alternativadd8 = new JButton("D) parado");
@@ -978,7 +980,7 @@ public void abdesafio6() {
     alternativadd8.setContentAreaFilled(false);
     alternativadd8.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+            verificarResposta(false);
         }
     });
   
@@ -1027,7 +1029,9 @@ public void abseudesafio9() {
     alternativaad9.setContentAreaFilled(false);
     alternativaad9.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
+            verificarResposta(true);
+            abseudesafio10();
+            janeladesafio9.dispose();
         }
     });
     alternativabd9 = new JButton("B) order()");
@@ -1113,7 +1117,9 @@ public void abseudesafio10() {
     alternativaad10.setContentAreaFilled(false);
     alternativaad10.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você acertou!! parabéns.");
+           verificarResposta(true);
+           abstart();
+           janeladesafio10.dispose();
         }
     });
     alternativabd10 = new JButton("B) Array — Eliminar um traidor na Facção B.");
@@ -1124,7 +1130,7 @@ public void abseudesafio10() {
     alternativabd10.setContentAreaFilled(false);
     alternativabd10.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+           verificarResposta(false);
         }
     });
     alternativacd10 = new JButton("C)ArrayList — Eliminar um traidor na Facção B.");
@@ -1135,7 +1141,7 @@ public void abseudesafio10() {
     alternativacd10.setContentAreaFilled(false);
     alternativacd10.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+           verificarResposta(false);
         }
     });
     alternativadd10 = new JButton("D) Array — Recuperar um artefato sagrado para a Facção A.");
@@ -1146,7 +1152,7 @@ public void abseudesafio10() {
     alternativadd10.setContentAreaFilled(false);
     alternativadd10.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
+            verificarResposta(false);
         }
     });
     fundoalternativasd10.add(alternativaad10);
