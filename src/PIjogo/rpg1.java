@@ -8,12 +8,12 @@ import java.awt.event.*;
 public class rpg1 {
 
  //criação das variáveis
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10, janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10;//painéis
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9;//painéis
  JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
  JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10;//botões
- JTextArea textocj, textocj2;
+ JTextArea textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
  Font fontedesafios = new Font("Times New ROman", Font.PLAIN, 20);
@@ -219,7 +219,8 @@ public void abprimeirajanela(){
         mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
         mj1.put("enterPressed", new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-        abrirdesafio1();
+        abDialogo1();
+        janelastart.dispose();
     }
 });
 
@@ -230,20 +231,67 @@ public void abprimeirajanela(){
         janelastart.setVisible(true);
         con.add(fundojstart);
         
-}
-    
-    public void abrirdesafio1() {
-    abdesafio1(); // Abre a janela do desafio 1
-    janelastart.dispose(); // Fecha a janela atual
-}
+  }
+
+
     private JLabel criarSistemaVida() {
         JLabel sistemaVida = new JLabel("Vida: " + vida);
         sistemaVida.setForeground(Color.white);
         sistemaVida.setFont(fontedesafios);
         sistemaVida.setBounds(10, 10, 200, 30); // Ajuste conforme necessário
         return sistemaVida;
-}
-    public void abdesafio1(){
+ }
+  public void abDialogo1() { 
+  
+     janelaDialogo1 = new JFrame("");
+     janelaDialogo1.setSize(1000, 700);
+     janelaDialogo1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     janelaDialogo1.setResizable(false);
+     janelaDialogo1.getContentPane().setBackground(Color.black);
+     janelaDialogo1.setLocationRelativeTo(null);
+     janelaDialogo1.setLayout(new BorderLayout());
+
+     fundojDialogo1 = new JPanel();
+     fundojDialogo1.setBackground(Color.black);
+     fundojDialogo1.setLayout(new BoxLayout(fundojDialogo1, BoxLayout.Y_AXIS));
+     fundojDialogo1.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+      String texto = """ 
+      Feiticeiro: Bem - vindo à biblioteca kote, o que você deseja encontrar aqui?
+      
+      Kote: Estou procurando um livro que contenha feitiços antigos. Dizem que ele guarda segredos poderosos.
+      
+      Feiticeiro: Muito bem, siga para a seção mais profunda da biblioteca. Mas cuidado, alguns feitiços podem ter consequências inesperadas.
+      
+      Narrador: Kote acena com a cabeça e avança, sentindo a atmosfera mágica ao seu redor enquanto se aproxima da sessão proibida.""";
+
+
+      textoDi1 = new JTextArea(texto);
+      textoDi1.setWrapStyleWord(true);
+      textoDi1.setLineWrap(true);
+      textoDi1.setOpaque(false);
+      textoDi1.setEditable(false);
+      textoDi1.setForeground(Color.white);
+      textoDi1.setFont(fontecorpo);
+
+ 
+       fundojDialogo1.add(textoDi1);
+
+        InputMap mj = fundojDialogo1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap mj1 = fundojDialogo1.getActionMap();
+        mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+        mj1.put("enterPressed", new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+        abdesafio1();
+        janelaDialogo1.dispose();
+        }
+     });
+  
+      janelaDialogo1.getContentPane().add(fundojDialogo1);
+      janelaDialogo1.setVisible(true);
+
+     }
+     public void abdesafio1(){
         janeladesafio1 = new JFrame("Desafio 1");
         janeladesafio1.setSize(1000, 700);
         janeladesafio1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -286,7 +334,7 @@ public void abprimeirajanela(){
             verificarResposta(false);
         }
 
-    });
+     });
         alternativabdesafio1 = new JButton("B) A biblioteca permanece fechada.");
         alternativabdesafio1.setFont(fontedesafios);
         alternativabdesafio1.setFocusPainted(false);
@@ -296,12 +344,12 @@ public void abprimeirajanela(){
         alternativabdesafio1.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e) {
             verificarResposta(true);
-            abdesafio2();
+            abDialogo2();
             janeladesafio1.dispose();
             
-    }
+      }
         
-});
+     });
         alternativacdesafio1 = new JButton("C) Kote encontra o livro.");
         alternativacdesafio1.setFont(fontedesafios);
         alternativacdesafio1.setFocusPainted(false);
@@ -311,7 +359,7 @@ public void abprimeirajanela(){
         alternativacdesafio1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 verificarResposta(false);
-    }
+     }
        });
         alternativaddesafio1 = new JButton("D) Kote é banido da biblioteca.");
         alternativaddesafio1.setFont(fontedesafios);
@@ -333,14 +381,58 @@ public void abprimeirajanela(){
         fundoalternativasd1.add(alternativaddesafio1);
         con.add(fundodesafio1);
         janeladesafio1.setVisible(true);  
-    }
+     }
+     public void abDialogo2() { 
+  
+        janelaDialogo2 = new JFrame("");
+        janelaDialogo2.setSize(1000, 700);
+        janelaDialogo2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelaDialogo2.setResizable(false);
+        janelaDialogo2.getContentPane().setBackground(Color.black);
+        janelaDialogo2.setLocationRelativeTo(null);
+        janelaDialogo2.setLayout(new BorderLayout());
     
-    public void abrirdesafio2() {
-        abdesafio2(); // Abre a janela do desafio 2
-        janeladesafio1.dispose(); // Fecha a janela do desafio 1
-    }
+    
+        fundojDialogo2 = new JPanel();
+        fundojDialogo2.setBackground(Color.black);
+        fundojDialogo2.setLayout(new BoxLayout(fundojDialogo2, BoxLayout.Y_AXIS));
+        fundojDialogo2.setBorder(new EmptyBorder(20, 20, 20, 20));
+    
+    
+      String texto = """ 
+          Rei Sebastian: O que você está fazendo por aqui kote?
+          Kote: Quero entrar na biblioteca, preciso consultar o livro
+          Rei: Venha comigo
+          Narrador: Rei sebastian leve kote a até a porta da biblioteca.""";
+    
+    
+    
+    
+      textoDi2 = new JTextArea(texto);
+      textoDi2.setWrapStyleWord(true);
+      textoDi2.setLineWrap(true);
+      textoDi2.setOpaque(false);
+      textoDi2.setEditable(false);
+      textoDi2.setForeground(Color.white);
+      textoDi2.setFont(fontecorpo2);
+    
+     
+      fundojDialogo2.add(textoDi2);
+      
+      InputMap mj = fundojDialogo2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+      ActionMap mj1 = fundojDialogo2.getActionMap();
+      mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+      mj1.put("enterPressed", new AbstractAction() {
+      public void actionPerformed(ActionEvent e) {
+        abdesafio2();
+        janelaDialogo2.dispose();
+            }
+        });
+        janelaDialogo2.getContentPane().add(fundojDialogo2);
+        janelaDialogo2.setVisible(true);
+     }
 
-    public void abdesafio2() {
+     public void abdesafio2() {
         janeladesafio2 = new JFrame("Desafio part2 biblioteca");
         janeladesafio2.setSize(1000, 700);
         janeladesafio2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -381,7 +473,7 @@ public void abprimeirajanela(){
         alternativaad2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 verificarResposta(true);
-                abdesafio3();
+                abDialogo3();
                 janeladesafio2.dispose();
             }
         });
@@ -432,9 +524,54 @@ public void abprimeirajanela(){
         fundoalternativasd2.add(alternativadd2);
         con.add(fundodesafio2);
         janeladesafio2.setVisible(true);
-    }
+     }
+     public void abDialogo3() { 
+        janelaDialogo3 = new JFrame("");
+        janelaDialogo3.setSize(1000, 700);
+        janelaDialogo3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelaDialogo3.setResizable(false);
+        janelaDialogo3.getContentPane().setBackground(Color.black);
+        janelaDialogo3.setLocationRelativeTo(null);
+        janelaDialogo3.setLayout(new BorderLayout());
+    
+        fundojDialogo3 = new JPanel();
+        fundojDialogo3.setBackground(Color.black);
+        fundojDialogo3.setLayout(new BoxLayout(fundojDialogo3, BoxLayout.Y_AXIS));
+        fundojDialogo3.setBorder(new EmptyBorder(20, 20, 20, 20));
+    
+        String texto = """ 
+            Rei Sebastian: O que você está fazendo por aqui, Kote?
+            Kote: Quero entrar na biblioteca, preciso consultar o livro.
+            Rei: Venha comigo.
+            Narrador: Rei Sebastian leva Kote até a porta da biblioteca.
+        """;
+    
+        textoDi3 = new JTextArea(texto);
+        textoDi3.setWrapStyleWord(true);
+        textoDi3.setLineWrap(true);
+        textoDi3.setOpaque(false);
+        textoDi3.setEditable(false);
+        textoDi3.setForeground(Color.white);
+        textoDi3.setFont(fontecorpo2);
+    
+        fundojDialogo3.add(textoDi3);
+    
+         InputMap mj = fundojDialogo3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+         ActionMap mj1 = fundojDialogo3.getActionMap();
+         mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+         mj1.put("enterPressed", new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+            abdesafio3(); 
+            janelaDialogo3.dispose();
+             }
+        });
+    
+        janelaDialogo3.getContentPane().add(fundojDialogo3);
+        janelaDialogo3.setVisible(true);
+    
+     }
 
-    public void abdesafio3(){
+     public void abdesafio3(){
         janeladesafio3 = new JFrame("Desafio 3");
         janeladesafio3.setSize(1000, 700);
         janeladesafio3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -514,7 +651,7 @@ public void abprimeirajanela(){
         alternativadd3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 verificarResposta(true);
-                abdesafio4();
+                abDialogo4();
                 janeladesafio3.dispose();
             }
         });
@@ -526,6 +663,52 @@ public void abprimeirajanela(){
         con.add(fundodesafio3);
         janeladesafio3.setVisible(true);
 
+     }
+     public void abDialogo4() {
+        janelaDialogo4 = new JFrame("");
+        janelaDialogo4.setSize(1000, 700);
+        janelaDialogo4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelaDialogo4.setResizable(false);
+        janelaDialogo4.getContentPane().setBackground(Color.black);
+        janelaDialogo4.setLocationRelativeTo(null);
+        janelaDialogo4.setLayout(new BorderLayout());
+    
+        // Painel de fundo do diálogo
+        fundojDialogo4 = new JPanel();
+        fundojDialogo4.setBackground(Color.black);
+        fundojDialogo4.setLayout(new BoxLayout(fundojDialogo4, BoxLayout.Y_AXIS));
+        fundojDialogo4.setBorder(new EmptyBorder(20, 20, 20, 20));
+    
+        // Texto do diálogo
+        String texto = """ 
+        Guardião da biblioteca de Noxxtera: ” - Bem-vindo, Kote, O tempo aqui não é linear, o Diário de Arquimedes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado.  
+        Kote: Um código... isso não será fácil. Que tipo de enigma poderia proteger algo tão poderoso?
+        Guardião da Biblioteca de Noxxterra: O código é uma série de perguntas sobre o tempo e os eventos que moldaram este reino.
+        Kote: Entendi. Preciso me lembrar da história de Noxterra e de seus segredos.""";
+    
+        textodi4 = new JTextArea(texto);
+        textodi4.setWrapStyleWord(true);
+        textodi4.setLineWrap(true);
+        textodi4.setOpaque(false);
+        textodi4.setEditable(false);
+        textodi4.setForeground(Color.white);
+        textodi4.setFont(fontecorpo2);
+    
+        fundojDialogo4.add(textodi4);
+    
+        // Mapeamento de tecla Enter para avançar
+        InputMap mj = fundojDialogo4.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap mj1 = fundojDialogo4.getActionMap();
+        mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+        mj1.put("enterPressed", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                abdesafio4(); 
+                janelaDialogo4.dispose();
+            }
+        });
+    
+        janelaDialogo4.getContentPane().add(fundojDialogo4);
+        janelaDialogo4.setVisible(true);
     }
     
     public void abdesafio4(){
@@ -580,7 +763,7 @@ public void abprimeirajanela(){
         alternativaad4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 verificarResposta(true);
-                abdesafio5();
+                abDialogo5();
                 janeladesafio4.dispose();
             }
         });
@@ -628,6 +811,55 @@ public void abprimeirajanela(){
         con.add(fundodesafio4);
         janeladesafio4.setVisible(true);
     }
+    public void abDialogo5() { 
+        janelaDialogo5 = new JFrame("");
+        janelaDialogo5.setSize(1000, 700);
+        janelaDialogo5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelaDialogo5.setResizable(false);
+        janelaDialogo5.getContentPane().setBackground(Color.black);
+        janelaDialogo5.setLocationRelativeTo(null);
+        janelaDialogo5.setLayout(new BorderLayout());
+    
+        // Painel de fundo do diálogo
+        fundojDialogo5 = new JPanel();
+        fundojDialogo5.setBackground(Color.black);
+        fundojDialogo5.setLayout(new BoxLayout(fundojDialogo5, BoxLayout.Y_AXIS));
+        fundojDialogo5.setBorder(new EmptyBorder(20, 20, 20, 20));
+    
+        // Texto do diálogo
+        String texto = """ 
+            Narrador: Após horas de leitura, Kote encontra um ritual que o permite viajar no tempo, mas é preciso um sacrifício: uma memória querida.
+            Kote: (pensando) Uma memória? Isso é arriscado... mas eu não posso falhar. O reino está em perigo.
+            Narrador: Ele fecha os olhos, lembrando-se de momentos felizes com seus amigos e família, pesando a dor da possível perda.
+            Kote: (resoluto) Eu farei isso. O futuro de Olin é mais importante.
+            Narrador: Com determinação, Kote reúne os ingredientes necessários e começa a traçar o círculo mágico no chão.
+        """;
+    
+        textodi5 = new JTextArea(texto);
+        textodi5.setWrapStyleWord(true);
+        textodi5.setLineWrap(true);
+        textodi5.setOpaque(false);
+        textodi5.setEditable(false);
+        textodi5.setForeground(Color.white);
+        textodi5.setFont(fontecorpo2);
+    
+        fundojDialogo5.add(textodi5);
+    
+        // Mapeamento de tecla Enter para avançar
+        InputMap mj = fundojDialogo5.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap mj1 = fundojDialogo5.getActionMap();
+        mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+        mj1.put("enterPressed", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                abdesafio5(); 
+                janelaDialogo5.dispose();
+            }
+        });
+    
+        janelaDialogo5.getContentPane().add(fundojDialogo5);
+        janelaDialogo5.setVisible(true);
+    }
+    
 
     public void abdesafio5() {
     janeladesafio5 = new JFrame("Desafio 5");
@@ -687,7 +919,7 @@ public void abprimeirajanela(){
     alternativabd5.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             verificarResposta(true);
-            abdesafio6();
+            abDialogo6();
             janeladesafio5.dispose();
         }
     });
@@ -722,6 +954,58 @@ public void abprimeirajanela(){
     fundoalternativasd5.add(alternativadd5);
     con.add(fundodesafio5);
     janeladesafio5.setVisible(true);
+}
+public void abDialogo6() { 
+    janelaDialogo6 = new JFrame("Dialogo 6");
+    janelaDialogo6.setSize(1000, 700);
+    janelaDialogo6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo6.setResizable(false);
+    janelaDialogo6.getContentPane().setBackground(Color.black);
+    janelaDialogo6.setLocationRelativeTo(null);
+    janelaDialogo6.setLayout(new BorderLayout());
+
+
+    fundojDialogo6 = new JPanel();
+    fundojDialogo6.setBackground(Color.black);
+    fundojDialogo6.setLayout(new BoxLayout(fundojDialogo6, BoxLayout.Y_AXIS));
+    fundojDialogo6.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+
+  String texto = """ 
+    Narrador: Kote continua lendo o diário para descobrir o verdadeiro motivo da guerra.
+    Feiticeiro: Você conseguiu descobrir a verdade?
+    Kote: São tantas verdadeiras que desacredito qual seja a verdade.
+    Feiticeiro: A verdade é aquela que você mais acredita.
+    Kote: Eu acredito que o Sebastian seja uma boa pessoa e esteja seguindo os passos do pai.
+    Feiticeiro: Isso é uma boa verdade.
+    """;
+
+  textoDi6 = new JTextArea(texto);
+  textoDi6.setWrapStyleWord(true);
+  textoDi6.setLineWrap(true);
+  textoDi6.setOpaque(false);
+  textoDi6.setEditable(false);
+  textoDi6.setForeground(Color.white);
+  textoDi6.setFont(fontecorpo2);
+
+
+ 
+  fundojDialogo6.add(textoDi6);
+
+
+  InputMap mj = fundojDialogo6.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+  ActionMap mj1 = fundojDialogo6.getActionMap();
+  mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+  mj1.put("enterPressed", new AbstractAction() {
+  public void actionPerformed(ActionEvent e) {
+    abdesafio6();
+    janelaDialogo6.dispose();
+   }
+  });
+
+  janelaDialogo6.getContentPane().add(fundojDialogo6);
+  janelaDialogo6.setVisible(true);
+
 }
 public void abdesafio6(){
     janeladesafio6 = new JFrame("Desafio 6"); 
@@ -787,12 +1071,12 @@ public void abdesafio6(){
     alternativacd6.setForeground(Color.white);
     alternativacd6.setContentAreaFilled(false);
     alternativacd6.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
+         public void actionPerformed(ActionEvent e) {
             verificarResposta(true);
-            abdesafio7();
-            janeladesafio6.dispose();
-        }
-    });
+            abDialogo7();
+            janeladesafio6.dispose();  // Corrigido o nome da janela aqui
+            }
+        });
 
     JButton alternativadd6 = new JButton("D) Do-while");
     alternativadd6.setFont(fontedesafios);
@@ -812,6 +1096,50 @@ public void abdesafio6(){
     fundoalternativasd6.add(alternativadd6);
     con.add(fundodesafio6);
     janeladesafio6.setVisible(true);
+}
+public void abDialogo7() { 
+    janelaDialogo7 = new JFrame("Diálogo 7");
+    janelaDialogo7.setSize(1000, 700);
+    janelaDialogo7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo7.setResizable(false);
+    janelaDialogo7.getContentPane().setBackground(Color.black);
+    janelaDialogo7.setLocationRelativeTo(null);
+    janelaDialogo7.setLayout(new BorderLayout());
+
+    fundojDialogo7 = new JPanel();
+    fundojDialogo7.setBackground(Color.black);
+    fundojDialogo7.setLayout(new BoxLayout(fundojDialogo7, BoxLayout.Y_AXIS));
+    fundojDialogo7.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+    String texto = """ 
+        Narrador: Kote está dividido entre salvar o seu amigo ou matar o rei.
+        Kote: Como irei salvar o meu amigo e o rei ao mesmo tempo?
+        Feiticeiro: Pense, Kote! O que realmente está em jogo? A vida de um homem ou o futuro de muitos?
+        """;
+
+    textodi7 = new JTextArea(texto);
+    textodi7.setWrapStyleWord(true);
+    textodi7.setLineWrap(true);
+    textodi7.setOpaque(false);
+    textodi7.setEditable(false);
+    textodi7.setForeground(Color.white);
+    textodi7.setFont(fontecorpo2);
+
+    fundojDialogo7.add(textodi7);
+    janelaDialogo7.add(fundojDialogo7, BorderLayout.CENTER); // Certifica-se de adicionar o painel à janela
+
+    // Configura a tecla Enter para abrir o próximo desafio
+    InputMap mj = fundojDialogo7.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    ActionMap mj1 = fundojDialogo7.getActionMap();
+    mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+    mj1.put("enterPressed", new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+            abdesafio7();
+            janelaDialogo7.dispose();
+        }
+    });
+    janelaDialogo7.getContentPane().add(fundojDialogo7);
+    janelaDialogo7.setVisible(true); // Exibe a janela
 }
 
     public void abdesafio7() {
@@ -851,7 +1179,7 @@ public void abdesafio6(){
         alternativaad7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 verificarResposta(true);
-                abseudesafio8();
+                abDialogo8();
                 janeladesafio7.dispose();
             }
          });
@@ -898,8 +1226,63 @@ public void abdesafio6(){
             
         janeladesafio7.setVisible(true);
 }
+public void abDialogo8() { 
+  
+    janelaDialogo8 = new JFrame("Dialogo 8");
+    janelaDialogo8.setSize(1000, 700);
+    janelaDialogo8.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo8.setResizable(false);
+    janelaDialogo8.getContentPane().setBackground(Color.black);
+    janelaDialogo8.setLocationRelativeTo(null);
+    janelaDialogo8.setLayout(new BorderLayout());
+
+
+    fundojDialogo8 = new JPanel();
+    fundojDialogo8.setBackground(Color.black);
+    fundojDialogo8.setLayout(new BoxLayout(fundojDialogo8, BoxLayout.Y_AXIS));
+    fundojDialogo8.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+
+  String texto = """ 
+    Narrador: Kote respira fundo, sentindo a energia pulsante ao seu redor. Ele está prestes a fazer algo que pode mudar tudo.
+    Kote: (determinado) "Eu não posso falhar. O reino precisa de mim."
+    Narrador: Ele fecha os olhos novamente, a dor da memória se intensificando. Uma imagem clara surge em sua mente: uma tarde ensolarada com seus amigos, rindo e brincando. Ele aperta os punhos, lutando contra a tristeza.
+    Kote: (sussurrando) "Eu farei isso. Uma memória por muitas vidas… vale a pena."
+    Narrador: Com um gesto ágil, Kote levanta as mãos e começa a entoar as palavras do ritual, cada sílaba vibrando com poder. O ar ao seu redor parece se contrair e expandir, como se o próprio tempo estivesse ouvindo.
+    Narrador: Enquanto as palavras mágicas ecoam na sala, uma luz intensa irrompe do círculo, envolvendo-o em um brilho ofuscante. A sensação de perda se intensifica, como se uma parte de sua essência estivesse sendo arrancada.
+    Narrador: De repente, a luz se transforma em um turbilhão, e Kote sente seu corpo sendo puxado para um outro lugar e tempo. O último vislumbre que tem é da biblioteca, se dissipando como fumaça.
+    """;
+
+  textodi8 = new JTextArea(texto);
+  textodi8.setWrapStyleWord(true);
+  textodi8.setLineWrap(true);
+  textodi8.setOpaque(false);
+  textodi8.setEditable(false);
+  textodi8.setForeground(Color.white);
+  textodi8.setFont(fontecorpo2);
+
+
+ 
+  fundojDialogo8.add(textodi8);
+
+
+  InputMap mj = fundojDialogo8.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+  ActionMap mj1 = fundojDialogo8.getActionMap();
+  mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+  mj1.put("enterPressed", new AbstractAction() {
+public void actionPerformed(ActionEvent e) {
+  abseudesafio8();
+  janelaDialogo8.dispose();
+}
+});
+
+  
+  janelaDialogo8.getContentPane().add(fundojDialogo8);
+  janelaDialogo8.setVisible(true);
+}
+  
   public void abseudesafio8() {
-    janeladesafio8 = new JFrame("Desafio 7"); 
+    janeladesafio8 = new JFrame("Desafio 8"); 
     janeladesafio8.setSize(1000, 700);
     janeladesafio8.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     janeladesafio8.setResizable(false);
@@ -956,7 +1339,7 @@ public void abdesafio6(){
     alternativabd8.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             verificarResposta(true);
-            abseudesafio9();
+            abDialogo9();
             janeladesafio8.dispose();
         }
     });
@@ -993,7 +1376,61 @@ public void abdesafio6(){
     
     janeladesafio8.setVisible(true);
 }
-public void abseudesafio9() {
+public void abDialogo9() { 
+  
+    janelaDialogo9 = new JFrame("Dialogo 9");
+    janelaDialogo9.setSize(1000, 700);
+    janelaDialogo9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo9.setResizable(false);
+    janelaDialogo9.getContentPane().setBackground(Color.black);
+    janelaDialogo9.setLocationRelativeTo(null);
+    janelaDialogo9.setLayout(new BorderLayout());
+
+
+    fundojDialogo9 = new JPanel();
+    fundojDialogo9.setBackground(Color.black);
+    fundojDialogo9.setLayout(new BoxLayout(fundojDialogo9, BoxLayout.Y_AXIS));
+    fundojDialogo9.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+
+  String texto = """ 
+    Narrador: Kote ressurge em uma sala principal, onde o Rei Sebastian aguarda, cercado por guardas e uma aura de poder. A tensão no ar é palpável.
+    Kote: "Rei Sebastian, “O Diário de Arquimedes é uma fonte de poder perigosa, e você não pode usá-lo dessa forma!"
+    Rei Sebastian: Com um sorriso desdenhoso "E quem é você para me dizer o que fazer? O poder é um direito do rei”.
+    Kote: "Proteger? Você está apenas alimentando sua ambição. O que acontecerá quando esse poder corromper sua essência? As vidas de inocentes estarão em suas mãos."
+    Rei Sebastian: "Eu conheço meu dever! Este reino precisa de força, e o diário me dará isso. Você é ingênuo se acha que pode me impedir."
+    Narrador: De repente, uma sombra se materializa na sala. O Purgatório, uma entidade mágica, aparece, lançando um feitiço que envolve Kote em uma barreira invisível.
+    Purgatório: "Você não pode se aproximar do rei, Kote. Este é um espaço sagrado, protegido por um encanto antigo. Para desfazer o feitiço, você deve resolver meu enigma.
+    """;
+
+  textodi9 = new JTextArea(texto);
+  textodi9.setWrapStyleWord(true);
+  textodi9.setLineWrap(true);
+  textodi9.setOpaque(false);
+  textodi9.setEditable(false);
+  textodi9.setForeground(Color.white);
+  textodi9.setFont(fontecorpo2);
+
+
+ 
+  fundojDialogo9.add(textodi9);
+
+  InputMap mj14 = fundojDialogo9.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+  ActionMap mj15 = fundojDialogo9.getActionMap();
+  mj14.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+  mj15.put("enterPressed", new AbstractAction() {
+public void actionPerformed(ActionEvent e) {
+  abseudesafio9();
+  janelaDialogo9.dispose();
+}
+});
+
+  
+  janelaDialogo9.getContentPane().add(fundojDialogo9);
+  janelaDialogo9.setVisible(true);
+
+}
+  public void abseudesafio9() {
     janeladesafio9 = new JFrame("Desafio 9"); 
     janeladesafio9.setSize(1000, 700);
     janeladesafio9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
