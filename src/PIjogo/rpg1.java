@@ -1,19 +1,26 @@
 package PIjogo;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
 public class rpg1 {
 
  //criação das variáveis
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10, janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10, janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9, janeladecisao;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9;//painéis
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9, fundojdecisao, fundobdecisao;//painéis
  JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10;//botões
- JTextArea textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9;
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10, matar, nmatar;//botões
+ JTextArea textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9, textocreditos, textodecisao;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
  Font fontedesafios = new Font("Times New ROman", Font.PLAIN, 20);
@@ -1467,7 +1474,7 @@ public void actionPerformed(ActionEvent e) {
     alternativaad9.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             verificarResposta(true);
-            abseudesafio10();
+            abjaneladecisao();
             janeladesafio9.dispose();
         }
     });
@@ -1514,6 +1521,105 @@ public void actionPerformed(ActionEvent e) {
     
     janeladesafio9.setVisible(true);
 }
+public void abjaneladecisao() {
+    janeladecisao = new JFrame("Decisão");
+    janeladecisao.setSize(1000, 700);
+    janeladecisao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janeladecisao.setResizable(false);
+    janeladecisao.getContentPane().setBackground(Color.black);
+    janeladecisao.setLocationRelativeTo(null);
+    janeladecisao.setLayout(new BorderLayout());
+
+    fundojdecisao = new JPanel();
+    fundojdecisao.setBackground(Color.black);
+    fundojdecisao.setLayout(new BoxLayout(fundojdecisao, BoxLayout.Y_AXIS));
+    fundojdecisao.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+    String texto = """
+    Após uma longa jornada, Kote finalmente se encontra diante do rei, o responsável pela guerra que devastou o mundo. Ele sabe que eliminar o rei poderia pôr fim a séculos de sofrimento, mas também entende que uma escolha precipitada pode levar o mundo a uma nova era de caos. O rei, agora desarmado e olhando nos olhos de Kote, não tenta resistir; ele sabe que seu destino está nas mãos do último herdeiro da linhagem Maerion.
+
+    Kote se aproxima do trono, a espada brilhando com um leve reflexo das chamas que iluminam o salão. O rei observa em silêncio, seu rosto uma máscara de resignação, mas em seus olhos há uma mistura de medo e aceitação.
+
+    "Você tem a chance de fazer o que muitos apenas sonharam," o rei murmura, sua voz fria e controlada. "Pode me matar agora e acabar com tudo. Mas lembre-se, as consequências do seu ato vão ecoar por gerações. Há aqueles que dependem de mim... até mesmo inimigos que você desconhece. Se eu cair, quem assumirá o poder? Você? Ou outro tirano mais sanguinário?"
+
+    Kote sente o peso da responsabilidade. Cada fibra do seu ser clama por vingança, mas uma voz sutil, talvez dos ancestrais Maerion, sussurra sobre redenção, sobre dar uma segunda chance, mesmo ao mais vil dos homens.
+    """;
+
+    textodecisao = new JTextArea(texto);
+    textodecisao.setWrapStyleWord(true);
+    textodecisao.setLineWrap(true);
+    textodecisao.setOpaque(false);
+    textodecisao.setEditable(false);
+    textodecisao.setForeground(Color.white);
+    textodecisao.setFont(fontecorpo2);
+
+    JScrollPane scrollPane = new JScrollPane(textodecisao);
+    scrollPane.setPreferredSize(new Dimension(900, 300));
+    scrollPane.setOpaque(false);
+    scrollPane.getViewport().setOpaque(false);
+    scrollPane.setBorder(null);
+
+    fundobdecisao = new JPanel();
+    fundobdecisao.setBounds(100, 380, 800, 150);
+    fundobdecisao.setBackground(Color.black);
+    fundobdecisao.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10)); 
+
+    matar = new JButton("Matar Sebastian");
+    matar.setFont(fontedesafios);
+    matar.setPreferredSize(new Dimension(200, 50));
+    matar.setFocusPainted(false);
+    matar.setBackground(Color.black);
+    matar.setForeground(Color.white);
+    matar.setContentAreaFilled(false);
+    matar.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            executarDecisao("matar");
+        }
+    });
+
+    nmatar = new JButton("Não matar Sebastian");
+    nmatar.setFont(fontedesafios);
+    nmatar.setPreferredSize(new Dimension(200, 50));
+    nmatar.setFocusPainted(false);
+    nmatar.setBackground(Color.black);
+    nmatar.setForeground(Color.white);
+    nmatar.setContentAreaFilled(false);
+    nmatar.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            executarDecisao("poupar");
+        }
+    });
+
+    fundobdecisao.add(matar);
+    fundobdecisao.add(nmatar);
+
+    fundojdecisao.add(scrollPane);
+    fundojdecisao.add(fundobdecisao);
+
+    janeladecisao.getContentPane().add(fundojdecisao);
+    janeladecisao.setVisible(true);
+}
+
+public void executarDecisao(String decisao) {
+    switch (decisao) {
+        case "matar":
+            JOptionPane.showMessageDialog(null, "Você decidiu matar o rei. As consequências de sua escolha reverberarão pelo reino.");
+            abseudesafio10();
+            janeladesafio9.dispose();
+            break;
+        case "poupar":
+            JOptionPane.showMessageDialog(null, "Você decidiu poupar o rei. Sua compaixão pode ter um impacto inesperado no futuro.");
+            // Aqui, você pode adicionar outro método ou ação para a escolha de poupar o rei
+            break;
+        default:
+            JOptionPane.showMessageDialog(null, "Escolha inválida.");
+            break;
+    }
+}
+
+
+
+
 public void abseudesafio10() {
     janeladesafio10 = new JFrame("Desafio 10");
     janeladesafio10.setSize(1000, 700);
@@ -1739,21 +1845,38 @@ private void verificarResposta(boolean respostaCorreta) {
         janelacreditos.setLocationRelativeTo(null);
         janelacreditos.setLayout(null);
         con = janelacreditos.getContentPane();
-
+    
+        // Painel de créditos com BoxLayout
         fundojcreditos = new JPanel();
-        fundojcreditos.setBounds(50, 50, 900, 600);
         fundojcreditos.setBackground(Color.black);
-
-        tcreditos = new JLabel();
-        tcreditos.setForeground(Color.white);
-        tcreditos.setFont(fontecorpo);
-        fundojcreditos.add(tcreditos);
+        fundojcreditos.setLayout(new BoxLayout(fundojcreditos, BoxLayout.Y_AXIS));
+        fundojcreditos.setBorder(new EmptyBorder(20, 20, 20, 20));
+        fundojcreditos.setBounds(100, 100, 800, 500); // Define a posição e o tamanho do painel de créditos
+    
+        // Texto de créditos
+        String texto = """
+            Este jogo foi desenvolvido pelo Grupo 7 da turma A do curso de Análise e Desenvolvimento de Sistemas do Centro Universitário Senac, formado por Giulia Alciati, Sabrina Aparecida, Arielly Bispo e Eduardo Sampaio. O projeto, criado para a disciplina de Projeto Integrador, visa ensinar conceitos básicos de programação na linguagem Java.
+        """;
+    
+        textocreditos = new JTextArea(texto);
+        textocreditos.setForeground(Color.white);
+        textocreditos.setFont(fontecorpo);
+        textocreditos.setWrapStyleWord(true);
+        textocreditos.setLineWrap(true);
+        textocreditos.setOpaque(false);
+        textocreditos.setEditable(false);
+    
+        fundojcreditos.add(textocreditos);
+        
+        // Botão Voltar
         JButton bvoltar = botaovoltar(janelacreditos);
+        bvoltar.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza o botão dentro do painel
+        fundojcreditos.add(Box.createVerticalStrut(20)); // Espaço entre o texto e o botão
         fundojcreditos.add(bvoltar);
-        janelacreditos.setVisible(true);
+        
         con.add(fundojcreditos);
-
-
+        janelacreditos.setVisible(true);
     }
-
+    
+   
 }
