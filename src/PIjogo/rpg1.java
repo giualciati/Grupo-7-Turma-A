@@ -1,26 +1,20 @@
 package PIjogo;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
+
 
 public class rpg1 {
 
  //criação das variáveis
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10, janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9, janeladecisao;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10, janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9, janeladecisao, janelaDialogo101, janelaDialogo102;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9, fundojdecisao, fundobdecisao;//painéis
- JLabel tituloinicial, tstart, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9, fundojdecisao, fundobdecisao, fundojDialogo101, fundojDialogo102;//painéis
+ JLabel tituloinicial, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
  JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10, matar, nmatar;//botões
- JTextArea textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9, textocreditos, textodecisao;
+ JTextArea textostart, textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9, textocreditos, textodecisao, textodi101, textodi102;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
  Font fontedesafios = new Font("Times New ROman", Font.PLAIN, 20);
@@ -190,11 +184,10 @@ public void abprimeirajanela(){
       //método para criar um botão "voltar" nas janelas secundárias
     public JButton botaovoltar(JFrame janelaatual) {
         bvoltar = new JButton("VOLTAR");
-        bvoltar.setFont(fontecorpo);
+        bvoltar.setFont(fontedesafios);
         bvoltar.setBackground(Color.black);
         bvoltar.setForeground(Color.white);
         bvoltar.setFocusPainted(false);
-        bvoltar.setBorderPainted(false);
         bvoltar.setContentAreaFilled(false);
         
         bvoltar.addActionListener(new ActionListener(){
@@ -206,39 +199,71 @@ public void abprimeirajanela(){
      return bvoltar;
         
     }
-
-
-    public void abstart(){
-        janelastart = new JFrame();
+    public void abstart() {
+        janelastart = new JFrame("A Herança do Caos: Visão de Kote");
         janelastart.setSize(1000, 700);
         janelastart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janelastart.setResizable(false);
         janelastart.getContentPane().setBackground(Color.black);
         janelastart.setLocationRelativeTo(null);
-        janelastart.setLayout(null);
-        con = janelastart.getContentPane();
-
-        fundojstart = new JPanel();
-        fundojstart.setBounds(50, 50, 900, 600);
+        janelastart.setLayout(new BorderLayout());
+    
+        // Painel para a visão
+        JPanel fundojstart = new JPanel();
         fundojstart.setBackground(Color.black);
-        InputMap mj = fundojstart.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap mj1 = fundojstart.getActionMap();
-        mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
-        mj1.put("enterPressed", new AbstractAction() {
-        public void actionPerformed(ActionEvent e) {
-        abDialogo1();
-        janelastart.dispose();
-    }
-});
+        fundojstart.setLayout(new BoxLayout(fundojstart, BoxLayout.Y_AXIS));
+        fundojstart.setBorder(new EmptyBorder(20, 20, 20, 20));
+    
+        // Texto da visão
+        String textoVisao = """
+Narrador: Na quietude da noite, Kote dorme profundamente, exausto de suas últimas batalhas. A chama de uma vela tremeluzente ilumina seu rosto, mas, enquanto ele descansa, algo estranho começa a acontecer.
+Em seu sonho, ele se vê em uma paisagem desolada, um mundo coberto por sombras. O céu é de um vermelho ameaçador, e a terra parece gritar de dor. Kote caminha sem rumo, até que uma figura envolta em sombras surge diante dele, seus olhos brilhando como brasa.
 
-        tstart = new JLabel("Jogo começa...");
-        tstart.setForeground(Color.white);
-        tstart.setFont(fontecorpo);
-        fundojstart.add(tstart);
+Figura Misteriosa: Kote... você é o último herdeiro dos Maerion. O sangue dos antigos flui em você, e com ele, o poder de mudar o destino deste mundo. Mas saiba que o grande Caos se aproxima. Se você não agir, tudo que conhece será consumido pelas chamas da destruição.
+
+Narrador: As imagens ao seu redor começam a se deformar, revelando cidades em ruínas, tempestades de fogo consumindo florestas e rios de cinzas cobrindo a terra. Kote sente um arrepio percorrer seu corpo enquanto a figura misteriosa se aproxima, sua voz ecoando como um trovão.
+
+Figura Misteriosa: Se quer salvar o que ainda resta, vá até a biblioteca. Busque a seção proibida que o Rei esconde, lá você vai encontrar os segredos de sua linhagem e do poder que só você pode despertar."
+
+Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavras da visão ainda vibrando em sua mente. Ele compreende que essa não foi uma simples fantasia noturna, mas uma mensagem dos antigos. Ele precisa ir à biblioteca, e lá, na seção restrita do Rei, talvez encontre as respostas para o apocalipse que o aguarda – e para o poder oculto que precisará para enfrentá-lo.
+
+
+        """;
+    
+        JTextArea textostart = new JTextArea(textoVisao);
+        textostart.setWrapStyleWord(true);
+        textostart.setLineWrap(true);
+        textostart.setOpaque(false);
+        textostart.setEditable(false);
+        textostart.setForeground(Color.white);
+        textostart.setFont(fontecorpo);
+        fundojstart.add(textostart);
+
+        JScrollPane barra = new JScrollPane(textostart);
+        barra.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        barra.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        barra.setPreferredSize(new Dimension(500, 400)); 
+        barra.setBorder(null);
+        barra.getViewport().setBackground(Color.black);
+
+        JScrollBar verticalBar = barra.getVerticalScrollBar();
+        verticalBar.setBackground(Color.black); // Cor de fundo da barra de rolagem
+        verticalBar.setForeground(Color.black);  // Cor do polegar (parte deslizante)
+        verticalBar.setUnitIncrement(10);
+    
+        InputMap im = fundojstart.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap am = fundojstart.getActionMap();
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+        am.put("enterPressed", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                abDialogo1();
+                janelastart.dispose();
+            }
+        });
+        fundojstart.add(barra);
+        janelastart.getContentPane().add(fundojstart);
         janelastart.setVisible(true);
-        con.add(fundojstart);
-        
-  }
+    }
 
 
     private JLabel criarSistemaVida() {
@@ -250,7 +275,7 @@ public void abprimeirajanela(){
  }
   public void abDialogo1() { 
   
-     janelaDialogo1 = new JFrame("");
+     janelaDialogo1 = new JFrame("Dialogo 1");
      janelaDialogo1.setSize(1000, 700);
      janelaDialogo1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      janelaDialogo1.setResizable(false);
@@ -309,7 +334,7 @@ public void abprimeirajanela(){
         con = janeladesafio1.getContentPane();
 
         fundodesafio1 = new JPanel();
-        fundodesafio1.setBounds(50, 50, 900, 600);
+        fundodesafio1.setBounds(20, 50, 900, 600);
         fundodesafio1.setBackground(Color.black);
 
         tdesafio1 = new JLabel("<html>Após o encontro com o feiticeiro, Kote vai até a biblioteca do palácio, mas o livro que ele precisa<br> encontra-se em uma área restrita que contém os seguintes requisitos:<br><br>" + //
@@ -322,7 +347,7 @@ public void abprimeirajanela(){
         tdesafio1.setFont(fontedesafios);
 
         fundoalternativasd1 = new JPanel();
-        fundoalternativasd1.setBounds(100, 380, 800, 100);
+        fundoalternativasd1.setBounds(100, 400, 800, 100);
         fundoalternativasd1.setBackground(Color.black);
         fundoalternativasd1.setLayout( new GridLayout(2,2,10,10));
         con.add(fundoalternativasd1);
@@ -391,7 +416,7 @@ public void abprimeirajanela(){
      }
      public void abDialogo2() { 
   
-        janelaDialogo2 = new JFrame("");
+        janelaDialogo2 = new JFrame("Dialogo 2");
         janelaDialogo2.setSize(1000, 700);
         janelaDialogo2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janelaDialogo2.setResizable(false);
@@ -421,7 +446,7 @@ public void abprimeirajanela(){
       textoDi2.setOpaque(false);
       textoDi2.setEditable(false);
       textoDi2.setForeground(Color.white);
-      textoDi2.setFont(fontecorpo2);
+      textoDi2.setFont(fontecorpo);
     
      
       fundojDialogo2.add(textoDi2);
@@ -450,7 +475,7 @@ public void abprimeirajanela(){
         con = janeladesafio2.getContentPane();
 
         fundodesafio2 = new JPanel();
-        fundodesafio2.setBounds(50, 50, 900, 600);
+        fundodesafio2.setBounds(20, 50, 900, 600);
         fundodesafio2.setBackground(Color.black);
 
         sistemaVida = criarSistemaVida();
@@ -533,7 +558,7 @@ public void abprimeirajanela(){
         janeladesafio2.setVisible(true);
      }
      public void abDialogo3() { 
-        janelaDialogo3 = new JFrame("");
+        janelaDialogo3 = new JFrame("Dialogo 3");
         janelaDialogo3.setSize(1000, 700);
         janelaDialogo3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janelaDialogo3.setResizable(false);
@@ -559,7 +584,7 @@ public void abprimeirajanela(){
         textoDi3.setOpaque(false);
         textoDi3.setEditable(false);
         textoDi3.setForeground(Color.white);
-        textoDi3.setFont(fontecorpo2);
+        textoDi3.setFont(fontecorpo);
     
         fundojDialogo3.add(textoDi3);
     
@@ -589,7 +614,7 @@ public void abprimeirajanela(){
         con = janeladesafio3.getContentPane();
 
         fundodesafio3 = new JPanel();
-        fundodesafio3.setBounds(50, 50, 900, 600);
+        fundodesafio3.setBounds(20, 50, 900, 600);
         fundodesafio3.setBackground(Color.black);
 
         sistemaVida = criarSistemaVida();
@@ -672,7 +697,7 @@ public void abprimeirajanela(){
 
      }
      public void abDialogo4() {
-        janelaDialogo4 = new JFrame("");
+        janelaDialogo4 = new JFrame("Dialogo 4");
         janelaDialogo4.setSize(1000, 700);
         janelaDialogo4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janelaDialogo4.setResizable(false);
@@ -699,7 +724,7 @@ public void abprimeirajanela(){
         textodi4.setOpaque(false);
         textodi4.setEditable(false);
         textodi4.setForeground(Color.white);
-        textodi4.setFont(fontecorpo2);
+        textodi4.setFont(fontecorpo);
     
         fundojDialogo4.add(textodi4);
     
@@ -729,7 +754,7 @@ public void abprimeirajanela(){
         con = janeladesafio4.getContentPane();
 
         fundodesafio4 = new JPanel();
-        fundodesafio4.setBounds(50, 50, 900, 600);
+        fundodesafio4.setBounds(20, 50, 900, 600);
         fundodesafio4.setBackground(Color.black);
         fundodesafio4.setLayout(new BorderLayout());
 
@@ -819,7 +844,7 @@ public void abprimeirajanela(){
         janeladesafio4.setVisible(true);
     }
     public void abDialogo5() { 
-        janelaDialogo5 = new JFrame("");
+        janelaDialogo5 = new JFrame("Dialogo 5");
         janelaDialogo5.setSize(1000, 700);
         janelaDialogo5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janelaDialogo5.setResizable(false);
@@ -848,7 +873,7 @@ public void abprimeirajanela(){
         textodi5.setOpaque(false);
         textodi5.setEditable(false);
         textodi5.setForeground(Color.white);
-        textodi5.setFont(fontecorpo2);
+        textodi5.setFont(fontecorpo);
     
         fundojDialogo5.add(textodi5);
     
@@ -879,7 +904,7 @@ public void abprimeirajanela(){
     con = janeladesafio5.getContentPane();
 
     fundodesafio5 = new JPanel();
-    fundodesafio5.setBounds(50, 50, 900, 600);
+    fundodesafio5.setBounds(20, 50, 900, 600);
     fundodesafio5.setBackground(Color.black);
     fundodesafio5.setLayout(new BorderLayout());
 
@@ -993,7 +1018,7 @@ public void abDialogo6() {
   textoDi6.setOpaque(false);
   textoDi6.setEditable(false);
   textoDi6.setForeground(Color.white);
-  textoDi6.setFont(fontecorpo2);
+  textoDi6.setFont(fontecorpo);
 
 
  
@@ -1025,7 +1050,7 @@ public void abdesafio6(){
     con = janeladesafio6.getContentPane();
 
     fundodesafio6 = new JPanel();
-    fundodesafio6.setBounds(50, 50, 900, 600);
+    fundodesafio6.setBounds(20, 50, 900, 600);
     fundodesafio6.setBackground(Color.black);
     fundodesafio6.setLayout(new BorderLayout()); 
 
@@ -1130,7 +1155,7 @@ public void abDialogo7() {
     textodi7.setOpaque(false);
     textodi7.setEditable(false);
     textodi7.setForeground(Color.white);
-    textodi7.setFont(fontecorpo2);
+    textodi7.setFont(fontecorpo);
 
     fundojDialogo7.add(textodi7);
     janelaDialogo7.add(fundojDialogo7, BorderLayout.CENTER); // Certifica-se de adicionar o painel à janela
@@ -1266,7 +1291,7 @@ public void abDialogo8() {
   textodi8.setOpaque(false);
   textodi8.setEditable(false);
   textodi8.setForeground(Color.white);
-  textodi8.setFont(fontecorpo2);
+  textodi8.setFont(fontecorpo);
 
 
  
@@ -1299,7 +1324,7 @@ public void actionPerformed(ActionEvent e) {
     con = janeladesafio8.getContentPane();
 
     fundodesafio8 = new JPanel();
-    fundodesafio8.setBounds(50, 50, 900, 600);
+    fundodesafio8.setBounds(20, 50, 900, 600);
     fundodesafio8.setBackground(Color.black);
     fundodesafio8.setLayout(new BorderLayout()); 
 
@@ -1307,14 +1332,14 @@ public void actionPerformed(ActionEvent e) {
     con.add(sistemaVida);
 
     tdesafio8 = new JLabel("<html>Cenário: Kote está prestes a entrar em uma batalha e precisa decidir sua ação com base em seu nível de energia.<br><br>" +
-                    "Instrução: Determine qual ação Kote deve tomar de acordo com as seguintes condições:<br>" +
- 
-                    "Se o nível de energia de Kote for maior que 50:<br>" +
-                    "Kote decide atacar o inimigo.<br>" +
-                    "Se o nível de energia de Kote estiver entre 21 e 50 (inclusive):<br>" +
+                    "Instrução: Determine qual ação Kote deve tomar de acordo com as seguintes condições:<br><br>" +
+                    "if(energia>50){<br>" +
+                    "Atacar o inimigo.<br>" +
+                    "}else if(energia>= 21 && energia<= 50){<br>" +
                     "Kote decide se defender.<br> " +
-                    "Se o nível de energia de Kote for 20 ou menos:<br> " +
+                    "}else if(energia <= 20) {<br> " +
                     "Kote decide fugir da batalha. <br>" +
+                    "}<br>" +
                     "Pergunta:<br>" +
                     "Qual ação Kote deve tomar se seu nível de energia for 45?;</html>");
     tdesafio8.setForeground(Color.white);
@@ -1416,7 +1441,7 @@ public void abDialogo9() {
   textodi9.setOpaque(false);
   textodi9.setEditable(false);
   textodi9.setForeground(Color.white);
-  textodi9.setFont(fontecorpo2);
+  textodi9.setFont(fontecorpo);
 
 
  
@@ -1455,7 +1480,8 @@ public void actionPerformed(ActionEvent e) {
     sistemaVida = criarSistemaVida();
     con.add(sistemaVida);
 
-    tdesafio9 = new JLabel("Os Guardiões do Tempo exigem que você prove seu valor resolvendo um enigma. Eles perguntam: “Qual método é usado para ordenar um ArrayList?");
+    tdesafio9 = new JLabel("<html>Os Guardiões do Tempo exigem que você prove seu valor resolvendo um enigma.<br>"+
+                             "Eles perguntam: “Qual método é usado para ordenar um ArrayList?</html>");
     tdesafio9.setForeground(Color.white);
     tdesafio9.setFont(fontedesafios);
     fundodesafio9.add(tdesafio9, BorderLayout.NORTH); 
@@ -1604,19 +1630,127 @@ public void executarDecisao(String decisao) {
     switch (decisao) {
         case "matar":
             JOptionPane.showMessageDialog(null, "Você decidiu matar o rei. As consequências de sua escolha reverberarão pelo reino.");
-            abseudesafio10();
-            janeladesafio9.dispose();
+            abDialogo101();
+            janeladecisao.dispose();
             break;
         case "poupar":
             JOptionPane.showMessageDialog(null, "Você decidiu poupar o rei. Sua compaixão pode ter um impacto inesperado no futuro.");
-            // Aqui, você pode adicionar outro método ou ação para a escolha de poupar o rei
-            break;
-        default:
-            JOptionPane.showMessageDialog(null, "Escolha inválida.");
+            abDialogo102();
+            janeladecisao.dispose();
             break;
     }
 }
 
+public void abDialogo101(){
+    janelaDialogo101 = new JFrame("Dialogo 10");
+    janelaDialogo101.setSize(1000, 700);
+    janelaDialogo101.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo101.setResizable(false);
+    janelaDialogo101.getContentPane().setBackground(Color.black);
+    janelaDialogo101.setLocationRelativeTo(null);
+    janelaDialogo101.setLayout(new BorderLayout());
+
+
+    fundojDialogo101 = new JPanel();
+    fundojDialogo101.setBackground(Color.black);
+    fundojDialogo101.setLayout(new BoxLayout(fundojDialogo101, BoxLayout.Y_AXIS));
+    fundojDialogo101.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+
+  String texto = """ 
+    Kote: "Já resolvi o enigma do fôlego. Agora, para proteger OLIN, preciso agir."
+    Rei Sebastian: "Você acha que pode me deter? Eu sou o rei!"
+    Kote: "Por Noxterra, eu não hesitarei."
+    Rei Sebastian: "Você não pode me derrotar!"
+    Narrador: Kote, impulsionado pelo poder do diário e sua determinação, lança um feitiço poderoso, atingindo o rei diretamente no coração.
+    O brilho do diário resplandece enquanto Sebastian cai, sua expressão de desespero se transforma em uma expressão de compreensão.
+    Kote: "Que isso sirva de lição. O poder sem sabedoria é um caminho para a destruição."
+    Narrador: O rei cai, e a sala se silencia. Kote observa o corpo do rei, ciente do peso de sua decisão, mas também da necessidade de um novo começo para OLIN.
+    Kote: "Agora, OLIN  terá a chance de renascer, guiado por aqueles que realmente se importam."
+    """;
+
+  textodi101 = new JTextArea(texto);
+  textodi101.setWrapStyleWord(true);
+  textodi101.setLineWrap(true);
+  textodi101.setOpaque(false);
+  textodi101.setEditable(false);
+  textodi101.setForeground(Color.white);
+  textodi101.setFont(fontecorpo);
+
+
+ 
+  fundojDialogo101.add(textodi101);
+  janelaDialogo101.getContentPane().add(fundojDialogo101);
+  janelaDialogo101.setVisible(true);
+
+
+  
+  InputMap mj = fundojDialogo101.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+  ActionMap mj1 = fundojDialogo101.getActionMap();
+  mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+  mj1.put("enterPressed", new AbstractAction() {
+      public void actionPerformed(ActionEvent e) {
+        abseudesafio10(); 
+      }
+  });
+
+
+}
+ public void abDialogo102(){
+    janelaDialogo102 = new JFrame("Dialogo 10");
+    janelaDialogo102.setSize(1000, 700);
+    janelaDialogo102.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janelaDialogo102.setResizable(false);
+    janelaDialogo102.getContentPane().setBackground(Color.black);
+    janelaDialogo102.setLocationRelativeTo(null);
+    janelaDialogo102.setLayout(new BorderLayout());
+
+
+    fundojDialogo102 = new JPanel();
+    fundojDialogo102.setBackground(Color.black);
+    fundojDialogo102.setLayout(new BoxLayout(fundojDialogo102, BoxLayout.Y_AXIS));
+    fundojDialogo102.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+
+  String texto = """ 
+    Narrador: Com a resposta certa, a barreira se dissolve, permitindo que Kote se aproxime do rei.
+    Kote: (olhando nos olhos de Sebastian) "Rei Sebastian, o poder pode ser tentador, mas ele deve ser equilibrado com sabedoria e compaixão."
+    Rei Sebastian: (refletindo) "Você fala verdade, Kote. O poder não é um fardo leve."
+    Kote: "Juntos, podemos governar OLIN com justiça. Você pode usar o Diário de Arquimedes para o bem, e eu estarei ao seu lado, como conselheiro."
+    Rei Sebastian: (sorrindo) "Talvez sua ingênua bravura possa ser a chave que precisamos. Um rei e seu conselheiro, unidos pelo propósito."
+    Purgatório: "Se esta for a decisão de ambos, OLIN será protegido sob sua nova liderança."
+    Narrador: E assim, com a sabedoria de Kote e a determinação de Sebastian, OLIN renasce sob uma nova era de prosperidade, onde o poder é usado para proteger,
+    e a ambição é guiada pelo amor ao povo.
+    """;
+
+
+  textodi102 = new JTextArea(texto);
+  textodi102.setWrapStyleWord(true);
+  textodi102.setLineWrap(true);
+  textodi102.setOpaque(false);
+  textodi102.setEditable(false);
+  textodi102.setForeground(Color.white);
+  textodi102.setFont(fontecorpo);
+
+
+ 
+  fundojDialogo102.add(textodi102);
+  janelaDialogo102.getContentPane().add(fundojDialogo102);
+  janelaDialogo102.setVisible(true);
+
+
+  
+  InputMap mj = fundojDialogo102.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+  ActionMap mj1 = fundojDialogo102.getActionMap();
+  mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+  mj1.put("enterPressed", new AbstractAction() {
+      public void actionPerformed(ActionEvent e) {
+        abseudesafio10(); 
+      }
+  });
+
+
+ }
 
 
 
@@ -1652,7 +1786,7 @@ public void abseudesafio10() {
     fundoalternativasd10.setLayout(new GridLayout(2, 2, 10, 10));
     con.add(fundoalternativasd10);
 
-    alternativaad10 = new JButton("A) ArrayList — Recuperar um artefato sagrado para a Facção A.");
+    alternativaad10 = new JButton("<html>A) ArrayList — Recuperar<br> um artefato sagrado para a Facção A.</html>");
     alternativaad10.setFont(fontedesafios);
     alternativaad10.setFocusPainted(false);
     alternativaad10.setBackground(Color.black);
@@ -1661,11 +1795,11 @@ public void abseudesafio10() {
     alternativaad10.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
            verificarResposta(true);
-           abstart();
+           abprimeirajanela();
            janeladesafio10.dispose();
         }
     });
-    alternativabd10 = new JButton("B) Array — Eliminar um traidor na Facção B.");
+    alternativabd10 = new JButton("<html>B) Array — Eliminar<br> um traidor na Facção B.</html>");
     alternativabd10.setFont(fontedesafios);
     alternativabd10.setFocusPainted(false);
     alternativabd10.setBackground(Color.black);
@@ -1676,7 +1810,7 @@ public void abseudesafio10() {
            verificarResposta(false);
         }
     });
-    alternativacd10 = new JButton("C)ArrayList — Eliminar um traidor na Facção B.");
+    alternativacd10 = new JButton("<html>C)ArrayList — Eliminar<br> um traidor na Facção B.</html>");
     alternativacd10.setFont(fontedesafios);
     alternativacd10.setFocusPainted(false);
     alternativacd10.setBackground(Color.black);
@@ -1687,7 +1821,7 @@ public void abseudesafio10() {
            verificarResposta(false);
         }
     });
-    alternativadd10 = new JButton("D) Array — Recuperar um artefato sagrado para a Facção A.");
+    alternativadd10 = new JButton("<html>D) Array — Recuperar<br> um artefato sagrado para a Facção A.</html>");
     alternativadd10.setFont(fontedesafios);
     alternativadd10.setFocusPainted(false);
     alternativadd10.setBackground(Color.black);
