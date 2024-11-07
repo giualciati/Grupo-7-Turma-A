@@ -437,9 +437,6 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
           Rei: Venha comigo
           Narrador: Rei sebastian leve kote a até a porta da biblioteca.""";
     
-    
-    
-    
       textoDi2 = new JTextArea(texto);
       textoDi2.setWrapStyleWord(true);
       textoDi2.setLineWrap(true);
@@ -572,11 +569,18 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         fundojDialogo3.setBorder(new EmptyBorder(20, 20, 20, 20));
     
         String texto = """ 
-            Rei Sebastian: O que você está fazendo por aqui, Kote?
-            Kote: Quero entrar na biblioteca, preciso consultar o livro.
-            Rei: Venha comigo.
-            Narrador: Rei Sebastian leva Kote até a porta da biblioteca.
-        """;
+            Narrador: Em uma noite sombria, Kote recebe um chamado de emergência do feiticeiro.
+            Feiticeiro: Kote ! Acorde! o reino de Noxterra, o reino noturno onde a lua ilumina segredos e conhecimentos antigos, 
+            abriga o Diário de Arquimedes, uma escrita ancestral que contém segredos poderosos sobre a manipulação do tempo, porém, 
+            a facção do rei o roubou da biblioteca, precisamos que vocÊ resolva isso, volte no tempo e recupere o diário.
+
+            Kote: Manipulação do tempo? Isso é maior do que eu imaginava. Se a facção do rei tem o Diário de Arquimedes,
+            eles podem ter um poder imenso.Mas e se eu não conseguir controlar o tempo? E se eu mudar algo que não deveria?
+
+
+            Feiticeiro: Esses são riscos que você precisará enfrentar. Mas confie em sua intuição e no que você aprenderá.
+            Você está pronto para essa jornada?
+            """;
     
         textoDi3 = new JTextArea(texto);
         textoDi3.setWrapStyleWord(true);
@@ -620,12 +624,7 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         sistemaVida = criarSistemaVida();
         con.add(sistemaVida);
 
-        tdesafio3 = new JLabel("<html>Em uma noite sombria, Kote recebe um chamado de emergência.<br><br>" + 
-                        "O reino de Noxterra, um reino noturno onde a lua ilumina segredos e conhecimentos antigos,<br>" + 
-                        "abriga o Diário de Arquimedes, uma escrita ancestral que contém segredos poderosos sobre a<br>" + 
-                        "manipulação do tempo, porém,  a tranquilidade do reino foi perturbada por uma nova ameaça<br>" + 
-                        "o  diário de Arquimedes foi roubado pela a facção do rei o purgatório.Se eles não forem<br> impedidos o equilíbrio do mundo será destruído.<br><br>" + 
-                        "Agora, kote embarca em uma jornada através do tempo voltando ao passado para recuperar o<br> diário de Arquimedes antes do purgatório.<br><br>" +
+        tdesafio3 = new JLabel("<html>Agora, kote embarca em uma jornada através do tempo voltando ao passado para recuperar o<br> diário de Arquimedes antes do purgatório.<br><br>" +
                         "PERGUNTA: WHILE é uma estrutura de repetição que executa  um conjunto de comandos múltiplas vezes?</html>");
         tdesafio3.setForeground(Color.white);
         tdesafio3.setFont(fontedesafios);
@@ -1205,7 +1204,7 @@ public void abDialogo7() {
         fundoalternativasd7.setBackground(Color.black);
         fundoalternativasd7.setLayout(new GridLayout(2, 2, 10, 10)); 
 
-        alternativaad7 = new JButton("A) else");
+        alternativaad7 = new JButton("A) Else");
         alternativaad7.setFont(fontedesafios);
         alternativaad7.setFocusPainted(false);
         alternativaad7.setBackground(Color.black);
@@ -1218,7 +1217,7 @@ public void abDialogo7() {
                 janeladesafio7.dispose();
             }
          });
-        alternativabd7 = new JButton("B) switch");
+        alternativabd7 = new JButton("B) Switch");
         alternativabd7.setFont(fontedesafios);
         alternativabd7.setFocusPainted(false);
         alternativabd7.setBackground(Color.black);
@@ -1229,7 +1228,7 @@ public void abDialogo7() {
                verificarResposta(false);
             }
         });
-        alternativacd7 = new JButton("C) for ");
+        alternativacd7 = new JButton("C) For ");
         alternativacd7.setFont(fontedesafios);
         alternativacd7.setFocusPainted(false);
         alternativacd7.setBackground(Color.black);
@@ -1240,7 +1239,7 @@ public void abDialogo7() {
                 verificarResposta(false);
             }
         });
-        alternativadd7 = new JButton("D) break");
+        alternativadd7 = new JButton("D) Break");
         alternativadd7.setFont(fontedesafios);
         alternativadd7.setFocusPainted(false);
         alternativadd7.setBackground(Color.black);
@@ -1354,7 +1353,7 @@ public void actionPerformed(ActionEvent e) {
     fundoalternativasd8.setBackground(Color.black);
     fundoalternativasd8.setLayout(new GridLayout(2, 2, 10, 10)); 
 
-    alternativaad8 = new JButton("A) atacar");
+    alternativaad8 = new JButton("A) Atacar");
     alternativaad8.setFont(fontedesafios);
     alternativaad8.setFocusPainted(false);
     alternativaad8.setBackground(Color.black);
@@ -1365,7 +1364,7 @@ public void actionPerformed(ActionEvent e) {
            verificarResposta(false);
         }
     });
-    alternativabd8 = new JButton("B) defender");
+    alternativabd8 = new JButton("B) Defender");
     alternativabd8.setFont(fontedesafios);
     alternativabd8.setFocusPainted(false);
     alternativabd8.setBackground(Color.black);
@@ -1379,7 +1378,7 @@ public void actionPerformed(ActionEvent e) {
         }
     });
 
-    alternativacd8 = new JButton("C) fugir ");
+    alternativacd8 = new JButton("C) Fugir ");
     alternativacd8.setFont(fontedesafios);
     alternativacd8.setFocusPainted(false);
     alternativacd8.setBackground(Color.black);
@@ -1390,7 +1389,7 @@ public void actionPerformed(ActionEvent e) {
             verificarResposta(false);
         }
     });
-    alternativadd8 = new JButton("D) parado");
+    alternativadd8 = new JButton("D) Parado");
     alternativadd8.setFont(fontedesafios);
     alternativadd8.setFocusPainted(false);
     alternativadd8.setBackground(Color.black);
@@ -1493,7 +1492,7 @@ public void actionPerformed(ActionEvent e) {
     fundoalternativasd9.setBackground(Color.black);
     fundoalternativasd9.setLayout(new GridLayout(2, 2, 10, 10)); 
 
-    alternativaad9 = new JButton("A) sort()");
+    alternativaad9 = new JButton("A) Sort()");
     alternativaad9.setFont(fontedesafios);
     alternativaad9.setFocusPainted(false);
     alternativaad9.setBackground(Color.black);
@@ -1506,7 +1505,7 @@ public void actionPerformed(ActionEvent e) {
             janeladesafio9.dispose();
         }
     });
-    alternativabd9 = new JButton("B) order()");
+    alternativabd9 = new JButton("B) Order()");
     alternativabd9.setFont(fontedesafios);
     alternativabd9.setFocusPainted(false);
     alternativabd9.setBackground(Color.black);
@@ -1528,7 +1527,7 @@ public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
         }
     });
-    alternativadd9 = new JButton("D) add()");
+    alternativadd9 = new JButton("D) Add()");
     alternativadd9.setFont(fontedesafios);
     alternativadd9.setFocusPainted(false);
     alternativadd9.setBackground(Color.black);
