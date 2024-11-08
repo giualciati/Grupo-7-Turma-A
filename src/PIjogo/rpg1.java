@@ -9,12 +9,12 @@ import java.awt.event.*;
 public class rpg1 {
 
  //criação das variáveis
- JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10, janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9, janeladecisao, janelaDialogo101, janelaDialogo102;//janela
+ JFrame janela, janelastart, janelacomojogar, janelacomojogar2, janelacreditos, janeladesafio1, janeladesafio2, janeladesafio3, janeladesafio4, janeladesafio5, janeladesafio6, janeladesafio7, janeladesafio8, janeladesafio9, janeladesafio10, janelaDialogo1, janelaDialogo2, janelaDialogo3, janelaDialogo4, janelaDialogo5, janelaDialogo6, janelaDialogo7, janelaDialogo8, janelaDialogo9, janeladecisao, janelaDialogo101, janelaDialogo102, janelanoxterra, janelaDormir;//janela
  Container con;//conteúdo
- JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9, fundojdecisao, fundobdecisao, fundojDialogo101, fundojDialogo102;//painéis
+ JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9, fundojdecisao, fundobdecisao, fundojDialogo101, fundojDialogo102, fundobjstart, fundojnoxterra, fundoDormir;//painéis
  JLabel tituloinicial, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10, matar, nmatar;//botões
- JTextArea textostart, textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9, textocreditos, textodecisao, textodi101, textodi102;
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, biblioteca, nbiblioteca, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10, matar, nmatar;//botões
+ JTextArea textostart, textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9, textocreditos, textodecisao, textodi101, textodi102, textonox, textoAreaDormir;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
  Font fontedesafios = new Font("Times New ROman", Font.PLAIN, 20);
@@ -63,7 +63,7 @@ public void abprimeirajanela(){
     bstart.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             abstart(); // Chama o método que abre a nova janela
-            janela.setVisible(false);//fecha a janela inicial
+            janela.dispose();//fecha a janela atual
         }
     });
 
@@ -88,12 +88,10 @@ public void abprimeirajanela(){
     bcomojogar.setForeground(Color.white);
     bcomojogar.setFont(fontecorpo);
 
-    bcomojogar.setFocusPainted(false); //Para tirar as bordas do botão
+    bcomojogar.setFocusPainted(false); 
     bcomojogar.setBorderPainted(false);
     bcomojogar.setContentAreaFilled(false);
-    
-     // Adicionando ActionListener para abrir a nova janela ao clicar no botão "COMO JOGAR"
-        bcomojogar.addActionListener(new ActionListener() {
+    bcomojogar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 abcomojogar(); // Chama o método que abre a nova janela
                 janela.setVisible(false);//fecha a janela inicial
@@ -102,14 +100,14 @@ public void abprimeirajanela(){
 
      bcomojogar.addMouseListener(new MouseListener() {
         public void mouseEntered(MouseEvent e) {
-            bcomojogar.setForeground(Color.yellow);//Muda a cor do botão ao passar o mouse em cima
+            bcomojogar.setForeground(Color.yellow);
         }
 
         public void mouseExited(MouseEvent e) {
-            bcomojogar.setForeground(Color.white);//Volta à cor original ao tirar o mouse
+            bcomojogar.setForeground(Color.white);
         }
 
-       public void mouseClicked(MouseEvent e) {}//Metodos não utilizados, mas que precisam estar aqui
+       public void mouseClicked(MouseEvent e) {}
        public void mousePressed(MouseEvent e) {}
        public void mouseReleased(MouseEvent e) {}
 
@@ -128,8 +126,8 @@ public void abprimeirajanela(){
 
      bcreditos.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            abcreditos(); // Chama o método que abre a nova janela
-            janela.setVisible(false);//fecha a janela inicial
+            abcreditos(); 
+            janela.setVisible(false);
         }
     });
      
@@ -141,7 +139,7 @@ public void abprimeirajanela(){
          public void mouseExited(MouseEvent e) {
              bcreditos.setForeground(Color.white);
          }
-         public void mouseClicked(MouseEvent e) {}//Metodos não utilizados, mas que precisam estar aqui
+         public void mouseClicked(MouseEvent e) {}
          public void mousePressed(MouseEvent e) {}
          public void mouseReleased(MouseEvent e) {}
      });
@@ -199,6 +197,7 @@ public void abprimeirajanela(){
      return bvoltar;
         
     }
+    //primeira janela start
     public void abstart() {
         janelastart = new JFrame("A Herança do Caos: Visão de Kote");
         janelastart.setSize(1000, 700);
@@ -216,18 +215,16 @@ public void abprimeirajanela(){
     
         // Texto da visão
         String textoVisao = """
-Narrador: Na quietude da noite, Kote dorme profundamente, exausto de suas últimas batalhas. A chama de uma vela tremeluzente ilumina seu rosto, mas, enquanto ele descansa, algo estranho começa a acontecer.
-Em seu sonho, ele se vê em uma paisagem desolada, um mundo coberto por sombras. O céu é de um vermelho ameaçador, e a terra parece gritar de dor. Kote caminha sem rumo, até que uma figura envolta em sombras surge diante dele, seus olhos brilhando como brasa.
-
-Figura Misteriosa: Kote... você é o último herdeiro dos Maerion. O sangue dos antigos flui em você, e com ele, o poder de mudar o destino deste mundo. Mas saiba que o grande Caos se aproxima. Se você não agir, tudo que conhece será consumido pelas chamas da destruição.
-
-Narrador: As imagens ao seu redor começam a se deformar, revelando cidades em ruínas, tempestades de fogo consumindo florestas e rios de cinzas cobrindo a terra. Kote sente um arrepio percorrer seu corpo enquanto a figura misteriosa se aproxima, sua voz ecoando como um trovão.
-
-Figura Misteriosa: Se quer salvar o que ainda resta, vá até a biblioteca. Busque a seção proibida que o Rei esconde, lá você vai encontrar os segredos de sua linhagem e do poder que só você pode despertar."
-
-Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavras da visão ainda vibrando em sua mente. Ele compreende que essa não foi uma simples fantasia noturna, mas uma mensagem dos antigos. Ele precisa ir à biblioteca, e lá, na seção restrita do Rei, talvez encontre as respostas para o apocalipse que o aguarda – e para o poder oculto que precisará para enfrentá-lo.
-
-
+    Narrador: Na quietude da noite, Kote dorme profundamente, exausto de suas últimas batalhas. A chama de uma vela tremeluzente ilumina seu rosto, mas, enquanto ele descansa, algo estranho começa a acontecer.
+    Em seu sonho, ele se vê em uma paisagem desolada, um mundo coberto por sombras. O céu é de um vermelho ameaçador, e a terra parece gritar de dor. Kote caminha sem rumo, até que uma figura envolta em sombras surge diante dele, seus olhos brilhando como brasa.
+    
+    Figura Misteriosa: Kote... você é o último herdeiro dos Maerion. O sangue dos antigos flui em você, e com ele, o poder de mudar o destino deste mundo. Mas saiba que o grande Caos se aproxima. Se você não agir, tudo que conhece será consumido pelas chamas da destruição.
+    
+    Narrador: As imagens ao seu redor começam a se deformar, revelando cidades em ruínas, tempestades de fogo consumindo florestas e rios de cinzas cobrindo a terra. Kote sente um arrepio percorrer seu corpo enquanto a figura misteriosa se aproxima, sua voz ecoando como um trovão.
+    
+    Figura Misteriosa: Se quer salvar o que ainda resta, vá até a biblioteca. Busque a seção proibida que o Rei esconde, lá você vai encontrar os segredos de sua linhagem e do poder que só você pode despertar.
+    
+    Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavras da visão ainda vibrando em sua mente. Ele compreende que essa não foi uma simples fantasia noturna, mas uma mensagem dos antigos. Ele precisa ir à biblioteca, e lá, na seção restrita do Rei, talvez encontre as respostas para o apocalipse que o aguarda – e para o poder oculto que precisará para enfrentá-lo.
         """;
     
         JTextArea textostart = new JTextArea(textoVisao);
@@ -236,41 +233,120 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         textostart.setOpaque(false);
         textostart.setEditable(false);
         textostart.setForeground(Color.white);
-        textostart.setFont(fontecorpo);
-        fundojstart.add(textostart);
-
-        JScrollPane barra = new JScrollPane(textostart);
-        barra.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        barra.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        barra.setPreferredSize(new Dimension(500, 400)); 
-        barra.setBorder(null);
-        barra.getViewport().setBackground(Color.black);
-
-        JScrollBar verticalBar = barra.getVerticalScrollBar();
-        verticalBar.setBackground(Color.black); // Cor de fundo da barra de rolagem
-        verticalBar.setForeground(Color.black);  // Cor do polegar (parte deslizante)
-        verticalBar.setUnitIncrement(10);
+        textostart.setFont(fontecorpo2);
     
-        InputMap im = fundojstart.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap am = fundojstart.getActionMap();
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
-        am.put("enterPressed", new AbstractAction() {
+        JPanel fundobjstart = new JPanel();
+        fundobjstart.setBounds(100, 380, 800, 150);
+        fundobjstart.setBackground(Color.black);
+        fundobjstart.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+    
+        biblioteca = new JButton("Ir imediatamente para a Biblioteca");
+        biblioteca.setFont(fontedesafios);
+        biblioteca.setPreferredSize(new Dimension(350, 50));
+        biblioteca.setFocusPainted(false);
+        biblioteca.setBackground(Color.black);
+        biblioteca.setForeground(Color.white);
+        biblioteca.setContentAreaFilled(false);
+        biblioteca.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                abDialogo1();
-                janelastart.dispose();
+                executarBiblioteca("ir");
             }
         });
-        fundojstart.add(barra);
+    
+        nbiblioteca = new JButton("Voltar a dormir");
+        nbiblioteca.setFont(fontedesafios);
+        nbiblioteca.setPreferredSize(new Dimension(350, 50));
+        nbiblioteca.setFocusPainted(false);
+        nbiblioteca.setBackground(Color.black);
+        nbiblioteca.setForeground(Color.white);
+        nbiblioteca.setContentAreaFilled(false);
+        nbiblioteca.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                executarBiblioteca("não ir");
+            }
+        });
+    
+        fundojstart.add(textostart);
+        fundobjstart.add(biblioteca);
+        fundobjstart.add(nbiblioteca);
+        fundojstart.add(fundobjstart);
+    
         janelastart.getContentPane().add(fundojstart);
         janelastart.setVisible(true);
     }
+    
+    public void executarBiblioteca(String decisaob) {
+        switch (decisaob) {
+            case "ir":
+                JOptionPane.showMessageDialog(null, "Você decidiu ir à biblioteca.");
+                abDialogo1();
+                janelastart.dispose();
+                break;
+            case "não ir":
+                JOptionPane.showMessageDialog(null, "Você decidiu ignorar o sonho e voltar a dormir.");
+                abjanelastart2();
+                janelastart.dispose();
+                break;
+        }
+    }
+    //janela de escolha voltar a dormir
+    public void abjanelastart2() {
+        janelaDormir = new JFrame("Sonhos Inquietos");
+        janelaDormir.setSize(1000, 700);
+        janelaDormir.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        janelaDormir.setResizable(false);
+        janelaDormir.getContentPane().setBackground(Color.black);
+        janelaDormir.setLocationRelativeTo(null);
+        
+        fundoDormir = new JPanel();
+        fundoDormir.setBackground(Color.black);
+        fundoDormir.setLayout(new BoxLayout(fundoDormir, BoxLayout.Y_AXIS));
+        fundoDormir.setBorder(new EmptyBorder(20, 20, 20, 20));
+    
+        String textoDormir = """
+    Narrador: Kote se vira para o lado, tentando afastar a estranha visão. Ele respira fundo e se cobre com seu manto, buscando o conforto do sono. Mas, assim que fecha os olhos, a voz da figura misteriosa ecoa em sua mente, ainda mais forte.
 
+    Figura Misteriosa: Kote... o tempo está se esgotando. Sua hesitação pode custar mais do que imagina.
 
+    Narrador: Kote se mexe inquieto, os sussurros ressoando em seus pensamentos. Ele tenta ignorar, convencendo-se de que tudo não passa de um pesadelo. Contudo, após várias tentativas, ele percebe que não consegue escapar das visões. Sente-se observado e, ao fechar os olhos novamente, a paisagem desolada volta a assombrá-lo.
+
+    Figura Misteriosa: Você realmente acredita que pode fugir de seu destino, Kote?
+
+    Narrador: Finalmente, Kote abre os olhos, incapaz de ignorar a voz que o atormenta. Ele se levanta, sentindo o peso da responsabilidade sobre seus ombros. As imagens de destruição e caos invadem sua mente, e ele entende que precisa atender ao chamado dos antigos.
+
+    Narrador: A decisão está tomada: Kote irá até a biblioteca, pronto para enfrentar o destino que tanto hesitou em aceitar.
+    
+    """;
+    
+        textoAreaDormir = new JTextArea(textoDormir);
+        textoAreaDormir.setWrapStyleWord(true);
+        textoAreaDormir.setLineWrap(true);
+        textoAreaDormir.setOpaque(false);
+        textoAreaDormir.setEditable(false);
+        textoAreaDormir.setForeground(Color.white);
+        textoAreaDormir.setFont(new Font("Serif", Font.PLAIN, 18));
+        fundoDormir.add(textoAreaDormir);
+
+        InputMap mj = fundoDormir.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap mj1 = fundoDormir.getActionMap();
+        mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+        mj1.put("enterPressed", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                abDialogo1(); 
+                janelaDormir.dispose();
+            }
+        });
+    
+        janelaDormir.getContentPane().add(fundoDormir);
+        janelaDormir.setVisible(true);
+    }
+     
+    //Criação do sistema de vida
     private JLabel criarSistemaVida() {
         JLabel sistemaVida = new JLabel("Vida: " + vida);
         sistemaVida.setForeground(Color.white);
         sistemaVida.setFont(fontedesafios);
-        sistemaVida.setBounds(10, 10, 200, 30); // Ajuste conforme necessário
+        sistemaVida.setBounds(10, 10, 200, 30); 
         return sistemaVida;
  }
   public void abDialogo1() { 
@@ -289,13 +365,13 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
      fundojDialogo1.setBorder(new EmptyBorder(20, 20, 20, 20));
 
       String texto = """ 
-      Feiticeiro: Bem - vindo à biblioteca kote, o que você deseja encontrar aqui?
+      Feiticeiro: Bem-vindo Kote, o que você deseja encontrar aqui?
       
-      Kote: Estou procurando um livro que contenha feitiços antigos. Dizem que ele guarda segredos poderosos.
+      Kote: Estou procurando um livro que contenha informações sobre os Maerion. Você sabe me dizer onde fica?
       
-      Feiticeiro: Muito bem, siga para a seção mais profunda da biblioteca. Mas cuidado, alguns feitiços podem ter consequências inesperadas.
+      Feiticeiro: Maerion? Eles desapareceram há muito tempo, antes mesmo do rei Sebastian governar. Não acredito que vá encontrar muita coisa, mas siga para a seção restrita da biblioteca. Se você já conversou com o Rei, saberá como entrar.
       
-      Narrador: Kote acena com a cabeça e avança, sentindo a atmosfera mágica ao seu redor enquanto se aproxima da sessão proibida.""";
+      Narrador: Kote acena com a cabeça e avança, sentindo a atmosfera intensificando ao seu redor enquanto se aproxima da sessão proibida.""";
 
 
       textoDi1 = new JTextArea(texto);
@@ -334,10 +410,10 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         con = janeladesafio1.getContentPane();
 
         fundodesafio1 = new JPanel();
-        fundodesafio1.setBounds(20, 50, 900, 600);
+        fundodesafio1.setBounds(10, 50, 900, 600);
         fundodesafio1.setBackground(Color.black);
 
-        tdesafio1 = new JLabel("<html>Após o encontro com o feiticeiro, Kote vai até a biblioteca do palácio, mas o livro que ele precisa<br> encontra-se em uma área restrita que contém os seguintes requisitos:<br><br>" + //
+        tdesafio1 = new JLabel("<html>Após o encontro com o feiticeiro, Kote observa a magia que preserva a seção restrita.<br> Para entrar, ele precisa possuir alguns requisitos: <br><br>" + //
             "<i> if (!(energia < 5 || foco <= 5) && (habilidadeEspecial || sabedoria > 10)) {</i><br>" + 
             "<i>acessarBiblioteca();</i><br><br>" + 
             "Considere os valores para Kote:<br>" + 
@@ -432,10 +508,23 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
     
     
       String texto = """ 
-          Rei Sebastian: O que você está fazendo por aqui kote?
-          Kote: Quero entrar na biblioteca, preciso consultar o livro
-          Rei: Venha comigo
-          Narrador: Rei sebastian leve kote a até a porta da biblioteca.""";
+         Rei Sebastian: O que você está fazendo por aqui, Kote?
+
+         Narrador: Kote se assusta com a presença repentina do rei e se vira cuidadosamente, ponderando sobre o que deveria dizer.
+
+         Kote: Majestade... Eu estava sem sono e decidi procurar algo para ocupar a mente. Não foi minha intenção interromper sua leitura. Com licença...
+
+         Rei Sebastian: Espere. Você e eu crescemos juntos, Kote, não há necessidade de tanta formalidade. Você quer algo desta seção, não é? Venha, eu abrirei a porta para você.
+
+         Narrador: Sebastian para em frente à porta, que se abre automaticamente ao seu comando.
+
+         Rei Sebastian: Aqui está... Lembre-se, Kote, você sempre poderá contar com minha ajuda. Somos como irmãos, e foi por isso que te escolhi como minha Mão.
+
+         Kote: Agradeço, Majestade. Pegarei o livro e voltarei ao meu quarto.
+
+         Narrador: Kote faz uma reverência e entra, observando as prateleiras.
+
+          """;
     
       textoDi2 = new JTextArea(texto);
       textoDi2.setWrapStyleWord(true);
@@ -443,7 +532,7 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
       textoDi2.setOpaque(false);
       textoDi2.setEditable(false);
       textoDi2.setForeground(Color.white);
-      textoDi2.setFont(fontecorpo);
+      textoDi2.setFont(fontecorpo2);
     
      
       fundojDialogo2.add(textoDi2);
@@ -478,7 +567,7 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         sistemaVida = criarSistemaVida();
         con.add(sistemaVida);
 
-        tdesafio2 = new JLabel("<html>Sebastian abre a biblioteca para Kote, mas ele precisa descobrir em qual prateleira está o livro<br>" + 
+        tdesafio2 = new JLabel("<html>Kote encontra a prateleira certa mas ela também está protegida com um feitiço<br>" + 
                         "<i>if ((conhecimento > 7 && energia > 5) || (habilidadeEspecial && sabedoria >= 12)) {</i><br>" + 
                         "<i>abrirPrateleira();</i><br><br>" + 
                         "Considere os valores para Kote:<br>" + 
@@ -569,17 +658,16 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         fundojDialogo3.setBorder(new EmptyBorder(20, 20, 20, 20));
     
         String texto = """ 
-            Narrador: Em uma noite sombria, Kote recebe um chamado de emergência do feiticeiro.
-            Feiticeiro: Kote ! Acorde! o reino de Noxterra, o reino noturno onde a lua ilumina segredos e conhecimentos antigos, 
-            abriga o Diário de Arquimedes, uma escrita ancestral que contém segredos poderosos sobre a manipulação do tempo, porém, 
-            a facção do rei o roubou da biblioteca, precisamos que vocÊ resolva isso, volte no tempo e recupere o diário.
+            Narrador: Kote segura o livro em suas mãos e começa a folhear com cuidado enquanto caminha para fora da seção. Já em seus aposentos, ele descobre que os Maerion eram um povo capaz de viajar no tempo, mas foram acusados de traição ao último rei e condenados a morte.
+            Arquimedes era o líder desse povo e seu diário continha os ensinamentos para alcançar esse poder, além de contar toda a história por trás dos segredos que a nobreza mantinha.
 
-            Kote: Manipulação do tempo? Isso é maior do que eu imaginava. Se a facção do rei tem o Diário de Arquimedes,
-            eles podem ter um poder imenso.Mas e se eu não conseguir controlar o tempo? E se eu mudar algo que não deveria?
+            Feiticeiro: Kote! Acorde! O rei precisa que você vá até Noxterra para garantir um acordo.
 
+            Narrador: Kote acorda assustado com as batidas fortes na porta, percebendo que dormiu enquanto lia sobre Arquimedes.
 
-            Feiticeiro: Esses são riscos que você precisará enfrentar. Mas confie em sua intuição e no que você aprenderá.
-            Você está pronto para essa jornada?
+            Kote: Um momento! Eu vou me trocar e pegar a primeira carruagem!
+
+            Feiticeiro: Venha rápido. Eles estão cogitando a separação do reino.
             """;
     
         textoDi3 = new JTextArea(texto);
@@ -588,7 +676,7 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         textoDi3.setOpaque(false);
         textoDi3.setEditable(false);
         textoDi3.setForeground(Color.white);
-        textoDi3.setFont(fontecorpo);
+        textoDi3.setFont(fontecorpo2);
     
         fundojDialogo3.add(textoDi3);
     
@@ -624,7 +712,7 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         sistemaVida = criarSistemaVida();
         con.add(sistemaVida);
 
-        tdesafio3 = new JLabel("<html>Agora, kote embarca em uma jornada através do tempo voltando ao passado para recuperar o<br> diário de Arquimedes antes do purgatório.<br><br>" +
+        tdesafio3 = new JLabel("<html>Agora, kote embarca em uma jornada até Noxterra para fechar o acordo com seus líderes,<br> mas ao chegar é ameaçado pelos guardas antes mesmo de se apresentar.<br> Ele precisa lutar para sobreviver<br><br>" +
                         "PERGUNTA: WHILE é uma estrutura de repetição que executa  um conjunto de comandos múltiplas vezes?</html>");
         tdesafio3.setForeground(Color.white);
         tdesafio3.setFont(fontedesafios);
@@ -682,7 +770,7 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         alternativadd3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 verificarResposta(true);
-                abDialogo4();
+                abnoxterra();
                 janeladesafio3.dispose();
             }
         });
@@ -694,7 +782,64 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         con.add(fundodesafio3);
         janeladesafio3.setVisible(true);
 
+        }
+        public void abnoxterra(){
+        janelanoxterra = new JFrame("Dialogo 2");
+        janelanoxterra.setSize(1000, 700);
+        janelanoxterra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelanoxterra.setResizable(false);
+        janelanoxterra.getContentPane().setBackground(Color.black);
+        janelanoxterra.setLocationRelativeTo(null);
+        janelanoxterra.setLayout(new BorderLayout());
+    
+    
+        fundojnoxterra = new JPanel();
+        fundojnoxterra.setBackground(Color.black);
+        fundojnoxterra.setLayout(new BoxLayout(fundojnoxterra, BoxLayout.Y_AXIS));
+        fundojnoxterra.setBorder(new EmptyBorder(20, 20, 20, 20));
+    
+    
+      String texto = """ 
+        Guardião: Parem! O que pensam que estão fazendo? Este é a Mão do Rei de Olin!
+
+        Narrador: Os guardas param imediatamente e se ajoelham, pedindo perdão.
+
+        Kote: Não sabia que vocês recebiam visitantes de forma tão calorosa.
+
+        Guardião: Peço desculpas pelo ocorrido. Posso garantir que eles serão punidos severamente.
+
+        Kote: Não será necessário. Estou aqui para propor um acordo com Noxterra. Nós não queremos que vocês se isolem, e acredito que vocês também não queiram perder o acesso pelo Porto Real.
+
+        Guardião: Esse não é um assunto que podemos discutir aqui fora. Venha, entre, e lhe explicarei o motivo de nossa hesitação.
+
+        Narrador: Kote lança um olhar desconfiado para o homem à sua frente, mas decide segui-lo para dentro da torre.
+
+          """;
+    
+      textonox = new JTextArea(texto);
+      textonox.setWrapStyleWord(true);
+      textonox.setLineWrap(true);
+      textonox.setOpaque(false);
+      textonox.setEditable(false);
+      textonox.setForeground(Color.white);
+      textonox.setFont(fontecorpo2);
+    
+     
+      fundojnoxterra.add(textonox);
+      
+      InputMap mj = fundojnoxterra.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+      ActionMap mj1 = fundojnoxterra.getActionMap();
+      mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
+      mj1.put("enterPressed", new AbstractAction() {
+      public void actionPerformed(ActionEvent e) {
+        abdesafio4();
+        janelanoxterra.dispose();
+            }
+        });
+        janelanoxterra.getContentPane().add(fundojnoxterra);
+        janelanoxterra.setVisible(true);
      }
+
      public void abDialogo4() {
         janelaDialogo4 = new JFrame("Dialogo 4");
         janelaDialogo4.setSize(1000, 700);
@@ -712,9 +857,9 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
     
         // Texto do diálogo
         String texto = """ 
-        Guardião da biblioteca de Noxxtera: ” - Bem-vindo, Kote, O tempo aqui não é linear, o Diário de Arquimedes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado.  
+        Guardião de Noxxtera: ” - Bem-vindo, Kote, O tempo aqui não é linear, o Diário de Arquimedes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado.  
         Kote: Um código... isso não será fácil. Que tipo de enigma poderia proteger algo tão poderoso?
-        Guardião da Biblioteca de Noxxterra: O código é uma série de perguntas sobre o tempo e os eventos que moldaram este reino.
+        Guardião de Noxxterra: O código é uma série de perguntas sobre o tempo e os eventos que moldaram este reino.
         Kote: Entendi. Preciso me lembrar da história de Noxterra e de seus segredos.""";
     
         textodi4 = new JTextArea(texto);
@@ -751,18 +896,16 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         janeladesafio4.setLocationRelativeTo(null);
         janeladesafio4.setLayout(null);
         con = janeladesafio4.getContentPane();
-
+    
         fundodesafio4 = new JPanel();
-        fundodesafio4.setBounds(20, 50, 900, 600);
+        fundodesafio4.setBounds(50, 50, 900, 600);
         fundodesafio4.setBackground(Color.black);
         fundodesafio4.setLayout(new BorderLayout());
-
+    
         sistemaVida = criarSistemaVida();
         con.add(sistemaVida);
-
-        tdesafio4 = new JLabel("<html>Assim que kote chega ao passado, ele vai direto para a biblioteca principal de Noxxterra, uma imensa estrutura de paredes de pedra e livros antigos<br>" + 
-                        "O ambiente é iluminado pelo luar da lua, e um ar misterioso envolve o lugar.<br>" + 
-                        "No centro da biblioteca, ele encontra um feiticeiro, uma figura imponente coberta por uma capa de tecido mágico que brilha levemente.<br>" + 
+    
+        tdesafio4 = new JLabel("<html> O ambiente é iluminado pelo luar da lua, e um ar misterioso envolve o lugar.<br>" + 
                         "Bem-vindo, Kote, O tempo aqui não é linear, o Diário de Arquimendes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado.<br>" + 
                         "Somente aqueles que dominam os loops do tempo,  poderão abri-lo.<br>" + 
                         "Você encontrará o código abaixo gravado na lateral do baú.<br>" + 
@@ -777,14 +920,13 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         tdesafio4.setVerticalAlignment(SwingConstants.TOP);
         tdesafio4.setHorizontalAlignment(SwingConstants.LEFT);
         fundodesafio4.add(tdesafio4, BorderLayout.NORTH);
-
-
+    
         fundoalternativasd4 = new JPanel();
-        fundoalternativasd4.setBounds(100,480, 800, 140);
+        fundoalternativasd4.setBounds(80, 480, 800, 140);
         fundoalternativasd4.setBackground(Color.black);
         fundoalternativasd4.setLayout(new GridLayout(2, 2, 10, 10));
         con.add(fundoalternativasd4);
-
+    
         alternativaad4 = new JButton("A) 2");
         alternativaad4.setFont(fontedesafios);
         alternativaad4.setFocusPainted(false);
@@ -798,8 +940,8 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
                 janeladesafio4.dispose();
             }
         });
+    
         alternativabd4 = new JButton("B) 4");
-        alternativabd4.setBounds(400, 400, 500, 50);
         alternativabd4.setFont(fontedesafios);
         alternativabd4.setFocusPainted(false);
         alternativabd4.setBackground(Color.black);
@@ -810,8 +952,8 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
                 verificarResposta(false);
             }
         });
+    
         alternativacd4 = new JButton("C) 3");
-        alternativacd4.setBounds(100, 500, 400, 50);
         alternativacd4.setFont(fontedesafios);
         alternativacd4.setFocusPainted(false);
         alternativacd4.setBackground(Color.black);
@@ -822,8 +964,8 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
                 verificarResposta(false);
             }
         });
+    
         alternativadd4 = new JButton("D) 4");
-        alternativadd4.setBounds(500, 500, 400, 50);
         alternativadd4.setFont(fontedesafios);
         alternativadd4.setFocusPainted(false);
         alternativadd4.setBackground(Color.black);
@@ -834,14 +976,16 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
                 verificarResposta(false);
             }
         });
-        fundodesafio4.add(tdesafio4);
+    
         fundoalternativasd4.add(alternativaad4);
         fundoalternativasd4.add(alternativabd4);
         fundoalternativasd4.add(alternativacd4);
         fundoalternativasd4.add(alternativadd4);
+    
         con.add(fundodesafio4);
         janeladesafio4.setVisible(true);
     }
+    
     public void abDialogo5() { 
         janelaDialogo5 = new JFrame("Dialogo 5");
         janelaDialogo5.setSize(1000, 700);
@@ -860,9 +1004,13 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
         // Texto do diálogo
         String texto = """ 
             Narrador: Após horas de leitura, Kote encontra um ritual que o permite viajar no tempo, mas é preciso um sacrifício: uma memória querida.
+
             Kote: (pensando) Uma memória? Isso é arriscado... mas eu não posso falhar. O reino está em perigo.
+
             Narrador: Ele fecha os olhos, lembrando-se de momentos felizes com seus amigos e família, pesando a dor da possível perda.
+
             Kote: (resoluto) Eu farei isso. O futuro de Olin é mais importante.
+
             Narrador: Com determinação, Kote reúne os ingredientes necessários e começa a traçar o círculo mágico no chão.
         """;
     
@@ -886,7 +1034,7 @@ Narrador: De repente, Kote desperta com o coração acelerado, o eco das palavra
                 janelaDialogo5.dispose();
             }
         });
-    
+        
         janelaDialogo5.getContentPane().add(fundojDialogo5);
         janelaDialogo5.setVisible(true);
     }
@@ -1004,10 +1152,15 @@ public void abDialogo6() {
 
   String texto = """ 
     Narrador: Kote continua lendo o diário para descobrir o verdadeiro motivo da guerra.
+
     Feiticeiro: Você conseguiu descobrir a verdade?
+
     Kote: São tantas verdadeiras que desacredito qual seja a verdade.
+
     Feiticeiro: A verdade é aquela que você mais acredita.
+
     Kote: Eu acredito que o Sebastian seja uma boa pessoa e esteja seguindo os passos do pai.
+    
     Feiticeiro: Isso é uma boa verdade.
     """;
 
@@ -1144,7 +1297,11 @@ public void abDialogo7() {
 
     String texto = """ 
         Narrador: Kote está dividido entre salvar o seu amigo ou matar o rei.
+
+
         Kote: Como irei salvar o meu amigo e o rei ao mesmo tempo?
+
+
         Feiticeiro: Pense, Kote! O que realmente está em jogo? A vida de um homem ou o futuro de muitos?
         """;
 
@@ -1184,22 +1341,25 @@ public void abDialogo7() {
         con = janeladesafio7.getContentPane();
 
         fundodesafio7 = new JPanel();
-        fundodesafio7.setBounds(50, 50, 900, 600);
+        fundodesafio7.setBounds(30, 50, 900, 600);
         fundodesafio7.setBackground(Color.black);
         fundodesafio7.setLayout(new BorderLayout());
 
         sistemaVida = criarSistemaVida();
         con.add(sistemaVida);
 
-        tdesafio7 = new JLabel("<html>Os Guardiões do Tempo surgem e desafiam o guerreiro: };");
+        tdesafio7 = new JLabel("<html>Os Guardiões do Tempo surgem e desafiam o guerreiro:" + 
+                        "Responda corretamente:" + 
+                        "Qual estrutura de controle é ultilizada para executar um bloco de código apenas quando uma condição não é verdadeira?");
         tdesafio7.setForeground(Color.white);
         tdesafio7.setFont(fontedesafios);
         fundodesafio7.add(tdesafio7, BorderLayout.NORTH); 
 
         fundoalternativasd7 = new JPanel();
-        fundoalternativasd7.setBounds(100, 380, 800, 100);
+        fundoalternativasd7.setBounds(80, 380, 800, 100);
         fundoalternativasd7.setBackground(Color.black);
         fundoalternativasd7.setLayout(new GridLayout(2, 2, 10, 10)); 
+        con.add(fundoalternativasd7);
 
         alternativaad7 = new JButton("A) Else");
         alternativaad7.setFont(fontedesafios);
@@ -1252,9 +1412,7 @@ public void abDialogo7() {
         fundoalternativasd7.add(alternativabd7);
         fundoalternativasd7.add(alternativacd7);
         fundoalternativasd7.add(alternativadd7);
-        con.add(fundodesafio7);
-        con.add(fundoalternativasd7);
-            
+        con.add(fundodesafio7);    
         janeladesafio7.setVisible(true);
 }
 public void abDialogo8() { 
@@ -1276,12 +1434,15 @@ public void abDialogo8() {
 
   String texto = """ 
     Narrador: Kote respira fundo, sentindo a energia pulsante ao seu redor. Ele está prestes a fazer algo que pode mudar tudo.
+
     Kote: (determinado) "Eu não posso falhar. O reino precisa de mim."
+
     Narrador: Ele fecha os olhos novamente, a dor da memória se intensificando. Uma imagem clara surge em sua mente: uma tarde ensolarada com seus amigos, rindo e brincando. Ele aperta os punhos, lutando contra a tristeza.
+
     Kote: (sussurrando) "Eu farei isso. Uma memória por muitas vidas… vale a pena."
+
     Narrador: Com um gesto ágil, Kote levanta as mãos e começa a entoar as palavras do ritual, cada sílaba vibrando com poder. O ar ao seu redor parece se contrair e expandir, como se o próprio tempo estivesse ouvindo.
-    Narrador: Enquanto as palavras mágicas ecoam na sala, uma luz intensa irrompe do círculo, envolvendo-o em um brilho ofuscante. A sensação de perda se intensifica, como se uma parte de sua essência estivesse sendo arrancada.
-    Narrador: De repente, a luz se transforma em um turbilhão, e Kote sente seu corpo sendo puxado para um outro lugar e tempo. O último vislumbre que tem é da biblioteca, se dissipando como fumaça.
+    Enquanto as palavras mágicas ecoam na sala, uma luz intensa irrompe do círculo, envolvendo-o em um brilho ofuscante. A sensação de perda se intensifica, como se uma parte de sua essência estivesse sendo arrancada.De repente, a luz se transforma em um turbilhão, e Kote sente seu corpo sendo puxado para um outro lugar e tempo. O último vislumbre que tem é da biblioteca, se dissipando como fumaça.
     """;
 
   textodi8 = new JTextArea(texto);
@@ -1290,7 +1451,7 @@ public void abDialogo8() {
   textodi8.setOpaque(false);
   textodi8.setEditable(false);
   textodi8.setForeground(Color.white);
-  textodi8.setFont(fontecorpo);
+  textodi8.setFont(fontecorpo2);
 
 
  
@@ -1346,9 +1507,10 @@ public void actionPerformed(ActionEvent e) {
     fundodesafio8.add(tdesafio8, BorderLayout.NORTH); 
 
     fundoalternativasd8 = new JPanel();
-    fundoalternativasd8.setBounds(100, 380, 800, 100);
+    fundoalternativasd8.setBounds(80, 380, 800, 100);
     fundoalternativasd8.setBackground(Color.black);
     fundoalternativasd8.setLayout(new GridLayout(2, 2, 10, 10)); 
+    con.add(fundoalternativasd8);
 
     alternativaad8 = new JButton("A) Atacar");
     alternativaad8.setFont(fontedesafios);
@@ -1403,8 +1565,6 @@ public void actionPerformed(ActionEvent e) {
     fundoalternativasd8.add(alternativacd8);
     fundoalternativasd8.add(alternativadd8);
     con.add(fundodesafio8);
-    con.add(fundoalternativasd8);
-    
     janeladesafio8.setVisible(true);
 }
 public void abDialogo9() { 
@@ -1426,11 +1586,17 @@ public void abDialogo9() {
 
   String texto = """ 
     Narrador: Kote ressurge em uma sala principal, onde o Rei Sebastian aguarda, cercado por guardas e uma aura de poder. A tensão no ar é palpável.
+
     Kote: "Rei Sebastian, “O Diário de Arquimedes é uma fonte de poder perigosa, e você não pode usá-lo dessa forma!"
+
     Rei Sebastian: Com um sorriso desdenhoso "E quem é você para me dizer o que fazer? O poder é um direito do rei”.
+
     Kote: "Proteger? Você está apenas alimentando sua ambição. O que acontecerá quando esse poder corromper sua essência? As vidas de inocentes estarão em suas mãos."
+
     Rei Sebastian: "Eu conheço meu dever! Este reino precisa de força, e o diário me dará isso. Você é ingênuo se acha que pode me impedir."
+
     Narrador: De repente, uma sombra se materializa na sala. O Purgatório, uma entidade mágica, aparece, lançando um feitiço que envolve Kote em uma barreira invisível.
+
     Purgatório: "Você não pode se aproximar do rei, Kote. Este é um espaço sagrado, protegido por um encanto antigo. Para desfazer o feitiço, você deve resolver meu enigma.
     """;
 
@@ -1440,7 +1606,7 @@ public void abDialogo9() {
   textodi9.setOpaque(false);
   textodi9.setEditable(false);
   textodi9.setForeground(Color.white);
-  textodi9.setFont(fontecorpo);
+  textodi9.setFont(fontecorpo2);
 
 
  
@@ -1489,6 +1655,7 @@ public void actionPerformed(ActionEvent e) {
     fundoalternativasd9.setBounds(100, 380, 800, 100);
     fundoalternativasd9.setBackground(Color.black);
     fundoalternativasd9.setLayout(new GridLayout(2, 2, 10, 10)); 
+    con.add(fundoalternativasd9);
 
     alternativaad9 = new JButton("A) Sort()");
     alternativaad9.setFont(fontedesafios);
@@ -1542,8 +1709,6 @@ public void actionPerformed(ActionEvent e) {
     fundoalternativasd9.add(alternativacd9);
     fundoalternativasd9.add(alternativadd9);
     con.add(fundodesafio9);
-    con.add(fundoalternativasd9);
-    
     janeladesafio9.setVisible(true);
 }
 public void abjaneladecisao() {
@@ -1578,16 +1743,11 @@ public void abjaneladecisao() {
     textodecisao.setForeground(Color.white);
     textodecisao.setFont(fontecorpo2);
 
-    JScrollPane scrollPane = new JScrollPane(textodecisao);
-    scrollPane.setPreferredSize(new Dimension(900, 300));
-    scrollPane.setOpaque(false);
-    scrollPane.getViewport().setOpaque(false);
-    scrollPane.setBorder(null);
 
     fundobdecisao = new JPanel();
     fundobdecisao.setBounds(100, 380, 800, 150);
     fundobdecisao.setBackground(Color.black);
-    fundobdecisao.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10)); 
+    fundobdecisao.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10)); 
 
     matar = new JButton("Matar Sebastian");
     matar.setFont(fontedesafios);
@@ -1618,7 +1778,7 @@ public void abjaneladecisao() {
     fundobdecisao.add(matar);
     fundobdecisao.add(nmatar);
 
-    fundojdecisao.add(scrollPane);
+    fundojdecisao.add(textodecisao);
     fundojdecisao.add(fundobdecisao);
 
     janeladecisao.getContentPane().add(fundojdecisao);
@@ -1657,15 +1817,31 @@ public void abDialogo101(){
 
 
   String texto = """ 
-    Kote: "Já resolvi o enigma do fôlego. Agora, para proteger OLIN, preciso agir."
+    Kote: "Já resolvi o enigma do fôlego. Agora, para proteger Olin, preciso agir."
+
+
     Rei Sebastian: "Você acha que pode me deter? Eu sou o rei!"
+
+
     Kote: "Por Noxterra, eu não hesitarei."
+
+
     Rei Sebastian: "Você não pode me derrotar!"
+
+
     Narrador: Kote, impulsionado pelo poder do diário e sua determinação, lança um feitiço poderoso, atingindo o rei diretamente no coração.
+
+
     O brilho do diário resplandece enquanto Sebastian cai, sua expressão de desespero se transforma em uma expressão de compreensão.
+
+
     Kote: "Que isso sirva de lição. O poder sem sabedoria é um caminho para a destruição."
-    Narrador: O rei cai, e a sala se silencia. Kote observa o corpo do rei, ciente do peso de sua decisão, mas também da necessidade de um novo começo para OLIN.
-    Kote: "Agora, OLIN  terá a chance de renascer, guiado por aqueles que realmente se importam."
+
+
+    Narrador: O rei cai, e a sala se silencia. Kote observa o corpo do rei, ciente do peso de sua decisão, mas também da necessidade de um novo começo para Olin.
+
+
+    Kote: "Agora, Olin  terá a chance de renascer, guiado por aqueles que realmente se importam."
     """;
 
   textodi101 = new JTextArea(texto);
@@ -1674,7 +1850,7 @@ public void abDialogo101(){
   textodi101.setOpaque(false);
   textodi101.setEditable(false);
   textodi101.setForeground(Color.white);
-  textodi101.setFont(fontecorpo);
+  textodi101.setFont(fontecorpo2);
 
 
  
@@ -1690,6 +1866,7 @@ public void abDialogo101(){
   mj1.put("enterPressed", new AbstractAction() {
       public void actionPerformed(ActionEvent e) {
         abseudesafio10(); 
+        janelaDialogo101.dispose();
       }
   });
 
@@ -1713,11 +1890,19 @@ public void abDialogo101(){
 
   String texto = """ 
     Narrador: Com a resposta certa, a barreira se dissolve, permitindo que Kote se aproxime do rei.
+
+
     Kote: (olhando nos olhos de Sebastian) "Rei Sebastian, o poder pode ser tentador, mas ele deve ser equilibrado com sabedoria e compaixão."
+
+
     Rei Sebastian: (refletindo) "Você fala verdade, Kote. O poder não é um fardo leve."
+
+
     Kote: "Juntos, podemos governar OLIN com justiça. Você pode usar o Diário de Arquimedes para o bem, e eu estarei ao seu lado, como conselheiro."
+
+
     Rei Sebastian: (sorrindo) "Talvez sua ingênua bravura possa ser a chave que precisamos. Um rei e seu conselheiro, unidos pelo propósito."
-    Purgatório: "Se esta for a decisão de ambos, OLIN será protegido sob sua nova liderança."
+
     Narrador: E assim, com a sabedoria de Kote e a determinação de Sebastian, OLIN renasce sob uma nova era de prosperidade, onde o poder é usado para proteger,
     e a ambição é guiada pelo amor ao povo.
     """;
@@ -1729,7 +1914,7 @@ public void abDialogo101(){
   textodi102.setOpaque(false);
   textodi102.setEditable(false);
   textodi102.setForeground(Color.white);
-  textodi102.setFont(fontecorpo);
+  textodi102.setFont(fontecorpo2);
 
 
  
@@ -1744,7 +1929,8 @@ public void abDialogo101(){
   mj.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enterPressed");
   mj1.put("enterPressed", new AbstractAction() {
       public void actionPerformed(ActionEvent e) {
-        abseudesafio10(); 
+        abseudesafio10();
+        janelaDialogo102.dispose(); 
       }
   });
 
@@ -1780,7 +1966,7 @@ public void abseudesafio10() {
     fundodesafio10.add(tdesafio10, BorderLayout.NORTH);
 
     fundoalternativasd10 = new JPanel();
-    fundoalternativasd10.setBounds(100, 380, 800, 100);
+    fundoalternativasd10.setBounds(80, 380, 800, 100);
     fundoalternativasd10.setBackground(Color.black);
     fundoalternativasd10.setLayout(new GridLayout(2, 2, 10, 10));
     con.add(fundoalternativasd10);
@@ -1836,8 +2022,6 @@ public void abseudesafio10() {
     fundoalternativasd10.add(alternativacd10);
     fundoalternativasd10.add(alternativadd10);
     con.add(fundodesafio10);
-    con.add(fundoalternativasd10);
-    
     janeladesafio10.setVisible(true);
 }
 
@@ -1889,6 +2073,8 @@ private void verificarResposta(boolean respostaCorreta) {
             **O Desafio da Sobrevivência**
         
             A cada escolha errada, sua vida será reduzida e você morrerá se atingir 5, fazendo com que o jogo reinicie. Pense com cuidado e utilize suas habilidades de programação e lógica para responder corretamente!
+
+                                                                                                        *clique ENTER para continuar
         """;
     
         textocj = new JTextArea(texto);
@@ -1958,13 +2144,13 @@ private void verificarResposta(boolean respostaCorreta) {
         textocj2.setForeground(Color.white);
         textocj2.setFont(fontecorpo2);
     
-        // Adicionando JTextArea ao painel
+        
         fundojcomojogar2.add(textocj2);
     
         JButton bvoltar = botaovoltar(janelacomojogar2);
         fundojcomojogar2.add(bvoltar);
         
-        // Adicionando o painel à nova janela
+        
         janelacomojogar2.getContentPane().add(fundojcomojogar2);
         janelacomojogar2.setVisible(true);
     }
@@ -1979,14 +2165,14 @@ private void verificarResposta(boolean respostaCorreta) {
         janelacreditos.setLayout(null);
         con = janelacreditos.getContentPane();
     
-        // Painel de créditos com BoxLayout
+        
         fundojcreditos = new JPanel();
         fundojcreditos.setBackground(Color.black);
         fundojcreditos.setLayout(new BoxLayout(fundojcreditos, BoxLayout.Y_AXIS));
         fundojcreditos.setBorder(new EmptyBorder(20, 20, 20, 20));
-        fundojcreditos.setBounds(100, 100, 800, 500); // Define a posição e o tamanho do painel de créditos
+        fundojcreditos.setBounds(100, 100, 800, 500); 
     
-        // Texto de créditos
+        
         String texto = """
             Este jogo foi desenvolvido pelo Grupo 7 da turma A do curso de Análise e Desenvolvimento de Sistemas do Centro Universitário Senac, formado por Giulia Alciati, Sabrina Aparecida, Arielly Bispo e Eduardo Sampaio. O projeto, criado para a disciplina de Projeto Integrador, visa ensinar conceitos básicos de programação na linguagem Java.
         """;
