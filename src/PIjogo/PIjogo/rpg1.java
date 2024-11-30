@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class rpg1 {
@@ -13,7 +16,7 @@ public class rpg1 {
  Container con;//conteúdo
  JPanel fundotituloinicial, fundomenu, fundojstart, fundojcomojogar, fundojcomojogar2, fundojcreditos, fundodesafio1, fundoalternativasd1, fundodesafio2, fundoalternativasd2, fundodesafio3, fundoalternativasd3, fundodesafio4, fundoalternativasd4, fundodesafio5, fundoalternativasd5, fundodesafio6, fundoalternativasd6, fundodesafio7, fundoalternativasd7, fundodesafio8, fundoalternativasd8, fundodesafio9, fundoalternativasd9, fundodesafio10, fundoalternativasd10, fundojDialogo1, fundojDialogo2, fundojDialogo3, fundojDialogo4, fundojDialogo5, fundojDialogo6, fundojDialogo7, fundojDialogo8, fundojDialogo9, fundojdecisao, fundobdecisao, fundojDialogo101, fundojDialogo102, fundobjstart, fundojnoxterra, fundoDormir;//painéis
  JLabel tituloinicial, tcomojogar, tcreditos, tdesafio1, tdesafio2, tdesafio3, tdesafio4, tdesafio5, tdesafio6, tdesafio7, tdesafio8, tdesafio9, tdesafio10, sistemaVida;//textos
- JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, biblioteca, nbiblioteca, alternativaadesafio1, alternativabdesafio1, alternativacdesafio1, alternativaddesafio1, alternativaad2, alternativabd2, alternativacd2, alternativadd2, alternativaad3, alternativabd3, alternativacd3, alternativadd3, alternativaad4, alternativabd4, alternativacd4, alternativadd4, alternativaad5, alternativabd5, alternativacd5, alternativadd5, alternativaad7, alternativabd7, alternativacd7, alternativadd7, alternativaad8, alternativabd8, alternativacd8, alternativadd8, alternativaad9, alternativabd9, alternativacd9, alternativadd9, alternativaad10, alternativabd10, alternativacd10, alternativadd10, matar, nmatar;//botões
+ JButton bstart, bcomojogar, bcreditos, bsair, bvoltar, biblioteca, nbiblioteca, matar, nmatar;//botões
  JTextArea textostart, textocj, textocj2, textoDi1, textoDi2, textoDi3, textodi4, textodi5, textoDi6, textodi7, textodi8, textodi9, textocreditos, textodecisao, textodi101, textodi102, textonox, textoAreaDormir;
  Font fontetitulo = new Font("Times New Roman", Font.PLAIN, 40);//fonte
  Font fontecorpo = new Font ("Times New Roman", Font.PLAIN, 30);//fonte
@@ -399,7 +402,9 @@ public void abprimeirajanela(){
       janelaDialogo1.setVisible(true);
 
      }
-     public void abdesafio1(){
+     
+     @SuppressWarnings("unused")
+    public void abdesafio1() {
         janeladesafio1 = new JFrame("Desafio 1");
         janeladesafio1.setSize(1000, 700);
         janeladesafio1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -408,88 +413,87 @@ public void abprimeirajanela(){
         janeladesafio1.setLocationRelativeTo(null);
         janeladesafio1.setLayout(null);
         con = janeladesafio1.getContentPane();
+        
 
         fundodesafio1 = new JPanel();
         fundodesafio1.setBounds(10, 50, 900, 600);
         fundodesafio1.setBackground(Color.black);
-
-        tdesafio1 = new JLabel("<html>Após o encontro com o feiticeiro, Kote observa a magia que preserva a seção restrita.<br> Para entrar, ele precisa possuir alguns requisitos: <br><br>" + //
-            "<i> if (!(energia < 5 || foco <= 5) && (habilidadeEspecial || sabedoria > 10)) {</i><br>" + 
-            "<i>acessarBiblioteca();</i><br><br>" + 
-            "Considere os valores para Kote:<br>" + 
-            "Energia: 4<br>Foco: 6<br>Habilidade Especial: desativada<br>Sabedoria: 12<br><br>" + 
-            "O que acontece quando Kote tenta acessar a biblioteca?</html>");
+    
+        
+        String pergunta = "<html>Após o encontro com o feiticeiro, Kote observa a magia que preserva a seção restrita.<br>Para entrar, ele precisa possuir alguns requisitos:<br><br>" +
+                "<i>if (!(energia < 5 || foco <= 5) && (habilidadeEspecial || sabedoria > 10)) {</i><br>" +
+                "<i>acessarBiblioteca();</i><br><br>" +
+                "Considere os valores para Kote:<br>" +
+                "Energia: 4<br>Foco: 6<br>Habilidade Especial: desativada<br>Sabedoria: 12<br><br>" +
+                "O que acontece quando Kote tenta acessar a biblioteca?</html>";
+        tdesafio1 = new JLabel(pergunta);
         tdesafio1.setForeground(Color.white);
         tdesafio1.setFont(fontedesafios);
-
+    
+        String[] alternativas = {
+            "A biblioteca é acessada.",           // Errada
+            "A biblioteca permanece fechada.",    // Certa
+            "Kote encontra o livro.",             // Errada
+            "Kote é banido da biblioteca."        // Errada
+        };
+        int respostaCorreta = 1; // Índice da resposta correta
+    
         fundoalternativasd1 = new JPanel();
         fundoalternativasd1.setBounds(100, 400, 800, 100);
         fundoalternativasd1.setBackground(Color.black);
-        fundoalternativasd1.setLayout( new GridLayout(2,2,10,10));
+        fundoalternativasd1.setLayout(new GridLayout(2, 2, 10, 10));
         con.add(fundoalternativasd1);
-
+    
         sistemaVida = criarSistemaVida();
         con.add(sistemaVida);
-
-        alternativaadesafio1 = new JButton("A) A biblioteca é acessada.");
-        alternativaadesafio1.setFont(fontedesafios);
-        alternativaadesafio1.setFocusPainted(false);
-        alternativaadesafio1.setBackground(Color.black);
-        alternativaadesafio1.setForeground(Color.white);
-        alternativaadesafio1.setContentAreaFilled(false);
-        alternativaadesafio1.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            verificarResposta(false);
-        }
-
-     });
-        alternativabdesafio1 = new JButton("B) A biblioteca permanece fechada.");
-        alternativabdesafio1.setFont(fontedesafios);
-        alternativabdesafio1.setFocusPainted(false);
-        alternativabdesafio1.setBackground(Color.black);
-        alternativabdesafio1.setForeground(Color.white);
-        alternativabdesafio1.setContentAreaFilled(false);
-        alternativabdesafio1.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(true);
-            abDialogo2();
-            janeladesafio1.dispose();
-            
-      }
-        
-     });
-        alternativacdesafio1 = new JButton("C) Kote encontra o livro.");
-        alternativacdesafio1.setFont(fontedesafios);
-        alternativacdesafio1.setFocusPainted(false);
-        alternativacdesafio1.setBackground(Color.black);
-        alternativacdesafio1.setForeground(Color.white);
-        alternativacdesafio1.setContentAreaFilled(false);
-        alternativacdesafio1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-     }
-       });
-        alternativaddesafio1 = new JButton("D) Kote é banido da biblioteca.");
-        alternativaddesafio1.setFont(fontedesafios);
-        alternativaddesafio1.setFocusPainted(false);
-        alternativaddesafio1.setBackground(Color.black);
-        alternativaddesafio1.setForeground(Color.white);
-        alternativaddesafio1.setContentAreaFilled(false);
-        alternativaddesafio1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-     }
     
-     });
         
+        final Runnable[] embaralharAlternativas = new Runnable[1];
+    
+        embaralharAlternativas[0] = () -> {
+            fundoalternativasd1.removeAll(); // Remove botões anteriores
+    
+            // Embaralha as alternativas
+            List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+            Collections.shuffle(alternativasEmbaralhadas);
+    
+            for (String alternativa : alternativasEmbaralhadas) {
+                JButton botaoAlternativa = new JButton(alternativa);
+                botaoAlternativa.setFont(fontedesafios);
+                botaoAlternativa.setFocusPainted(false);
+                botaoAlternativa.setBackground(Color.black);
+                botaoAlternativa.setForeground(Color.white);
+                botaoAlternativa.setContentAreaFilled(false);
+
+                botaoAlternativa.addActionListener(a -> {
+                    if (alternativa.equals(alternativas[respostaCorreta])) {
+                        abDialogo2(); //abre a próxima janela
+                        janeladesafio1.dispose(); // Fecha a janela do desafio atual
+                    } else {
+                        verificarResposta(false); 
+                        embaralharAlternativas[0].run(); // Embaralha as alternativas se errar
+                        
+                    }
+                });
+                
+                fundoalternativasd1.add(botaoAlternativa);
+            }
+    
+            fundoalternativasd1.revalidate(); // atualiza o layout 
+            fundoalternativasd1.repaint();  
+        };
+    
+        
+        embaralharAlternativas[0].run();
+    
         fundodesafio1.add(tdesafio1);
-        fundoalternativasd1.add(alternativaadesafio1);
-        fundoalternativasd1.add(alternativabdesafio1);
-        fundoalternativasd1.add(alternativacdesafio1);
-        fundoalternativasd1.add(alternativaddesafio1);
         con.add(fundodesafio1);
-        janeladesafio1.setVisible(true);  
-     }
+        janeladesafio1.setVisible(true);
+        
+    }
+    
+    
+
      public void abDialogo2() { 
   
         janelaDialogo2 = new JFrame("Dialogo 2");
@@ -550,7 +554,8 @@ public void abprimeirajanela(){
         janelaDialogo2.setVisible(true);
      }
 
-     public void abdesafio2() {
+     @SuppressWarnings("unused")
+    public void abdesafio2() {
         janeladesafio2 = new JFrame("Desafio part2 biblioteca");
         janeladesafio2.setSize(1000, 700);
         janeladesafio2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -559,90 +564,83 @@ public void abprimeirajanela(){
         janeladesafio2.setLocationRelativeTo(null);
         janeladesafio2.setLayout(null);
         con = janeladesafio2.getContentPane();
-
+    
         fundodesafio2 = new JPanel();
         fundodesafio2.setBounds(20, 50, 900, 600);
         fundodesafio2.setBackground(Color.black);
-
-        sistemaVida = criarSistemaVida();
-        con.add(sistemaVida);
-
-        tdesafio2 = new JLabel("<html>Kote encontra a prateleira certa mas ela também está protegida com um feitiço<br>" + 
-                        "<i>if ((conhecimento > 7 && energia > 5) || (habilidadeEspecial && sabedoria >= 12)) {</i><br>" + 
-                        "<i>abrirPrateleira();</i><br><br>" + 
-                        "Considere os valores para Kote:<br>" + 
-                        "Conhecimento: 8<br>Energia: 6<br>Habilidade Especial: ativada<br>Sabedoria: 10<br><br>" + 
-                        "Qual será o resultado da condição?</html>");
+    
+    
+        tdesafio2 = new JLabel("<html>Kote encontra a prateleira certa mas ela também está protegida com um feitiço<br>" +
+                "<i>if ((conhecimento > 7 && energia > 5) || (habilidadeEspecial && sabedoria >= 12)) {</i><br>" +
+                "<i>abrirPrateleira();</i><br><br>" +
+                "Considere os valores para Kote:<br>" +
+                "Conhecimento: 8<br>Energia: 6<br>Habilidade Especial: ativada<br>Sabedoria: 10<br><br>" +
+                "Qual será o resultado da condição?</html>");
         tdesafio2.setForeground(Color.white);
         tdesafio2.setFont(fontedesafios);
 
+        String[] alternativas = {
+            "Kote consegue abrir a prateleira", // Correta
+            "Kote não consegue abrir a prateleira", // Errada
+            "<html>Kote consegue abrir a prateleira<br> mas não acha o livro</html>", // Errada
+            "Kote é transportado para o portal do tempo" // Errada
+        };
+        int respostaCorreta = 0; 
+    
         fundoalternativasd2 = new JPanel();
         fundoalternativasd2.setBounds(100, 380, 800, 130);
         fundoalternativasd2.setBackground(Color.black);
-        fundoalternativasd2.setLayout( new GridLayout(2,2,10,10));
+        fundoalternativasd2.setLayout(new GridLayout(2, 2, 10, 10));
         con.add(fundoalternativasd2);
 
-        alternativaad2 = new JButton("A) Kote consegue abrir a prateleira");
-        alternativaad2.setFont(fontedesafios);
-        alternativaad2.setFocusPainted(false);
-        alternativaad2.setBackground(Color.black);
-        alternativaad2.setForeground(Color.white);
-        alternativaad2.setContentAreaFilled(false);
-        alternativaad2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(true);
-                abDialogo3();
-                janeladesafio2.dispose();
+        sistemaVida = criarSistemaVida();
+        con.add(sistemaVida);
+    
+         
+        final Runnable[] embaralharAlternativas = new Runnable[1];
+    
+        embaralharAlternativas[0] = () -> {
+            fundoalternativasd2.removeAll(); // Remove botões antigos
+    
+            // Embaralha as alternativas
+            List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+            Collections.shuffle(alternativasEmbaralhadas);
+    
+            
+            for (String alternativa : alternativasEmbaralhadas) {
+                JButton botaoAlternativa = new JButton(alternativa);
+                botaoAlternativa.setFont(fontedesafios);
+                botaoAlternativa.setFocusPainted(false);
+                botaoAlternativa.setBackground(Color.black);
+                botaoAlternativa.setForeground(Color.white);
+                botaoAlternativa.setContentAreaFilled(false);
+    
+               
+                botaoAlternativa.addActionListener(a -> {
+                    if (alternativa.equals(alternativas[respostaCorreta])) {
+                        abDialogo3(); // abre a próxima janela
+                        janeladesafio2.dispose(); // fecha a janela do desafio atual
+                    } else {
+                        verificarResposta(false); 
+                        embaralharAlternativas[0].run(); // embaralha novamente se errar
+                    }
+                });
+    
+                fundoalternativasd2.add(botaoAlternativa); 
             }
-        });
-
-        alternativabd2 = new JButton("B) Kote não consegue abrir a prateleira");
-        alternativabd2.setBounds(400, 400, 500, 50);
-        alternativabd2.setFont(fontedesafios);
-        alternativabd2.setFocusPainted(false);
-        alternativabd2.setBackground(Color.black);
-        alternativabd2.setForeground(Color.white);
-        alternativabd2.setContentAreaFilled(false);
-        alternativabd2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
-
-        alternativacd2 = new JButton("<html>C) Kote consegue abrir a<br> prateleira mas não acha o livro</html>");
-        alternativacd2.setBounds(100, 500, 400, 50);
-        alternativacd2.setFont(fontedesafios);
-        alternativacd2.setFocusPainted(false);
-        alternativacd2.setBackground(Color.black);
-        alternativacd2.setForeground(Color.white);
-        alternativacd2.setContentAreaFilled(false);
-        alternativacd2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               verificarResposta(false);
-            }
-        });
-
-        alternativadd2 = new JButton("<html>D) Kote é transportado<br> para o portal do tempo</html>");
-        alternativadd2.setBounds(500, 500, 400, 50);
-        alternativadd2.setFont(fontedesafios);
-        alternativadd2.setFocusPainted(false);
-        alternativadd2.setBackground(Color.black);
-        alternativadd2.setForeground(Color.white);
-        alternativadd2.setContentAreaFilled(false);
-        alternativadd2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
-
+    
+            fundoalternativasd2.revalidate(); // atualiza o layout
+            fundoalternativasd2.repaint();   
+        };
+    
+        
+        embaralharAlternativas[0].run();
+    
         fundodesafio2.add(tdesafio2);
-        fundoalternativasd2.add(alternativaad2);
-        fundoalternativasd2.add(alternativabd2);
-        fundoalternativasd2.add(alternativacd2);
-        fundoalternativasd2.add(alternativadd2);
         con.add(fundodesafio2);
         janeladesafio2.setVisible(true);
-     }
+    }
+    
      public void abDialogo3() { 
         janelaDialogo3 = new JFrame("Dialogo 3");
         janelaDialogo3.setSize(1000, 700);
@@ -695,7 +693,8 @@ public void abprimeirajanela(){
     
      }
 
-     public void abdesafio3(){
+     @SuppressWarnings("unused")
+    public void abdesafio3() {
         janeladesafio3 = new JFrame("Desafio 3");
         janeladesafio3.setSize(1000, 700);
         janeladesafio3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -704,85 +703,79 @@ public void abprimeirajanela(){
         janeladesafio3.setLocationRelativeTo(null);
         janeladesafio3.setLayout(null);
         con = janeladesafio3.getContentPane();
-
+    
         fundodesafio3 = new JPanel();
         fundodesafio3.setBounds(20, 50, 900, 600);
         fundodesafio3.setBackground(Color.black);
-
+    
         sistemaVida = criarSistemaVida();
         con.add(sistemaVida);
-
-        tdesafio3 = new JLabel("<html>Agora, kote embarca em uma jornada até Noxterra para fechar o acordo com seus líderes,<br> mas ao chegar é ameaçado pelos guardas antes mesmo de se apresentar.<br> Ele precisa lutar para sobreviver<br><br>" +
-                        "PERGUNTA: WHILE é uma estrutura de repetição que executa  um conjunto de comandos múltiplas vezes?</html>");
+    
+        tdesafio3 = new JLabel("<html>Agora, Kote embarca em uma jornada até Noxterra para fechar o acordo com seus líderes,<br> mas ao chegar é ameaçado pelos guardas antes mesmo de se apresentar.<br> Ele precisa lutar para sobreviver<br><br>" +
+                "PERGUNTA: WHILE é uma estrutura de repetição que executa um conjunto de comandos múltiplas vezes?</html>");
         tdesafio3.setForeground(Color.white);
         tdesafio3.setFont(fontedesafios);
         tdesafio3.setVerticalAlignment(SwingConstants.TOP);
-        
-
+    
         fundoalternativasd3 = new JPanel();
         fundoalternativasd3.setBounds(100, 380, 800, 140);
         fundoalternativasd3.setBackground(Color.black);
         fundoalternativasd3.setLayout(new GridLayout(2, 2, 10, 10));
         con.add(fundoalternativasd3);
-
-        alternativaad3 = new JButton("<html>A) Não, while não é uma estrutura de<br> repetição e sim uma classe do java.</html>");
-        alternativaad3.setFont(fontedesafios);
-        alternativaad3.setFocusPainted(false);
-        alternativaad3.setBackground(Color.black);
-        alternativaad3.setForeground(Color.white);
-        alternativaad3.setContentAreaFilled(false);
-        alternativaad3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                verificarResposta(false);
+    
+        String[] alternativas = {
+                "<html>Não, while não é uma estrutura de<br> repetição e sim uma classe do java.</html>",  // Errada
+                "<html>Não, while não é uma estrutura de<br> repetição e sim uma condicional.</html>",     // Errada
+                "<html>Sim, o while é uma estrutura de <br>repetição e executa quando já é determinado<br> o número de repetições.</html>", // Errada
+                "<html>Sim, while é uma estrutura de<br> repetição e executa quando a<br> condição for verdadeira.</html>" // Correta
+        };
+        int respostaCorreta = 3; 
+    
+        
+        final Runnable[] embaralharAlternativas = new Runnable[1];
+    
+        embaralharAlternativas[0] = () -> {
+            fundoalternativasd3.removeAll(); 
+    
+            
+            List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+            Collections.shuffle(alternativasEmbaralhadas);
+    
+            
+            for (String alternativa : alternativasEmbaralhadas) {
+                JButton botaoAlternativa = new JButton(alternativa);
+                botaoAlternativa.setFont(fontedesafios);
+                botaoAlternativa.setFocusPainted(false);
+                botaoAlternativa.setBackground(Color.black);
+                botaoAlternativa.setForeground(Color.white);
+                botaoAlternativa.setContentAreaFilled(false);
+    
+                
+                botaoAlternativa.addActionListener(a -> {
+                    if (alternativa.equals(alternativas[respostaCorreta])) {
+                        verificarResposta(true); 
+                        abnoxterra(); 
+                        janeladesafio3.dispose(); 
+                    } else {
+                        verificarResposta(false); 
+                        embaralharAlternativas[0].run(); 
+                    }
+                });
+    
+                fundoalternativasd3.add(botaoAlternativa); 
             }
-        });
-        alternativabd3 = new JButton("<html>B) Não, while não é uma estrutura<br> de repetição e sim uma condicional.</html>");
-        alternativabd3.setBounds(400, 400, 500, 50);
-        alternativabd3.setFont(fontedesafios);
-        alternativabd3.setFocusPainted(false);
-        alternativabd3.setBackground(Color.black);
-        alternativabd3.setForeground(Color.white);
-        alternativabd3.setContentAreaFilled(false);
-        alternativabd3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
-        alternativacd3 = new JButton("<html>C) Sim, o while é uma estrutura de repetição<br> e executa quando já é determinado o número de repetições.</html>");
-        alternativacd3.setBounds(100, 500, 400, 50);
-        alternativacd3.setFont(fontedesafios);
-        alternativacd3.setFocusPainted(false);
-        alternativacd3.setBackground(Color.black);
-        alternativacd3.setForeground(Color.white);
-        alternativacd3.setContentAreaFilled(false);
-        alternativacd3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
-        alternativadd3 = new JButton("<html>D) Sim, while é uma estrutura de repetição<br> e executa quando a condição for verdadeira</html>");
-        alternativadd3.setBounds(500, 500, 400, 50);
-        alternativadd3.setFont(fontedesafios);
-        alternativadd3.setFocusPainted(false);
-        alternativadd3.setBackground(Color.black);
-        alternativadd3.setForeground(Color.white);
-        alternativadd3.setContentAreaFilled(false);
-        alternativadd3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(true);
-                abnoxterra();
-                janeladesafio3.dispose();
-            }
-        });
+    
+            fundoalternativasd3.revalidate(); 
+            fundoalternativasd3.repaint();   
+        };
+    
+        
+        embaralharAlternativas[0].run();
+    
         fundodesafio3.add(tdesafio3);
-        fundoalternativasd3.add(alternativaad3);
-        fundoalternativasd3.add(alternativabd3);
-        fundoalternativasd3.add(alternativacd3);
-        fundoalternativasd3.add(alternativadd3);
         con.add(fundodesafio3);
         janeladesafio3.setVisible(true);
-
-        }
+    }
         public void abnoxterra(){
         janelanoxterra = new JFrame("Dialogo 2");
         janelanoxterra.setSize(1000, 700);
@@ -887,7 +880,8 @@ public void abprimeirajanela(){
         janelaDialogo4.setVisible(true);
     }
     
-    public void abdesafio4(){
+    @SuppressWarnings("unused")
+    public void abdesafio4() {
         janeladesafio4 = new JFrame("Desafio 4");
         janeladesafio4.setSize(1000, 700);
         janeladesafio4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -906,15 +900,15 @@ public void abprimeirajanela(){
         con.add(sistemaVida);
     
         tdesafio4 = new JLabel("<html> O ambiente é iluminado pelo luar da lua, e um ar misterioso envolve o lugar.<br>" + 
-                        "Bem-vindo, Kote, O tempo aqui não é linear, o Diário de Arquimendes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado.<br>" + 
-                        "Somente aqueles que dominam os loops do tempo,  poderão abri-lo.<br>" + 
-                        "Você encontrará o código abaixo gravado na lateral do baú.<br>" + 
-                        "Este baú está protegido por um feitiço de repetição. O código está escrito nas runas. Decifre-o: o valor de x começa em 10 e diminui continuamente,<br><br>" + 
-                        "<i> qual será o valor final de x ao sair do ciclo?</i><br>" + 
-                        "<i> int x = 10; </i><br> " +
-                        "do { <br>" + 
-                        "x =  x - 2;<br>" +
-                        "} while (x > 3);</html>");
+                            "Bem-vindo, Kote, O tempo aqui não é linear, o Diário de Arquimendes está escondido dentro deste baú. Mas para abri-lo, você precisará decifrar o código que mantém o baú fechado.<br>" + 
+                            "Somente aqueles que dominam os loops do tempo,  poderão abri-lo.<br>" + 
+                            "Você encontrará o código abaixo gravado na lateral do baú.<br>" + 
+                            "Este baú está protegido por um feitiço de repetição. O código está escrito nas runas. Decifre-o: o valor de x começa em 10 e diminui continuamente,<br><br>" + 
+                            "<i> qual será o valor final de x ao sair do ciclo?</i><br>" + 
+                            "<i> int x = 10; </i><br> " +
+                            "do { <br>" + 
+                            "x =  x - 2;<br>" +
+                            "} while (x > 3);</html>");
         tdesafio4.setForeground(Color.white);
         tdesafio4.setFont(fontedesafios);
         tdesafio4.setVerticalAlignment(SwingConstants.TOP);
@@ -927,64 +921,55 @@ public void abprimeirajanela(){
         fundoalternativasd4.setLayout(new GridLayout(2, 2, 10, 10));
         con.add(fundoalternativasd4);
     
-        alternativaad4 = new JButton("A) 2");
-        alternativaad4.setFont(fontedesafios);
-        alternativaad4.setFocusPainted(false);
-        alternativaad4.setBackground(Color.black);
-        alternativaad4.setForeground(Color.white);
-        alternativaad4.setContentAreaFilled(false);
-        alternativaad4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                verificarResposta(true);
-                abDialogo5();
-                janeladesafio4.dispose();
+        String[] alternativas = {
+            "2", // Correta
+            "4", // Errada
+            "3", // Errada
+            "4"  // Errada
+        };
+        int respostaCorreta = 0;
+    
+        final Runnable[] embaralharAlternativas = new Runnable[1];
+    
+        embaralharAlternativas[0] = () -> {
+            fundoalternativasd4.removeAll();
+    
+            List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+            Collections.shuffle(alternativasEmbaralhadas);
+    
+            for (String alternativa : alternativasEmbaralhadas) {
+                JButton botaoAlternativa = new JButton(alternativa);
+                botaoAlternativa.setFont(fontedesafios);
+                botaoAlternativa.setFocusPainted(false);
+                botaoAlternativa.setBackground(Color.black);
+                botaoAlternativa.setForeground(Color.white);
+                botaoAlternativa.setContentAreaFilled(false);
+    
+                botaoAlternativa.addActionListener(a -> {
+                    if (alternativa.equals(alternativas[respostaCorreta])) {
+                        verificarResposta(true);
+                        abDialogo5();
+                        janeladesafio4.dispose();
+                    } else {
+                        verificarResposta(false);
+                        embaralharAlternativas[0].run();
+                    }
+                });
+    
+                fundoalternativasd4.add(botaoAlternativa);
             }
-        });
     
-        alternativabd4 = new JButton("B) 4");
-        alternativabd4.setFont(fontedesafios);
-        alternativabd4.setFocusPainted(false);
-        alternativabd4.setBackground(Color.black);
-        alternativabd4.setForeground(Color.white);
-        alternativabd4.setContentAreaFilled(false);
-        alternativabd4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
+            fundoalternativasd4.revalidate();
+            fundoalternativasd4.repaint();
+        };
     
-        alternativacd4 = new JButton("C) 3");
-        alternativacd4.setFont(fontedesafios);
-        alternativacd4.setFocusPainted(false);
-        alternativacd4.setBackground(Color.black);
-        alternativacd4.setForeground(Color.white);
-        alternativacd4.setContentAreaFilled(false);
-        alternativacd4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
+        embaralharAlternativas[0].run();
     
-        alternativadd4 = new JButton("D) 4");
-        alternativadd4.setFont(fontedesafios);
-        alternativadd4.setFocusPainted(false);
-        alternativadd4.setBackground(Color.black);
-        alternativadd4.setForeground(Color.white);
-        alternativadd4.setContentAreaFilled(false);
-        alternativadd4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
-    
-        fundoalternativasd4.add(alternativaad4);
-        fundoalternativasd4.add(alternativabd4);
-        fundoalternativasd4.add(alternativacd4);
-        fundoalternativasd4.add(alternativadd4);
-    
+        fundodesafio4.add(tdesafio4);
         con.add(fundodesafio4);
         janeladesafio4.setVisible(true);
     }
+    
     
     public void abDialogo5() { 
         janelaDialogo5 = new JFrame("Dialogo 5");
@@ -1040,100 +1025,93 @@ public void abprimeirajanela(){
     }
     
 
+    @SuppressWarnings("unused")
     public void abdesafio5() {
-    janeladesafio5 = new JFrame("Desafio 5");
-    janeladesafio5.setSize(1000, 700);
-    janeladesafio5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    janeladesafio5.setResizable(false);
-    janeladesafio5.getContentPane().setBackground(Color.black);
-    janeladesafio5.setLocationRelativeTo(null);
-    janeladesafio5.setLayout(null);
-    con = janeladesafio5.getContentPane();
-
-    fundodesafio5 = new JPanel();
-    fundodesafio5.setBounds(20, 50, 900, 600);
-    fundodesafio5.setBackground(Color.black);
-    fundodesafio5.setLayout(new BorderLayout());
-
-    sistemaVida = criarSistemaVida();
-    con.add(sistemaVida);
-
-    tdesafio5 = new JLabel("<html>Com o Diário de Arquimendes finalmente em mãos, Kote sente o poder e o conhecimento antigo fluindo através dele.<br>" + 
-                    "páginas brilham com runas misteriosas que começam a se reorganizar em um idioma compreensível<br>" + 
-                    "Mas o tempo é curto, e ele sabe que precisa voltar ao futuro antes que o portal se feche para sempre.<br>" + 
-                    "Ele se posiciona no centro da sala, cercado pela energia mágica que emana do diário, e se prepara para realizar o feitiço de retorno temporal.<br><br>" + 
-                    "KOTE: respira fundo, fecha os olhos, e começa a invocar seu poder mágico. Ele sabe que tem que se concentrar profundamente, pois o sucesso da viagem depende da precisão de sua conjuração.<br>" + 
-                    "KOTE: Um... dois.. três<br><br>" + 
-                    "PERGUNTA: Qual das seguintes afirmações define corretamente quando se utiliza um laço FOR?</html>");
-    tdesafio5.setForeground(Color.white);
-    tdesafio5.setFont(fontedesafios);
-    tdesafio5.setVerticalAlignment(SwingConstants.TOP);
-    tdesafio5.setHorizontalAlignment(SwingConstants.LEFT);
-    fundodesafio5.add(tdesafio5, BorderLayout.NORTH);
-
-    fundoalternativasd5 = new JPanel();
-    fundoalternativasd5.setBounds(100, 380, 800, 160);
-    fundoalternativasd5.setBackground(Color.black);
-    fundoalternativasd5.setLayout(new GridLayout(2, 2, 10, 10));
-    con.add(fundoalternativasd5); // Adicionei a posição no BorderLayout
-
-    alternativaad5 = new JButton("<html>A) É utilizado quando não se sabe exatamente quantas vezes o código será repetido.</html>");
-    alternativaad5.setFont(fontedesafios);
-    alternativaad5.setFocusPainted(false);
-    alternativaad5.setBackground(Color.black);
-    alternativaad5.setForeground(Color.white);
-    alternativaad5.setContentAreaFilled(false);
-    alternativaad5.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
-        }
-    });
-
-    alternativabd5 = new JButton("<html>B) É utilizado quando se sabe o<br> número de repetições.</html>");
-    alternativabd5.setFont(fontedesafios);
-    alternativabd5.setFocusPainted(false);
-    alternativabd5.setBackground(Color.black);
-    alternativabd5.setForeground(Color.white);
-    alternativabd5.setContentAreaFilled(false);
-    alternativabd5.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(true);
-            abDialogo6();
-            janeladesafio5.dispose();
-        }
-    });
-
-    alternativacd5 = new JButton("<html>C) É utilizado quando uma condição<br> é true/verdadeira.</html>");
-    alternativacd5.setFont(fontedesafios);
-    alternativacd5.setFocusPainted(false);
-    alternativacd5.setBackground(Color.black);
-    alternativacd5.setForeground(Color.white);
-    alternativacd5.setContentAreaFilled(false);
-    alternativacd5.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
-        }
-    });
-
-    alternativadd5 = new JButton("<html>D) É utilizado quando uma condição é true/verdadeira mas a essa condição é<br> verificada apenas no final da repetição.</html>");
-    alternativadd5.setFont(fontedesafios);
-    alternativadd5.setFocusPainted(false);
-    alternativadd5.setBackground(Color.black);
-    alternativadd5.setForeground(Color.white);
-    alternativadd5.setContentAreaFilled(false);
-    alternativadd5.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
-        }
-    });
-
-    fundoalternativasd5.add(alternativaad5);
-    fundoalternativasd5.add(alternativabd5);
-    fundoalternativasd5.add(alternativacd5);
-    fundoalternativasd5.add(alternativadd5);
-    con.add(fundodesafio5);
-    janeladesafio5.setVisible(true);
-}
+        janeladesafio5 = new JFrame("Desafio 5");
+        janeladesafio5.setSize(1000, 700);
+        janeladesafio5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janeladesafio5.setResizable(false);
+        janeladesafio5.getContentPane().setBackground(Color.black);
+        janeladesafio5.setLocationRelativeTo(null);
+        janeladesafio5.setLayout(null);
+        con = janeladesafio5.getContentPane();
+    
+        fundodesafio5 = new JPanel();
+        fundodesafio5.setBounds(20, 50, 900, 600);
+        fundodesafio5.setBackground(Color.black);
+        fundodesafio5.setLayout(new BorderLayout());
+    
+        sistemaVida = criarSistemaVida();
+        con.add(sistemaVida);
+    
+        tdesafio5 = new JLabel("<html>Com o Diário de Arquimendes finalmente em mãos, Kote sente o poder e o conhecimento antigo fluindo através dele.<br>" + 
+                        "Páginas brilham com runas misteriosas que começam a se reorganizar em um idioma compreensível<br>" + 
+                        "Mas o tempo é curto, e ele sabe que precisa voltar ao futuro antes que o portal se feche para sempre.<br>" + 
+                        "Ele se posiciona no centro da sala, cercado pela energia mágica que emana do diário, e se prepara para realizar o feitiço de retorno temporal.<br><br>" + 
+                        "KOTE: respira fundo, fecha os olhos, e começa a invocar seu poder mágico. Ele sabe que tem que se concentrar profundamente, pois o sucesso da viagem depende da precisão de sua conjuração.<br>" + 
+                        "KOTE: Um... dois.. três<br><br>" + 
+                        "PERGUNTA: Qual das seguintes afirmações define corretamente quando se utiliza um laço FOR?</html>");
+        tdesafio5.setForeground(Color.white);
+        tdesafio5.setFont(fontedesafios);
+        tdesafio5.setVerticalAlignment(SwingConstants.TOP);
+        tdesafio5.setHorizontalAlignment(SwingConstants.LEFT);
+        fundodesafio5.add(tdesafio5, BorderLayout.NORTH);
+    
+        fundoalternativasd5 = new JPanel();
+        fundoalternativasd5.setBounds(100, 380, 800, 160);
+        fundoalternativasd5.setBackground(Color.black);
+        fundoalternativasd5.setLayout(new GridLayout(2, 2, 10, 10));
+        con.add(fundoalternativasd5);
+    
+        String[] alternativas = {
+            "<html>É utilizado quando não se sabe<br> exatamente quantas vezes o código será repetido.</html>", // Errada
+            "<html>É utilizado quando se sabe o número<br> de repetições.</html>", // Correta
+            "<html>É utilizado quando uma condição é true/verdadeira.</html>", // Errada
+            "<html>É utilizado quando uma condição é true/verdadeira mas essa condição é verificada apenas no final da repetição.</html>" // Errada
+        };
+        int respostaCorreta = 1;
+    
+        final Runnable[] embaralharAlternativas = new Runnable[1];
+    
+        embaralharAlternativas[0] = () -> {
+            fundoalternativasd5.removeAll(); 
+    
+            List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+            Collections.shuffle(alternativasEmbaralhadas);
+    
+            for (String alternativa : alternativasEmbaralhadas) {
+                JButton botaoAlternativa = new JButton(alternativa);
+                botaoAlternativa.setFont(fontedesafios);
+                botaoAlternativa.setFocusPainted(false);
+                botaoAlternativa.setBackground(Color.black);
+                botaoAlternativa.setForeground(Color.white);
+                botaoAlternativa.setContentAreaFilled(false);
+    
+                botaoAlternativa.addActionListener(a -> {
+                    if (alternativa.equals(alternativas[respostaCorreta])) {
+                        verificarResposta(true); 
+                        abDialogo6(); 
+                        janeladesafio5.dispose();
+                    } else {
+                        verificarResposta(false); 
+                        embaralharAlternativas[0].run(); 
+                    }
+                });
+    
+                fundoalternativasd5.add(botaoAlternativa); 
+            }
+    
+            fundoalternativasd5.revalidate();
+            fundoalternativasd5.repaint();   
+        };
+    
+        embaralharAlternativas[0].run(); 
+    
+        fundodesafio5.add(tdesafio5);
+        con.add(fundodesafio5);
+        janeladesafio5.setVisible(true);
+    }
+    
 public void abDialogo6() { 
     janelaDialogo6 = new JFrame("Dialogo 6");
     janelaDialogo6.setSize(1000, 700);
@@ -1191,7 +1169,8 @@ public void abDialogo6() {
   janelaDialogo6.setVisible(true);
 
 }
-public void abdesafio6(){
+@SuppressWarnings("unused")
+public void abdesafio6() {
     janeladesafio6 = new JFrame("Desafio 6"); 
     janeladesafio6.setSize(1000, 700);
     janeladesafio6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1204,19 +1183,19 @@ public void abdesafio6(){
     fundodesafio6 = new JPanel();
     fundodesafio6.setBounds(20, 50, 900, 600);
     fundodesafio6.setBackground(Color.black);
-    fundodesafio6.setLayout(new BorderLayout()); 
+    fundodesafio6.setLayout(new BorderLayout());
 
     sistemaVida = criarSistemaVida();
     con.add(sistemaVida);
 
     tdesafio6 = new JLabel("<html>Os Guardiões do Tempo aparecem diante do guerreiro e dizem:<br><br>" +
-        "Para provar sua coragem e sabedoria, responda: Qual estrutura de controle é usada para decidir<br>" +  
-        "se um bloco de código deve ser executado com base em uma condição específica?</html>");
+            "Para provar sua coragem e sabedoria, responda: Qual estrutura de controle é usada para decidir<br>" +  
+            "se um bloco de código deve ser executado com base em uma condição específica?</html>");
     tdesafio6.setForeground(Color.white);
     tdesafio6.setFont(fontedesafios);
     tdesafio6.setVerticalAlignment(SwingConstants.TOP);
-    tdesafio6.setHorizontalAlignment(SwingConstants.LEFT);  // Corrigido para tdesafio6
-    fundodesafio6.add(tdesafio6, BorderLayout.NORTH); 
+    tdesafio6.setHorizontalAlignment(SwingConstants.LEFT);
+    fundodesafio6.add(tdesafio6, BorderLayout.NORTH);
 
     fundoalternativasd6 = new JPanel();
     fundoalternativasd6.setBounds(100, 380, 800, 100);
@@ -1224,63 +1203,55 @@ public void abdesafio6(){
     fundoalternativasd6.setLayout(new GridLayout(2, 2, 10, 10)); 
     con.add(fundoalternativasd6);
 
-    JButton alternativaad6 = new JButton("A) For");
-    alternativaad6.setFont(fontedesafios);
-    alternativaad6.setFocusPainted(false);
-    alternativaad6.setBackground(Color.black);
-    alternativaad6.setForeground(Color.white);
-    alternativaad6.setContentAreaFilled(false);
-    alternativaad6.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
+    String[] alternativas = {
+        "For", // Errada
+        "If",  // Errada
+        "Else", // Correta
+        "Do-while" // Errada
+    };
+    int respostaCorreta = 2; 
+
+    final Runnable[] embaralharAlternativas = new Runnable[1];
+
+    embaralharAlternativas[0] = () -> {
+        fundoalternativasd6.removeAll();
+
+        List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+        Collections.shuffle(alternativasEmbaralhadas);
+
+        for (String alternativa : alternativasEmbaralhadas) {
+            JButton botaoAlternativa = new JButton(alternativa);
+            botaoAlternativa.setFont(fontedesafios);
+            botaoAlternativa.setFocusPainted(false);
+            botaoAlternativa.setBackground(Color.black);
+            botaoAlternativa.setForeground(Color.white);
+            botaoAlternativa.setContentAreaFilled(false);
+
+            botaoAlternativa.addActionListener(a -> {
+                if (alternativa.equals(alternativas[respostaCorreta])) {
+                    verificarResposta(true); 
+                    abDialogo7();
+                    janeladesafio6.dispose(); 
+                } else {
+                    verificarResposta(false);
+                    embaralharAlternativas[0].run(); 
+                }
+            });
+
+            fundoalternativasd6.add(botaoAlternativa);
         }
-    });
 
-    JButton alternativabd6 = new JButton("B) If");
-    alternativabd6.setFont(fontedesafios);
-    alternativabd6.setFocusPainted(false);
-    alternativabd6.setBackground(Color.black);
-    alternativabd6.setForeground(Color.white);
-    alternativabd6.setContentAreaFilled(false);
-    alternativabd6.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
-        }
-    });
+        fundoalternativasd6.revalidate();
+        fundoalternativasd6.repaint();
+    };
 
-    JButton alternativacd6 = new JButton("C) Else");
-    alternativacd6.setFont(fontedesafios);
-    alternativacd6.setFocusPainted(false);
-    alternativacd6.setBackground(Color.black);
-    alternativacd6.setForeground(Color.white);
-    alternativacd6.setContentAreaFilled(false);
-    alternativacd6.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            verificarResposta(true);
-            abDialogo7();
-            janeladesafio6.dispose();  // Corrigido o nome da janela aqui
-            }
-        });
+    embaralharAlternativas[0].run(); // Executa o embaralhamento inicial
 
-    JButton alternativadd6 = new JButton("D) Do-while");
-    alternativadd6.setFont(fontedesafios);
-    alternativadd6.setFocusPainted(false);
-    alternativadd6.setBackground(Color.black);
-    alternativadd6.setForeground(Color.white);
-    alternativadd6.setContentAreaFilled(false);
-    alternativadd6.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
-        }
-    });
-
-    fundoalternativasd6.add(alternativaad6);
-    fundoalternativasd6.add(alternativabd6);
-    fundoalternativasd6.add(alternativacd6);
-    fundoalternativasd6.add(alternativadd6);
+    fundodesafio6.add(tdesafio6);
     con.add(fundodesafio6);
     janeladesafio6.setVisible(true);
 }
+
 public void abDialogo7() { 
     janelaDialogo7 = new JFrame("Diálogo 7");
     janelaDialogo7.setSize(1000, 700);
@@ -1299,7 +1270,7 @@ public void abDialogo7() {
         Narrador: Kote está dividido entre salvar o seu amigo ou matar o rei.
 
 
-        Kote: Como irei salvar o meu amigo e o rei ao mesmo tempo?
+        Kote: Como irei salvar o meu amigo e o rei ao mesmo tempo?  
 
 
         Feiticeiro: Pense, Kote! O que realmente está em jogo? A vida de um homem ou o futuro de muitos?
@@ -1327,94 +1298,92 @@ public void abDialogo7() {
         }
     });
     janelaDialogo7.getContentPane().add(fundojDialogo7);
-    janelaDialogo7.setVisible(true); // Exibe a janela
+    janelaDialogo7.setVisible(true);
 }
 
-    public void abdesafio7() {
-        janeladesafio7 = new JFrame("Desafio 7"); 
-        janeladesafio7.setSize(1000, 700);
-        janeladesafio7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janeladesafio7.setResizable(false);
-        janeladesafio7.getContentPane().setBackground(Color.black);
-        janeladesafio7.setLocationRelativeTo(null);
-        janeladesafio7.setLayout(null);
-        con = janeladesafio7.getContentPane();
+@SuppressWarnings("unused")
+public void abdesafio7() {
+    janeladesafio7 = new JFrame("Desafio 7"); 
+    janeladesafio7.setSize(1000, 700);
+    janeladesafio7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    janeladesafio7.setResizable(false);
+    janeladesafio7.getContentPane().setBackground(Color.black);
+    janeladesafio7.setLocationRelativeTo(null);
+    janeladesafio7.setLayout(null);
+    con = janeladesafio7.getContentPane();
 
-        fundodesafio7 = new JPanel();
-        fundodesafio7.setBounds(30, 50, 900, 600);
-        fundodesafio7.setBackground(Color.black);
-        fundodesafio7.setLayout(new BorderLayout());
+    fundodesafio7 = new JPanel();
+    fundodesafio7.setBounds(30, 50, 900, 600);
+    fundodesafio7.setBackground(Color.black);
+    fundodesafio7.setLayout(new BorderLayout());
 
-        sistemaVida = criarSistemaVida();
-        con.add(sistemaVida);
+    sistemaVida = criarSistemaVida();
+    con.add(sistemaVida);
 
-        tdesafio7 = new JLabel("<html>Os Guardiões do Tempo surgem e desafiam o guerreiro:" + 
-                        "Responda corretamente:" + 
-                        "Qual estrutura de controle é ultilizada para executar um bloco de código apenas quando uma condição não é verdadeira?");
-        tdesafio7.setForeground(Color.white);
-        tdesafio7.setFont(fontedesafios);
-        fundodesafio7.add(tdesafio7, BorderLayout.NORTH); 
+    tdesafio7 = new JLabel("<html>Os Guardiões do Tempo surgem e desafiam o guerreiro:<br>" + 
+                        "Responda corretamente:<br>" + 
+                        "Qual estrutura de controle é utilizada para executar um bloco de código apenas quando uma condição não é verdadeira?</html>");
+    tdesafio7.setForeground(Color.white);
+    tdesafio7.setFont(fontedesafios);
+    tdesafio7.setVerticalAlignment(SwingConstants.TOP);
+    tdesafio7.setHorizontalAlignment(SwingConstants.LEFT);
+    fundodesafio7.add(tdesafio7, BorderLayout.NORTH); 
 
-        fundoalternativasd7 = new JPanel();
-        fundoalternativasd7.setBounds(80, 380, 800, 100);
-        fundoalternativasd7.setBackground(Color.black);
-        fundoalternativasd7.setLayout(new GridLayout(2, 2, 10, 10)); 
-        con.add(fundoalternativasd7);
+    fundoalternativasd7 = new JPanel();
+    fundoalternativasd7.setBounds(80, 380, 800, 100);
+    fundoalternativasd7.setBackground(Color.black);
+    fundoalternativasd7.setLayout(new GridLayout(2, 2, 10, 10)); 
+    con.add(fundoalternativasd7);
 
-        alternativaad7 = new JButton("A) Else");
-        alternativaad7.setFont(fontedesafios);
-        alternativaad7.setFocusPainted(false);
-        alternativaad7.setBackground(Color.black);
-        alternativaad7.setForeground(Color.white);
-        alternativaad7.setContentAreaFilled(false);
-        alternativaad7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(true);
-                abDialogo8();
-                janeladesafio7.dispose();
-            }
-         });
-        alternativabd7 = new JButton("B) Switch");
-        alternativabd7.setFont(fontedesafios);
-        alternativabd7.setFocusPainted(false);
-        alternativabd7.setBackground(Color.black);
-        alternativabd7.setForeground(Color.white);
-        alternativabd7.setContentAreaFilled(false);
-        alternativabd7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               verificarResposta(false);
-            }
-        });
-        alternativacd7 = new JButton("C) For ");
-        alternativacd7.setFont(fontedesafios);
-        alternativacd7.setFocusPainted(false);
-        alternativacd7.setBackground(Color.black);
-        alternativacd7.setForeground(Color.white);
-        alternativacd7.setContentAreaFilled(false);
-        alternativacd7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
-        alternativadd7 = new JButton("D) Break");
-        alternativadd7.setFont(fontedesafios);
-        alternativadd7.setFocusPainted(false);
-        alternativadd7.setBackground(Color.black);
-        alternativadd7.setForeground(Color.white);
-        alternativadd7.setContentAreaFilled(false);
-        alternativadd7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                verificarResposta(false);
-            }
-        });
-          
-        fundoalternativasd7.add(alternativaad7);
-        fundoalternativasd7.add(alternativabd7);
-        fundoalternativasd7.add(alternativacd7);
-        fundoalternativasd7.add(alternativadd7);
-        con.add(fundodesafio7);    
-        janeladesafio7.setVisible(true);
+    String[] alternativas = {
+        "Switch", // Errada
+        "Break", // Errada
+        "For", // Errada
+        "Else" // Correta
+    };
+    int respostaCorreta = 3; 
+
+    final Runnable[] embaralharAlternativas = new Runnable[1];
+
+    embaralharAlternativas[0] = () -> {
+        fundoalternativasd7.removeAll(); 
+
+        List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+        Collections.shuffle(alternativasEmbaralhadas);
+
+        for (String alternativa : alternativasEmbaralhadas) {
+            JButton botaoAlternativa = new JButton(alternativa);
+            botaoAlternativa.setFont(fontedesafios);
+            botaoAlternativa.setFocusPainted(false);
+            botaoAlternativa.setBackground(Color.black);
+            botaoAlternativa.setForeground(Color.white);
+            botaoAlternativa.setContentAreaFilled(false);
+
+            botaoAlternativa.addActionListener(a -> {
+                if (alternativa.equals(alternativas[respostaCorreta])) {
+                    verificarResposta(true); 
+                    abDialogo8(); 
+                    janeladesafio7.dispose(); 
+                } else {
+                    verificarResposta(false); 
+                    embaralharAlternativas[0].run(); 
+                }
+            });
+
+            fundoalternativasd7.add(botaoAlternativa);
+        }
+
+        fundoalternativasd7.revalidate();
+        fundoalternativasd7.repaint();
+    };
+
+    embaralharAlternativas[0].run();
+
+    fundodesafio7.add(tdesafio7);
+    con.add(fundodesafio7);    
+    janeladesafio7.setVisible(true);
 }
+
 public void abDialogo8() { 
   
     janelaDialogo8 = new JFrame("Dialogo 8");
@@ -1473,7 +1442,8 @@ public void actionPerformed(ActionEvent e) {
   janelaDialogo8.setVisible(true);
 }
   
-  public void abseudesafio8() {
+@SuppressWarnings("unused")
+public void abseudesafio8() {
     janeladesafio8 = new JFrame("Desafio 8"); 
     janeladesafio8.setSize(1000, 700);
     janeladesafio8.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1486,24 +1456,26 @@ public void actionPerformed(ActionEvent e) {
     fundodesafio8 = new JPanel();
     fundodesafio8.setBounds(20, 50, 900, 600);
     fundodesafio8.setBackground(Color.black);
-    fundodesafio8.setLayout(new BorderLayout()); 
+    fundodesafio8.setLayout(new BorderLayout());
 
     sistemaVida = criarSistemaVida();
     con.add(sistemaVida);
 
     tdesafio8 = new JLabel("<html>Cenário: Kote está prestes a entrar em uma batalha e precisa decidir sua ação com base em seu nível de energia.<br><br>" +
-                    "Instrução: Determine qual ação Kote deve tomar de acordo com as seguintes condições:<br><br>" +
-                    "if(energia>50){<br>" +
-                    "Atacar o inimigo.<br>" +
-                    "}else if(energia>= 21 && energia<= 50){<br>" +
-                    "Kote decide se defender.<br> " +
-                    "}else if(energia <= 20) {<br> " +
-                    "Kote decide fugir da batalha. <br>" +
-                    "}<br>" +
-                    "Pergunta:<br>" +
-                    "Qual ação Kote deve tomar se seu nível de energia for 45?;</html>");
+                "Instrução: Determine qual ação Kote deve tomar de acordo com as seguintes condições:<br><br>" +
+                "if(energia>50){<br>" +
+                "Atacar o inimigo.<br>" +
+                "}else if(energia>= 21 && energia<= 50){<br>" +
+                "Kote decide se defender.<br> " +
+                "}else if(energia <= 20) {<br> " +
+                "Kote decide fugir da batalha. <br>" +
+                "}<br>" +
+                "Pergunta:<br>" +
+                "Qual ação Kote deve tomar se seu nível de energia for 45?;</html>");
     tdesafio8.setForeground(Color.white);
     tdesafio8.setFont(fontedesafios);
+    tdesafio8.setVerticalAlignment(SwingConstants.TOP);
+    tdesafio8.setHorizontalAlignment(SwingConstants.LEFT);
     fundodesafio8.add(tdesafio8, BorderLayout.NORTH); 
 
     fundoalternativasd8 = new JPanel();
@@ -1512,61 +1484,55 @@ public void actionPerformed(ActionEvent e) {
     fundoalternativasd8.setLayout(new GridLayout(2, 2, 10, 10)); 
     con.add(fundoalternativasd8);
 
-    alternativaad8 = new JButton("A) Atacar");
-    alternativaad8.setFont(fontedesafios);
-    alternativaad8.setFocusPainted(false);
-    alternativaad8.setBackground(Color.black);
-    alternativaad8.setForeground(Color.white);
-    alternativaad8.setContentAreaFilled(false);
-    alternativaad8.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-           verificarResposta(false);
-        }
-    });
-    alternativabd8 = new JButton("B) Defender");
-    alternativabd8.setFont(fontedesafios);
-    alternativabd8.setFocusPainted(false);
-    alternativabd8.setBackground(Color.black);
-    alternativabd8.setForeground(Color.white);
-    alternativabd8.setContentAreaFilled(false);
-    alternativabd8.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(true);
-            abDialogo9();
-            janeladesafio8.dispose();
-        }
-    });
+    String[] alternativas = {
+        "Atacar",  // Errada
+        "Defender", // Correta
+        "Fugir",  // Errada
+        "Parado"   // Errada
+    };
+    int respostaCorreta = 1; // A resposta correta é "Defender"
 
-    alternativacd8 = new JButton("C) Fugir ");
-    alternativacd8.setFont(fontedesafios);
-    alternativacd8.setFocusPainted(false);
-    alternativacd8.setBackground(Color.black);
-    alternativacd8.setForeground(Color.white);
-    alternativacd8.setContentAreaFilled(false);
-    alternativacd8.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
+    final Runnable[] embaralharAlternativas = new Runnable[1];
+
+    embaralharAlternativas[0] = () -> {
+        fundoalternativasd8.removeAll(); // Remove botões anteriores
+
+        List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+        Collections.shuffle(alternativasEmbaralhadas);
+
+        for (String alternativa : alternativasEmbaralhadas) {
+            JButton botaoAlternativa = new JButton(alternativa);
+            botaoAlternativa.setFont(fontedesafios);
+            botaoAlternativa.setFocusPainted(false);
+            botaoAlternativa.setBackground(Color.black);
+            botaoAlternativa.setForeground(Color.white);
+            botaoAlternativa.setContentAreaFilled(false);
+
+            botaoAlternativa.addActionListener(a -> {
+                if (alternativa.equals(alternativas[respostaCorreta])) {
+                    verificarResposta(true); 
+                    abDialogo9(); 
+                    janeladesafio8.dispose(); 
+                } else {
+                    verificarResposta(false); 
+                    embaralharAlternativas[0].run(); // Embaralha novamente se errar
+                }
+            });
+
+            fundoalternativasd8.add(botaoAlternativa);
         }
-    });
-    alternativadd8 = new JButton("D) Parado");
-    alternativadd8.setFont(fontedesafios);
-    alternativadd8.setFocusPainted(false);
-    alternativadd8.setBackground(Color.black);
-    alternativadd8.setForeground(Color.white);
-    alternativadd8.setContentAreaFilled(false);
-    alternativadd8.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
-        }
-    });
-  
-    fundoalternativasd8.add(alternativaad8);
-    fundoalternativasd8.add(alternativabd8);
-    fundoalternativasd8.add(alternativacd8);
-    fundoalternativasd8.add(alternativadd8);
+
+        fundoalternativasd8.revalidate(); // Atualiza o layout
+        fundoalternativasd8.repaint();    // Redesenha o painel
+    };
+
+    embaralharAlternativas[0].run(); // Executa o embaralhamento inicial
+
+    fundodesafio8.add(tdesafio8);
     con.add(fundodesafio8);
     janeladesafio8.setVisible(true);
 }
+
 public void abDialogo9() { 
   
     janelaDialogo9 = new JFrame("Dialogo 9");
@@ -1627,7 +1593,8 @@ public void actionPerformed(ActionEvent e) {
   janelaDialogo9.setVisible(true);
 
 }
-  public void abseudesafio9() {
+@SuppressWarnings("unused")
+public void abseudesafio9() {
     janeladesafio9 = new JFrame("Desafio 9"); 
     janeladesafio9.setSize(1000, 700);
     janeladesafio9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1645,10 +1612,12 @@ public void actionPerformed(ActionEvent e) {
     sistemaVida = criarSistemaVida();
     con.add(sistemaVida);
 
-    tdesafio9 = new JLabel("<html>Os Guardiões do Tempo exigem que você prove seu valor resolvendo um enigma.<br>"+
+    tdesafio9 = new JLabel("<html>Os Guardiões do Tempo exigem que você prove seu valor resolvendo um enigma.<br>"+ 
                              "Eles perguntam: “Qual método é usado para ordenar um ArrayList?</html>");
     tdesafio9.setForeground(Color.white);
     tdesafio9.setFont(fontedesafios);
+    tdesafio9.setVerticalAlignment(SwingConstants.TOP);
+    tdesafio9.setHorizontalAlignment(SwingConstants.LEFT);
     fundodesafio9.add(tdesafio9, BorderLayout.NORTH); 
 
     fundoalternativasd9 = new JPanel();
@@ -1657,60 +1626,55 @@ public void actionPerformed(ActionEvent e) {
     fundoalternativasd9.setLayout(new GridLayout(2, 2, 10, 10)); 
     con.add(fundoalternativasd9);
 
-    alternativaad9 = new JButton("A) Sort()");
-    alternativaad9.setFont(fontedesafios);
-    alternativaad9.setFocusPainted(false);
-    alternativaad9.setBackground(Color.black);
-    alternativaad9.setForeground(Color.white);
-    alternativaad9.setContentAreaFilled(false);
-    alternativaad9.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(true);
-            abjaneladecisao();
-            janeladesafio9.dispose();
+    String[] alternativas = {
+        "Sort()",  // Correta
+        "Order()", // Errada
+        "Array()", // Errada
+        "Add()"    // Errada
+    };
+    int respostaCorreta = 0; 
+
+    final Runnable[] embaralharAlternativas = new Runnable[1];
+
+    embaralharAlternativas[0] = () -> {
+        fundoalternativasd9.removeAll(); 
+
+        List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+        Collections.shuffle(alternativasEmbaralhadas);
+
+        for (String alternativa : alternativasEmbaralhadas) {
+            JButton botaoAlternativa = new JButton(alternativa);
+            botaoAlternativa.setFont(fontedesafios);
+            botaoAlternativa.setFocusPainted(false);
+            botaoAlternativa.setBackground(Color.black);
+            botaoAlternativa.setForeground(Color.white);
+            botaoAlternativa.setContentAreaFilled(false);
+
+            botaoAlternativa.addActionListener(a -> {
+                if (alternativa.equals(alternativas[respostaCorreta])) {
+                    verificarResposta(true); 
+                    abjaneladecisao(); 
+                    janeladesafio9.dispose(); 
+                } else {
+                    verificarResposta(false); 
+                    embaralharAlternativas[0].run(); 
+                }
+            });
+
+            fundoalternativasd9.add(botaoAlternativa);
         }
-    });
-    alternativabd9 = new JButton("B) Order()");
-    alternativabd9.setFont(fontedesafios);
-    alternativabd9.setFocusPainted(false);
-    alternativabd9.setBackground(Color.black);
-    alternativabd9.setForeground(Color.white);
-    alternativabd9.setContentAreaFilled(false);
-    alternativabd9.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
-        }
-    });
-    alternativacd9 = new JButton("C) Array()");
-    alternativacd9.setFont(fontedesafios);
-    alternativacd9.setFocusPainted(false);
-    alternativacd9.setBackground(Color.black);
-    alternativacd9.setForeground(Color.white);
-    alternativacd9.setContentAreaFilled(false);
-    alternativacd9.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
-        }
-    });
-    alternativadd9 = new JButton("D) Add()");
-    alternativadd9.setFont(fontedesafios);
-    alternativadd9.setFocusPainted(false);
-    alternativadd9.setBackground(Color.black);
-    alternativadd9.setForeground(Color.white);
-    alternativadd9.setContentAreaFilled(false);
-    alternativadd9.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "Você errou! Tente novamente.");
-        }
-    });
-  
-    fundoalternativasd9.add(alternativaad9);
-    fundoalternativasd9.add(alternativabd9);
-    fundoalternativasd9.add(alternativacd9);
-    fundoalternativasd9.add(alternativadd9);
+
+        fundoalternativasd9.revalidate(); 
+        fundoalternativasd9.repaint();    
+    };
+
+    embaralharAlternativas[0].run(); 
+
+    fundodesafio9.add(tdesafio9);
     con.add(fundodesafio9);
     janeladesafio9.setVisible(true);
 }
+
 public void abjaneladecisao() {
     janeladecisao = new JFrame("Decisão");
     janeladecisao.setSize(1000, 700);
@@ -1939,6 +1903,7 @@ public void abDialogo101(){
 
 
 
+ @SuppressWarnings("unused")
 public void abseudesafio10() {
     janeladesafio10 = new JFrame("Desafio 10");
     janeladesafio10.setSize(1000, 700);
@@ -1958,11 +1923,13 @@ public void abseudesafio10() {
     con.add(sistemaVida);
 
     tdesafio10 = new JLabel("<html> Quando você precisa armazenar uma lista de elementos que pode mudar de tamanho ao longo do tempo,<br><br>" +
-                        "qual classe do Java é mais adequada para essa tarefa, considerando que você deseja acessar os elementos por índice?  E, <br>" +
-                        "durante uma negociação entre duas facções rivais, ambas exigem uma prova de lealdade antes de se unir contra os Ceifadores de Sombras. <br>" +
-                        "Você tem que escolher uma missão para cada facção. Qual você escolhe?</html>");
+                            "qual classe do Java é mais adequada para essa tarefa, considerando que você deseja acessar os elementos por índice?  E, <br>" +
+                            "durante uma negociação entre duas facções rivais, ambas exigem uma prova de lealdade antes de se unir contra os Ceifadores de Sombras. <br>" +
+                            "Você tem que escolher uma missão para cada facção. Qual você escolhe?</html>");
     tdesafio10.setForeground(Color.white);
     tdesafio10.setFont(fontedesafios);
+    tdesafio10.setVerticalAlignment(SwingConstants.TOP);
+    tdesafio10.setHorizontalAlignment(SwingConstants.LEFT);
     fundodesafio10.add(tdesafio10, BorderLayout.NORTH);
 
     fundoalternativasd10 = new JPanel();
@@ -1971,75 +1938,73 @@ public void abseudesafio10() {
     fundoalternativasd10.setLayout(new GridLayout(2, 2, 10, 10));
     con.add(fundoalternativasd10);
 
-    alternativaad10 = new JButton("<html>A) ArrayList — Recuperar<br> um artefato sagrado para a Facção A.</html>");
-    alternativaad10.setFont(fontedesafios);
-    alternativaad10.setFocusPainted(false);
-    alternativaad10.setBackground(Color.black);
-    alternativaad10.setForeground(Color.white);
-    alternativaad10.setContentAreaFilled(false);
-    alternativaad10.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-           verificarResposta(true);
-           abprimeirajanela();
-           janeladesafio10.dispose();
+    String[] alternativas = {
+        "<html>ArrayList — Recuperar um artefato sagrado para a Facção A.</html>", // Correta
+        "<html>Array — Eliminar um traidor na Facção B.</html>", // Errada
+        "<html>ArrayList — Eliminar um traidor na Facção B.</html>", // Errada
+        "<html>Array — Recuperar um artefato sagrado para a Facção A.</html>" // Errada
+    };
+    int respostaCorreta = 0; 
+
+    final Runnable[] embaralharAlternativas = new Runnable[1];
+
+    embaralharAlternativas[0] = () -> {
+        fundoalternativasd10.removeAll(); 
+
+        List<String> alternativasEmbaralhadas = new ArrayList<>(List.of(alternativas));
+        Collections.shuffle(alternativasEmbaralhadas);
+
+        for (String alternativa : alternativasEmbaralhadas) {
+            JButton botaoAlternativa = new JButton(alternativa);
+            botaoAlternativa.setFont(fontedesafios);
+            botaoAlternativa.setFocusPainted(false);
+            botaoAlternativa.setBackground(Color.black);
+            botaoAlternativa.setForeground(Color.white);
+            botaoAlternativa.setContentAreaFilled(false);
+
+            botaoAlternativa.addActionListener(a -> {
+                if (alternativa.equals(alternativas[respostaCorreta])) {
+                    verificarResposta(true); 
+                    abprimeirajanela(); 
+                    janeladesafio10.dispose(); 
+                } else {
+                    verificarResposta(false); 
+                    embaralharAlternativas[0].run(); 
+                }
+            });
+
+            fundoalternativasd10.add(botaoAlternativa);
         }
-    });
-    alternativabd10 = new JButton("<html>B) Array — Eliminar<br> um traidor na Facção B.</html>");
-    alternativabd10.setFont(fontedesafios);
-    alternativabd10.setFocusPainted(false);
-    alternativabd10.setBackground(Color.black);
-    alternativabd10.setForeground(Color.white);
-    alternativabd10.setContentAreaFilled(false);
-    alternativabd10.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-           verificarResposta(false);
-        }
-    });
-    alternativacd10 = new JButton("<html>C)ArrayList — Eliminar<br> um traidor na Facção B.</html>");
-    alternativacd10.setFont(fontedesafios);
-    alternativacd10.setFocusPainted(false);
-    alternativacd10.setBackground(Color.black);
-    alternativacd10.setForeground(Color.white);
-    alternativacd10.setContentAreaFilled(false);
-    alternativacd10.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-           verificarResposta(false);
-        }
-    });
-    alternativadd10 = new JButton("<html>D) Array — Recuperar<br> um artefato sagrado para a Facção A.</html>");
-    alternativadd10.setFont(fontedesafios);
-    alternativadd10.setFocusPainted(false);
-    alternativadd10.setBackground(Color.black);
-    alternativadd10.setForeground(Color.white);
-    alternativadd10.setContentAreaFilled(false);
-    alternativadd10.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            verificarResposta(false);
-        }
-    });
-    fundoalternativasd10.add(alternativaad10);
-    fundoalternativasd10.add(alternativabd10);
-    fundoalternativasd10.add(alternativacd10);
-    fundoalternativasd10.add(alternativadd10);
+
+        fundoalternativasd10.revalidate(); 
+        fundoalternativasd10.repaint();  
+    };
+
+    embaralharAlternativas[0].run(); 
+
+    fundodesafio10.add(tdesafio10);
     con.add(fundodesafio10);
     janeladesafio10.setVisible(true);
 }
+
 
 private void verificarResposta(boolean respostaCorreta) {
     if (respostaCorreta) {
         JOptionPane.showMessageDialog(null, "Resposta correta!");
     } else {
         vida--; // Subtrai 1 da vida
-        sistemaVida.setText("Vida: " + vida); // Atualiza o JLabel
+        sistemaVida.setText("Vida: " + vida); // atualiza vida
 
         if (vida <= 0) {
             JOptionPane.showMessageDialog(null, "Você morreu!");
-            abstart();//reinicia o jogo
+            abprimeirajanela(); // Reinicia o jogo
         } else {
+           
             JOptionPane.showMessageDialog(null, "Resposta incorreta! Tente novamente!");
         }
     }
 }
+
 
     public void abcomojogar() { // Método que abre a nova janela 
         // Criando uma nova janela
@@ -2074,7 +2039,7 @@ private void verificarResposta(boolean respostaCorreta) {
         
             A cada escolha errada, sua vida será reduzida e você morrerá se atingir 5, fazendo com que o jogo reinicie. Pense com cuidado e utilize suas habilidades de programação e lógica para responder corretamente!
 
-                                                                                                        *clique ENTER para continuar
+                                                                                        *clique ENTER para continuar
         """;
     
         textocj = new JTextArea(texto);
